@@ -16,13 +16,18 @@ var sequelize = new Sequelize('employee', undefined, undefined, {
 
 const User = sequelize.define('user', {
     username: {
-        type: Sequelize.STRING, primaryKey: true
+        type: Sequelize.STRING, 
+        primaryKey: true,
+        allowNull: false
     },
     password: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
     },
     level: {  // 操作等级，1级最高，能够对各类信息进行操作
-        type: Sequelize.INTEGER, defaultValue: 1
+        type: Sequelize.INTEGER, 
+        defaultValue: 1,
+        allowNull: false
     }
 },
     {
