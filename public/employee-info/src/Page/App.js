@@ -1,19 +1,18 @@
-import React, { Component } from 'react';
-import './App.css';
+import React from 'react'
+import { Switch, Route,Redirect } from 'react-router-dom';
+import Login from '../Page/Login'
+import Main from '../Page/Main'
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Hello World</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      <Switch>
+        <Route path='/login' component={Login} />
+        <Route  path='/main' component={Main} />
+        <Route excat path="/" component={Login} /> 
+      </Switch>
+    )
   }
 }
 
-export default App;
+export default App
