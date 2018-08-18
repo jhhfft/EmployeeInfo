@@ -1,0 +1,22 @@
+.login-form {
+  max-width: 300px;
+  padding: 40px 40px 20px 40px;
+  background: #fff;
+  position: absolute;
+  right: 15%;
+  top: 50%;
+  transform: translate(0, -50%);
+  border-radius: 9px;
+}
+.login-form input, 
+.login-form label, 
+.login-form button,
+.login-form div {
+  font-size: 12px !important;
+}
+.login-form-forgot {
+  float: right;
+}
+.login-form-button {
+  width: 100%;
+}

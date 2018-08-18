@@ -1,8 +1,10 @@
 import React from 'react';
+import 'antd/dist/antd.css';
 import './index.css';
 import bgImg from './images/login_bg.png';
 import Header from '../Components/Header'
 import Footer from '../Components/Footer'
+import LoginBox from './LoginBox'
 
 class Login extends React.Component{
     render(){
@@ -11,6 +13,7 @@ class Login extends React.Component{
           <Header/>
           <div class="wrap">
             <img src={bgImg}/>
+            <LoginBox/>
           </div>
           <Footer/>
         </div>
