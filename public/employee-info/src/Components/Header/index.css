@@ -1,0 +1,29 @@
+.header {
+  width: 70%;
+  min-width: 1000px;
+  padding: 0;
+  margin: 10px auto 10px auto;
+  overflow: hidden;
+  background: #fff;
+}
+
+.header .header-logo{
+  height: 60px;
+  float: left;
+}
+
+.header-logo img {
+  height: 60px;
+}
+
+.header .header-about {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 15px 0 0;
+  float: left;
+  font-size: 16px;
+  color: #02489d;
+  margin: 10px;
+  padding-left: 10px;
+  border-left: 1px solid  #02489d;
+}

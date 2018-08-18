@@ -9,7 +9,9 @@ class Header extends React.Component{
         <div class="header-logo">
           <img src={logoImg}/>
         </div>
-        <div class="header-about">关于电信</div>
+        <div class="header-about">
+          中国电信晋城分公司员工履历管理系统
+        </div>
       </div>
     )
   }

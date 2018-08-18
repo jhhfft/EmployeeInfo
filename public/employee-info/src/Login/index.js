@@ -1,9 +1,19 @@
 import React from 'react';
+import './index.css';
+import bgImg from './images/login_bg.png';
+import Header from '../Components/Header'
+import Footer from '../Components/Footer'
 
 class Login extends React.Component{
     render(){
       return (
-        <h1>This is Login</h1>
+        <div class="login">
+          <Header/>
+          <div class="wrap">
+            <img src={bgImg}/>
+          </div>
+          <Footer/>
+        </div>
       )
     }
 }
