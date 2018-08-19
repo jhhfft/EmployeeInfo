@@ -1,5 +1,9 @@
 import React from 'react';
-import './index.css'
+import './index.css';
+
+import {withRouter} from "react-router-dom"
+import axios from 'axios';
+import { message } from 'antd';
 
 // class LoginBox extends React.Component{
 //   render(){
@@ -26,9 +30,20 @@ const FormItem = Form.Item;
 class NormalLoginForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
+    const self = this;
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        //console.log('asdfadsfasdfasdf', values);
+        axios.post('http://127.0.0.1:8080/user', values).then(function(response){
+          if(response.data.code === 1){
+            self.props.history.push('/main')
+          }else {
+            message.error('用户名或者密码错误');
+          }
+        }).catch(function(err){
+          console.log(err)
+        })
+        
       }
     });
   }
@@ -37,7 +52,7 @@ class NormalLoginForm extends React.Component {
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
         <FormItem>
-          {getFieldDecorator('userName', {
+          {getFieldDecorator('username', {
             rules: [{ required: true, message: '请输入用户名!' }],
           })(
             <Input prefix={<Icon type="user" style={{ fontSize: 10 }} />} placeholder="用户名" />
@@ -66,6 +81,6 @@ class NormalLoginForm extends React.Component {
   }
 }
 
-const LoginBox = Form.create()(NormalLoginForm);
+const LoginBox = Form.create()(withRouter(NormalLoginForm));
 
-export default LoginBox
+export default LoginBox;

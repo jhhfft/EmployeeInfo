@@ -1,29 +1,30 @@
 .header {
-  width: 70%;
+  width: 80%;
   min-width: 1000px;
-  padding: 0;
-  margin: 10px auto 10px auto;
+  height: 10vh;
+  margin: 0 auto;
   overflow: hidden;
   background: #fff;
+  position: relative;
 }
 
 .header .header-logo{
-  height: 60px;
+  height: 8vh;
+  margin: 1vh 0 1vh 0;
   float: left;
 }
 
 .header-logo img {
-  height: 60px;
+  height: 8vh;
 }
 
 .header .header-about {
-  height: 40px;
-  line-height: 40px;
-  padding: 0 15px 0 0;
+  height: 6vh;
+  line-height: 6vh;
   float: left;
-  font-size: 16px;
+  font-size: 18px;
   color: #02489d;
-  margin: 10px;
-  padding-left: 10px;
+  margin: 2vh 1vw;
+  padding-left: 1vw;
   border-left: 1px solid  #02489d;
 }

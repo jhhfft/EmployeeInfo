@@ -1,23 +1,19 @@
 .login {
   width: 100%;
-  display: flex;
-  flex-direction: column;
 }
 .login .wrap {
-  height: 470px;
+  height: 80vh;
   width: 100%;
   min-width: 1024px;
   margin: auto;
-  /* background-image: url('./images/login_bg.png');
-  background-repeat: no-repeat;
-  background-size: contain; */
   position: relative;
   background: linear-gradient(to right, #2d74f2, #1d45c0);
-  margin-bottom: 15px;
 }
 
 .login .wrap img {
-  height: 70%;
+  /* height: 70%; */
+  width: 50vw;
+  min-width: 480px;
   position: absolute;
   bottom: 0;
   left: 5%;

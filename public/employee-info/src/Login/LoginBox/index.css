@@ -1,9 +1,9 @@
 .login-form {
-  max-width: 300px;
+  width: 310px;
   padding: 40px 40px 20px 40px;
   background: #fff;
   position: absolute;
-  right: 15%;
+  right: 15vw;
   top: 50%;
   transform: translate(0, -50%);
   border-radius: 9px;

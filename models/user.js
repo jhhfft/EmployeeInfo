@@ -38,7 +38,7 @@ User.sync()
 // User.sync({ force: true }).then(function () {
 //     // 已创建数据表
 //     User.create({
-//         username: '闫鑫鑫',
+//         username: 'yanxinxin',
 //         password: '358941877'
 //     });
 // }).catch(error => {
@@ -47,15 +47,28 @@ User.sync()
 
 
 
-// module.exports = User
-User.create({
-    username: '李欣',
-    password: '358941877'
-});
-user = User.findOne()
+module.exports = User
 
-// 测试 
-user.get('username').then(result => {
-    console.log('-------')
-    console.log(result)
-}).catch(() => { console.log('error') })
+// const opts = {
+//     where: {
+//         username: "yanxinxin",
+//         password: "asdfsadf"
+//     }
+// }
+// User.findAll(opts).then(user=>{
+//     console.log('------')
+//     console.log('用户存在')
+//     console.log(user.length)
+//     console.log('------')
+// }).catch(error=>{
+//     console.log('用户不存在')
+// })
+
+
+// // 测试 
+// user = User.findOne()
+// user.get('username').then(result => {
+//     console.log('-------')
+//     console.log(result)
+//     console.log('-------')
+// }).catch(() => { console.log('error') })
