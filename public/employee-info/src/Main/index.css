@@ -1,0 +1,7 @@
+.main {
+  background: #eff4f8;
+}
+.main .wrapper {
+  min-height: 90vh;
+  background: #fff;
+}
