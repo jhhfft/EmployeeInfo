@@ -10,7 +10,7 @@ class Login extends React.Component{
     render(){
       return (
         <div class="login">
-          <Header/>
+          <Header color={0}/>
           <div class="wrap">
             <img src={bgImg}/>
             <LoginBox/>
