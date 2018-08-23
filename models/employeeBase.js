@@ -65,6 +65,10 @@ const EmployeeBase = sequelize.define('employeeBase',{
         type: Sequelize.STRING,
         allowNull: false
     },
+    // 专业
+    major: {
+        type: Sequelize.STRING,
+    },
     // 照片
     photo: {
         type: Sequelize.STRING,

@@ -7,16 +7,16 @@ const Option = Select.Option;
 /* 
       姓名（input）、
       性别（select）、
-      出生日期（datepicker）
+      年龄
+      入职时间
       籍贯（input）
       学历(select)
-      出生地（input）
-      学位（select）
+      专业
       身份证号（input）
       联系方式（input）
-      是否党员（select）
+      政治面貌（select）
+      部门
       职务（input）
-      参加工作时间（datepicker）
       */
 class SearchForm extends React.Component {
   handleSubmit = (e) => {
@@ -87,15 +87,10 @@ class SearchForm extends React.Component {
               )}
             </FormItem>
           </Col>
-          <Col span={8} key='degree'>
-            <FormItem {...formItemLayout} label="学位">
-              {getFieldDecorator('degree',{initialValue: undefined})(
-                <Select>
-                  <Option value="">全部</Option>
-                  <Option value="学士">学士</Option>
-                  <Option value="硕士">硕士</Option>
-                  <Option value="博士">博士</Option>
-                </Select>
+          <Col span={8} key='major'>
+            <FormItem {...formItemLayout} label="专业">
+              {getFieldDecorator('major',{initialValue: undefined})(
+                <Input />
               )}
             </FormItem>
           </Col>

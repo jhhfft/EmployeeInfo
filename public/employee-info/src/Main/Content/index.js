@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.css';
 import WrapperSearchForm from '../WrapperSearchForm';
+import ResultTable from '../ResultTable';
 
 class Content extends React.Component{
   queryInfor = (opts) => {
@@ -18,6 +19,7 @@ class Content extends React.Component{
     return (
       <div className="content">
         <WrapperSearchForm queryInfor={this.queryInfor}/>
+        <ResultTable />
       </div>
     )
   }
