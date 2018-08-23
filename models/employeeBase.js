@@ -79,7 +79,7 @@ const EmployeeBase = sequelize.define('employeeBase',{
         type: Sequelize.STRING
     },
     // 身份证号
-    idCardNum: {
+    idNum: {
         type: Sequelize.STRING,
         allowNull: false
     },

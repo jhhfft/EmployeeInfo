@@ -11,11 +11,11 @@ class Header extends React.Component{
       borderLeft: color === 0 ? '1px solid  #02489d' : '1px solid  #fff'
     }
     return (
-      <div class="header">
-        <div class="header-logo">
+      <div className="header" style={color==0?{background:'#fff'}:{background:'#2358d4'}}>
+        <div className="header-logo">
           <img src={color === 0 ? logoImgBlue : logoImgWhite}/>
         </div>
-        <div class="header-about" style={styleColor}>
+        <div className="header-about" style={styleColor}>
           中国电信晋城分公司员工履历管理系统
         </div>
       </div>
