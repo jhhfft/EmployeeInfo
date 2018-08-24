@@ -31,20 +31,20 @@ class SearchForm extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form
     const formItemLayout = {
-      labelCol: { span: 5 },
-      wrapperCol: { span: 19 },
+      labelCol: { span: 7 },
+      wrapperCol: { span: 17 },
     };
     return (
       <Form className="search-form" onSubmit={this.handleSubmit}>
         <Row gutter={30}>
-          <Col span={8} key='name'>
+          <Col span={6} key='name'>
             <FormItem {...formItemLayout} label="姓名">
               {getFieldDecorator('name')(
                 <Input />
               )}
             </FormItem>
           </Col>
-          <Col span={8} key='sex'>
+          <Col span={6} key='sex'>
             <FormItem {...formItemLayout} label="性别">
               {getFieldDecorator('sex', {initialValue: undefined})(
                 <Select>
@@ -55,23 +55,23 @@ class SearchForm extends React.Component {
               )}
             </FormItem>
           </Col>
-          <Col span={8} key='birthday'>
+          <Col span={6} key='birthday'>
             <FormItem {...formItemLayout} label="出生日期">
               {getFieldDecorator('birthday')(
                 <DatePicker style={{width: '100%'}}/>
               )}
             </FormItem>
           </Col>
-        </Row>
-        <Row gutter={40}>
-          <Col span={8} key='hometown'>
+          <Col span={6} key='hometown'>
             <FormItem {...formItemLayout} label="籍贯">
               {getFieldDecorator('hometown')(
                 <Input />
               )}
             </FormItem>
           </Col>
-          <Col span={8} key='education'>
+        </Row>
+        <Row gutter={30}>
+          <Col span={6} key='education'>
             <FormItem {...formItemLayout} label="学历">
               {getFieldDecorator('education',{initialValue: undefined})(
                 <Select>
@@ -87,30 +87,30 @@ class SearchForm extends React.Component {
               )}
             </FormItem>
           </Col>
-          <Col span={8} key='major'>
+          <Col span={6} key='major'>
             <FormItem {...formItemLayout} label="专业">
               {getFieldDecorator('major',{initialValue: undefined})(
                 <Input />
               )}
             </FormItem>
           </Col>
-        </Row>
-        <Row gutter={40}>
-          <Col span={8} key='idNum'>
+          <Col span={6} key='idNum'>
             <FormItem {...formItemLayout} label="身份证号">
               {getFieldDecorator('idNum')(
                 <Input />
               )}
             </FormItem>
           </Col>
-          <Col span={8} key='phone'>
+          <Col span={6} key='phone'>
             <FormItem {...formItemLayout} label="联系方式">
               {getFieldDecorator('phone')(
                 <Input />
               )}
             </FormItem>
           </Col>
-          <Col span={8} key='politicalStatus'>
+        </Row>
+        <Row gutter={30}>
+          <Col span={6} key='politicalStatus'>
             <FormItem {...formItemLayout} label="政治面貌">
               {getFieldDecorator('politicalStatus',{initialValue: undefined})(
                 <Select>
@@ -124,23 +124,21 @@ class SearchForm extends React.Component {
               )}
             </FormItem>
           </Col>
-        </Row>
-        <Row gutter={40}>
-          <Col span={8} key='department'>
+          <Col span={6} key='department'>
             <FormItem {...formItemLayout} label="部门">
               {getFieldDecorator('department')(
                 <Input />
               )}
             </FormItem>
           </Col>
-          <Col span={8} key='job'>
+          <Col span={6} key='job'>
             <FormItem {...formItemLayout} label="职务">
               {getFieldDecorator('job')(
                 <Input />
               )}
             </FormItem>
           </Col>
-          <Col span={8} style={{ textAlign: 'center'}}>
+          <Col span={6} style={{ textAlign: 'center'}}>
             <Button type="primary" htmlType="submit" style={{width: '30%', marginRight: 15}}>搜索</Button>
             <Button type="primary" htmlType="reset" style={{width: '30%'}} onClick={this.handleReset}>重置</Button>
           </Col>
