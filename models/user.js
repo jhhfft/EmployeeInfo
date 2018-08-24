@@ -7,7 +7,7 @@ var sequelize = new Sequelize('employee', undefined, undefined, {
     storage: path.join(__dirname, '../database/database.sqlite')
 })
 
-// 测试数据库是否能连接成功
+// // 测试数据库是否能连接成功
 // sequelize.authenticate().then(()=>{
 //     console.log('success')
 // }).catch(error => {
@@ -52,13 +52,13 @@ module.exports = User
 // const opts = {
 //     where: {
 //         username: "yanxinxin",
-//         password: "asdfsadf"
+//         password: "358941877"
 //     }
 // }
 // User.findAll(opts).then(user=>{
 //     console.log('------')
 //     console.log('用户存在')
-//     console.log(user.length)
+//     console.log(user[0])
 //     console.log('------')
 // }).catch(error=>{
 //     console.log('用户不存在')

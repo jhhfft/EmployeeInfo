@@ -6,7 +6,7 @@ import RouterMap from './RouterMap';
 
 
 ReactDOM.render((
-  <BrowserRouter>
+  <HashRouter>
     <RouterMap />
-  </BrowserRouter>
+  </HashRouter>
 ), document.getElementById('root'));

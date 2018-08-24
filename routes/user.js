@@ -15,6 +15,11 @@ router.post('/', function(req, res, next) {
   User.findAll(opts).then(result=>{
     if(result.length>0){
       // 用户存在
+      console.log(result[0].level)
+      req.session.user = {
+        username: req.body.username,
+        level: result[0].level
+      };
       res.send({
         code: 1,
         state: 'ok'
