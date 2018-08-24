@@ -64,10 +64,11 @@ const columns = [{
 }];
 
 const data = [{
+  id: 1,
   key: '1',
   name: '闫鑫鑫',
   sex: '男',
-  birthday: '1994-10-14',
+  birthday: '1994/10/14',
   hometown: '晋城',
   education: '研究生',
   major: '计算机',
@@ -75,14 +76,18 @@ const data = [{
   politicalStatus: '共青团员',
   department: '人力资源部',
   job: '职员',
-  startwork: '2018-08-23'
+  startwork: '2018/08/23'
 }];
 
 class ResultTable extends React.Component {
+  constructor(props){
+    super(props);
+  }
   render() {
+    const {data, pagination} = this.props
     return (
       <div className="result-table">
-        <Table columns={columns} dataSource={data} pagination={{ current: 6, total: 500 }} />
+        <Table columns={columns} dataSource={data} pagination={pagination} />
       </div>
     )
   }
