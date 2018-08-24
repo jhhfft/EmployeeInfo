@@ -130,43 +130,61 @@ module.exports = EmployeeBase
 
 // const opts = {
 //     where: {
-//         name: "闫鑫鑫",
+//         sex: "男",
 //     }
 // }
 // EmployeeBase.findAll(opts).then(employeebase=>{
 //     console.log('------')
 //     console.log('用户存在')
-//     console.log(employeebase[0])
+//     console.log(employeebase[0].get('name'))
+//     console.log(employeebase[1].get('name'))
+//     console.log(employeebase[2].get('name'))
 //     console.log('------')
 // }).catch(error=>{
 //     console.log('用户不存在')
 // })
 
 
-// EmployeeBase.sync({ force: true }).then(function () {
-//     // 已创建数据表
-//     let birthday = new Date(1994, 10, 14)
-//     let startwork = new Date(2018, 7, 16)
-//     EmployeeBase.create({
-//         name: '闫鑫鑫',
+// 已创建数据表
+// let birthday = new Date(1991, 9, 14)
+// let startwork = new Date(2018, 6, 16)
+// EmployeeBase.create({
+//     name: '李欣',
+//     sex: '女',
+//     nation: '汉族',
+//     birthday,
+//     hometown: '晋城市高平',
+//     birthplace: '晋城市城区',
+//     idNum: '444444444444444444',
+//     address: '晋城市泽州路凤翔小区',
+//     phone: '15303564444',
+//     health: '健康',
+//     education: '硕士研究生',
+//     degree: '硕士',
+//     major: '金融学',
+//     politicalStatus: '党员',
+//     photo: 'lixin',
+//     department: '人力资源部',
+//     job: '职员',
+//     startwork
+// });
+
+
+// name: '李卓远',
 //         sex: '男',
 //         nation: '汉族',
 //         birthday,
-//         hometown: '晋城市郊区',
+//         hometown: '晋城市城区',
 //         birthplace: '晋城市城区',
-//         idNum: '140502199410140033',
-//         address: '城区瑞丰路926号1号楼202室',
-//         phone: '15303566679',
+//         idNum: '111111111111111111',
+//         address: '泽州路邮电局',
+//         phone: '15303561111',
 //         health: '健康',
-//         education: '硕士研究生',
-//         degree: '硕士',
-//         major: '计算机技术',
+//         education: '本科',
+//         degree: '学士',
+//         major: '计算机科学与技术',
 //         politicalStatus: '共青团员',
-//         photo: 'yanxinxin',
+//         photo: 'lizhuoyuan',
 //         department: '人力资源部',
 //         job: '职员',
 //         startwork
-//     });
-// }).catch(error => {
-
-// })

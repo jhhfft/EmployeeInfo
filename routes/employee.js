@@ -25,7 +25,8 @@ const basePostFunc = async (req, res, next) => {
     })
     return
   } else {
-    const opts = req.body;
+    const opts = {}
+    opts.where= req.body;
     const queryResult = await EmployeeBase.findAll(opts)
     const finalResult = getBaseInfo(queryResult)
     res.send({

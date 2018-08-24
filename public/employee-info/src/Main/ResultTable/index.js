@@ -6,7 +6,9 @@ const columns = [{
   title: '姓名',
   dataIndex: 'name',
   key: 'name',
-  render: text => <a href="#">{text}</a>,
+  render: (text, record)=>{
+    return <a href={'127.0.0.1:8080/employee/detail?id='+record.id}>{text}</a>
+  }
 }, {
   title: '性别',
   dataIndex: 'sex',
@@ -55,9 +57,9 @@ const columns = [{
     console.log(record)
     return (
       <span>
-        <a href={'127.0.0.1:8080/employee/update?'+record.key}>修改</a>
+        <a href={'127.0.0.1:8080/employee/update?id='+record.id}>修改</a>
         <span className="ant-divider" />
-        <a href="#">删除</a>
+        <a href={'127.0.0.1:8080/employee/delete?id='+record.id}>删除</a>
       </span>
     )
   },
