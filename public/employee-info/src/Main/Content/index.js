@@ -25,6 +25,7 @@ class Content extends React.Component{
       item.startwork = date.toLocaleDateString()
 
       item.key = item.id
+      // delete item.id
     })
   }
   queryInfor = async (opts) => {
@@ -37,13 +38,13 @@ class Content extends React.Component{
       }
     }
     // console.log('this is content',employee)
-    const result = await post('http://127.0.0.1:8080/employee/base',employee)
+    let result = await post('http://127.0.0.1:8080/employee/base',employee)
     if(result.code == 0){
       // 说明用户未登录
       message.error('请先登录');
       this.props.history.push('/login');
     }else {
-      const employeeList = result.employee
+      let employeeList = result.employee
       this.formatData(employeeList)
       this.setState({employeeList})
     }

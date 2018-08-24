@@ -4,3 +4,11 @@
   border: 1px solid #e7e7e7;
   border-radius: 5px;
 }
+
+.result-table table th {
+  white-space:nowrap;
+}
+.result-table .ant-table-tbody>tr>td, 
+.result-table .ant-table-thead>tr>th {
+  padding: 16px 10px !important;
+}
