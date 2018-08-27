@@ -130,17 +130,23 @@ module.exports = EmployeeBase
 
 // const opts = {
 //     where: {
-//         sex: "男",
-//     }
+       
+//     },
+//     offset: (3-1)*2, // (page - 1) * pageSize
+//     limit: 2 // (page - 1) * pageSize
 // }
-// EmployeeBase.findAll(opts).then(employeebase=>{
-//     console.log('------')
-//     console.log('用户存在')
-//     console.log(employeebase[0].get('name'))
-//     console.log(employeebase[1].get('name'))
-//     console.log(employeebase[2].get('name'))
-//     console.log('------')
-// }).catch(error=>{
+// EmployeeBase.findAndCountAll(opts).then(employeebase => {
+//     // console.log('------')
+//     // console.log('用户存在')
+//     // console.log(employeebase[0].get('name'))
+//     // console.log(employeebase[1].get('name'))
+//     // console.log(employeebase[2].get('name'))
+//     // console.log('------')
+//     console.log("符合条件的数据有", employeebase.count)
+//     console.log("目前只展示第", employeebase.rows.length)
+//     console.log(employeebase.rows[0].get('name'))
+//     console.log(employeebase.rows[1].get('name'))
+// }).catch(error => {
 //     console.log('用户不存在')
 // })
 

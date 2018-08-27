@@ -64,8 +64,8 @@ const columns = [{
   key: 'action',
   
   render: (text, record) => {
-    console.log(text)
-    console.log(record)
+    // console.log(text)
+    // console.log(record)
     return (
       <span>
         <a href={'127.0.0.1:8080/employee/update?id='+record.id}>修改</a>

@@ -1,4 +1,4 @@
-var express = require('express')
+var express = require('express');
 var router = express.Router();
 
 const EmployeeBase = require('../models/employeeBase');
@@ -25,14 +25,21 @@ const basePostFunc = async (req, res, next) => {
     })
     return
   } else {
+    console.log("rrrrrrrrrrrrrrrrrrrr",req.body)
     const opts = {}
-    opts.where= req.body;
-    const queryResult = await EmployeeBase.findAll(opts)
-    const finalResult = getBaseInfo(queryResult)
+    opts.where= req.body.where;
+    const current = req.body.current
+    const pageSize = req.body.pageSize
+    opts.offset = (current-1)*pageSize
+    opts.limit = pageSize
+    const queryResult = await EmployeeBase.findAndCountAll(opts)
+    const total = queryResult.count
+    const currentPageEmployee = getBaseInfo(queryResult.rows)
     res.send({
       code: 1,
       state: 'success',
-      employee: finalResult
+      employee: currentPageEmployee,
+      total
     })
   }
 
