@@ -32,18 +32,22 @@ class Content extends React.Component{
   }
   deleteInfo = async (id) => {
     const {current, pageSize} = this.state
-    let result = await post('http://127.0.0.1:8080/employee/delete', {id})
-    if(result.code == 0){
-      // 说明用户未登录
-      message.error('请先登录');
-      this.props.history.push('/login');
-    }else if(result.code == 1){
-      message.success('删除成功')
-      let employeeList = result.employee
-      let total = result.total
-      this.formatData(employeeList)
-      this.setState({employeeList, total, current, pageSize})
-    } else {
+    try{
+      let result = await post('http://127.0.0.1:8080/employee/delete', {id})
+      if(result.code == 0){
+        // 说明用户未登录
+        message.error('请先登录');
+        this.props.history.push('/login');
+      }else if(result.code == 1){
+        message.success('删除成功')
+        let employeeList = result.employee
+        let total = result.total
+        this.formatData(employeeList)
+        this.setState({employeeList, total, current, pageSize})
+      } else {
+        message.error('删除失败，请稍后再试')
+      }
+    }catch(e){
       message.error('删除失败，请稍后再试')
     }
   }
