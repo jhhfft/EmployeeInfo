@@ -30,6 +30,21 @@ class Content extends React.Component{
       // delete item.id
     })
   }
+  deleteInfo = async (id) => {
+    console.log(id)
+    // const {current, pageSize} = this.state
+    // let result = await post('http://127.0.0.1:8080/employee/delete', {id})
+    // if(result.code == 0){
+    //   // 说明用户未登录
+    //   message.error('请先登录');
+    //   this.props.history.push('/login');
+    // }else {
+    //   let employeeList = result.employee
+    //   let total = result.total
+    //   this.formatData(employeeList)
+    //   this.setState({employeeList, total, current, pageSize})
+    // }
+  }
   queryInfor = async (opts) => {
     const {current, pageSize} = this.state
     // const employee = {}
@@ -71,7 +86,7 @@ class Content extends React.Component{
     return (
       <div className="content">
         <WrapperSearchForm queryInfor={this.queryInfor}/>
-        <ResultTable data={employeeList} pagination={{current, total, pageSize, onChange: this.onPageChange}} />
+        <ResultTable data={employeeList} pagination={{current, total, pageSize}} deleteInfo={this.deleteInfo} />
       </div>
     )
   }

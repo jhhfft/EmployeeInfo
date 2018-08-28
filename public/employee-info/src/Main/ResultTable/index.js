@@ -2,75 +2,77 @@ import React from 'react';
 import './index.css';
 import { Table, Icon } from 'antd';
 
+const { Column } = Table
+
 const columns = [{
   title: '姓名',
   dataIndex: 'name',
   key: 'name',
-  render: (text, record)=>{
-    return <a href={'127.0.0.1:8080/employee/detail?id='+record.id}>{text}</a>
+  render: (text, record) => {
+    return <a href={'http://127.0.0.1:8080/employee/detail?id=' + record.id} target='_blank'>{text}</a>
   }
 }, {
   title: '性别',
   dataIndex: 'sex',
   key: 'sex',
-  
+
 }, {
   title: '出生日期',
   dataIndex: 'birthday',
   key: 'birthday',
-  
+
 }, {
   title: '联系方式',
   dataIndex: 'phone',
   key: 'phone',
-  
+
 }, {
   title: '籍贯',
   dataIndex: 'hometown',
   key: 'hometown',
-  
+
 }, {
   title: '学历',
   dataIndex: 'education',
   key: 'education',
-  
+
 }, {
   title: '专业',
   dataIndex: 'major',
   key: 'major',
-  
+
 }, {
   title: '政治面貌',
   dataIndex: 'politicalStatus',
   key: 'politicalStatus',
-  
+
 }, {
   title: '部门',
   dataIndex: 'department',
   key: 'department',
-  
+
 }, {
   title: '职务',
   dataIndex: 'job',
   key: 'job',
-  
+
 }, {
   title: '参加工作时间',
   dataIndex: 'startwork',
   key: 'startwork',
-  
+
 }, {
   title: '操作',
   key: 'action',
-  
+
   render: (text, record) => {
     // console.log(text)
     // console.log(record)
     return (
       <span>
-        <a href={'127.0.0.1:8080/employee/update?id='+record.id}>修改</a>
+        <a href={'http://127.0.0.1:8080/employee/update?id=' + record.id} target='_blank'>修改</a>
         <span className="ant-divider" />
-        <a href={'127.0.0.1:8080/employee/delete?id='+record.id}>删除</a>
+        <a href={'#'} onClick={() => { console.log(this.props) }}>删除</a>
       </span>
     )
   },
@@ -90,7 +92,7 @@ const selfdata = [{
   department: '人力资源部',
   job: '职员',
   startwork: '2018/08/23'
-},{
+}, {
   id: 2,
   key: '2',
   name: '闫鑫鑫',
@@ -119,7 +121,7 @@ const selfdata = [{
   department: '人力资源部',
   job: '职员',
   startwork: '2018/08/23'
-},{
+}, {
   id: 4,
   key: '4',
   name: '闫鑫鑫',
@@ -133,7 +135,7 @@ const selfdata = [{
   department: '人力资源部',
   job: '职员',
   startwork: '2018/08/23'
-},{
+}, {
   id: 5,
   key: '5',
   name: '闫鑫鑫',
@@ -165,15 +167,89 @@ const selfdata = [{
 }];
 
 class ResultTable extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
   }
+  handleDelete = (e, id) => {
+    e.preventDefault()
+    this.props.deleteInfo(id)
+  }
   render() {
-    const {data, pagination} = this.props
+    const { data, pagination } = this.props
+    const self = this
     return (
-      <div className="result-table">
-        <Table columns={columns} dataSource={data} pagination={pagination} />
-      </div>
+      // <div className="result-table">
+      //   <Table columns={columns} dataSource={data} pagination={pagination} handleDelete={this.handleDelete}/>
+      // </div>
+      <Table dataSource={data}>
+        <Column
+          title="姓名"
+          dataIndex='name'
+          key='name'
+          render={(text, record) => <a href={'http://127.0.0.1:8080/employee/detail?id=' + record.id} target='_blank'>{text}</a>}>
+        </Column>
+        <Column
+          title="性别"
+          dataIndex="sex"
+          key="sex"
+        />
+        <Column
+          title="出生日期"
+          dataIndex="birthday"
+          key="birthday"
+        />
+        <Column
+          title="联系方式"
+          dataIndex="phone"
+          key="phone"
+        />
+        <Column
+          title="籍贯"
+          dataIndex="hometown"
+          key="hometown"
+        />
+        <Column
+          title="学历"
+          dataIndex="education"
+          key="education"
+        />
+        <Column
+          title="专业"
+          dataIndex="major"
+          key="major"
+        />
+        <Column
+          title="政治面貌"
+          dataIndex="politicalStatus"
+          key="politicalStatus"
+        />
+        <Column
+          title="部门"
+          dataIndex="department"
+          key="department"
+        />
+        <Column
+          title="职务"
+          dataIndex="job"
+          key="job"
+        />
+        <Column
+          title="参加工作时间"
+          dataIndex="startwork"
+          key="startwork"
+        />
+        <Column
+          title="操作"
+          key="action"
+          render={(text, record) => (
+            <span>
+              <a href={'http://127.0.0.1:8080/employee/update?id=' + record.id} target='_blank'>修改</a>
+              <span className="ant-divider" />
+              <a onClick={(e) => self.handleDelete(e, record.id)}>删除</a>
+            </span>
+          )}
+        />
+      </Table >
     )
   }
 }
