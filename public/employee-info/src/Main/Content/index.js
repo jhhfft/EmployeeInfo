@@ -1,7 +1,7 @@
 import React from 'react';
 import {withRouter} from "react-router-dom"
 
-import { message } from 'antd';
+import { message, Button } from 'antd';
 import './index.css';
 import WrapperSearchForm from '../WrapperSearchForm';
 import ResultTable from '../ResultTable';
@@ -51,6 +51,9 @@ class Content extends React.Component{
       message.error('删除失败，请稍后再试')
     }
   }
+  addEmployee = ()=>{
+    window.open('http://127.0.0.1:8080/employee/addpage')
+  }
   queryInfor = async (opts) => {
     const {current, pageSize} = this.state
     // const employee = {}
@@ -89,10 +92,11 @@ class Content extends React.Component{
   }
   render(){
     const {employeeList, current, total, pageSize} = this.state
+    console.log(total)
     return (
       <div className="content">
         <WrapperSearchForm queryInfor={this.queryInfor}/>
-        <ResultTable data={employeeList} pagination={{current, total, pageSize}} deleteInfo={this.deleteInfo} />
+        <ResultTable data={employeeList} pagination={{current, total, pageSize, onChange: this.onPageChange}} deleteInfo={this.deleteInfo} addEmployee={this.addEmployee}/>
       </div>
     )
   }

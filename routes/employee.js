@@ -48,7 +48,7 @@ const basePostFunc = async (req, res, next) => {
 
 const getDetailFunc = async (req, res, next) => {
   console.log(req.query.id)
-  /res.render('employee', { id: req.query.id });
+  res.render('employee', { id: req.query.id });
   // res.send('hello world')
   // if (req.session.user) {
   //   // 未登录
@@ -77,7 +77,12 @@ const getDetailFunc = async (req, res, next) => {
   // }
 }
 
+const addEmployeeFunc = (req, res, next) =>{
+  res.render('employee', { id: 1 });
+} 
+
+
 router.post('/base', basePostFunc);
 router.get('/detail', getDetailFunc);
-
+router.get('/addpage', addEmployeeFunc);
 module.exports = router;

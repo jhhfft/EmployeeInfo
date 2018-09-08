@@ -3,6 +3,7 @@
   padding: 25px 20px 20px 20px;
   border: 1px solid #e7e7e7;
   border-radius: 5px;
+  position: relative;
 }
 
 .result-table table th {
@@ -11,4 +12,15 @@
 .result-table .ant-table-tbody>tr>td, 
 .result-table .ant-table-thead>tr>th {
   padding: 16px 10px !important;
+}
+
+
+.result-table .add-new {
+  position: absolute;
+  bottom: 32px;
+  left: 25px;
+  z-index: 100;
+}
+.result-table .ant-table-placeholder{
+  height: 100px;
 }
