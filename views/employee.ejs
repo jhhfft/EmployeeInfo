@@ -1,16 +1,1065 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>添加员工信息</title>
+  <link rel="stylesheet" type="text/css" href="../semantic/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="../style/employee.css">
 </head>
+
 <body>
-  <% if(id) {%>
-    <h2>Hello <%= id %></h2>
-  <% } %>
-  
-    <h1>This is add new employee page</h1>
+  <!-- <form class="ui form container employee">
+    <div class="baseInfo">
+      <div class="ui grid ">
+        <div class="thirteen wide column">
+          
+        </div>
+        <div class="three wide column">
+          asdf
+        </div>
+      </div>
+    </div>
+  </form> -->
+  <form class="ui form container employee">
+    <table class="ui table  selectable celled structured fixed unstackable" style="margin: 0px;">
+      <tbody>
+        <tr>
+          <td class="two wide">姓名</td>
+          <td class="four wide">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入" value="闫鑫鑫" readonly>
+            </div>
+          </td>
+          <td class="two wide">性别</td>
+          <td class="four wide">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td class="two wide" rowspan="5">
+            <input type="file" name="file" id="file" class="inputfile" />
+            <label for="file" class='btn btn-success'>Choose a file</label>
+          </td>
+        </tr>
+        <tr>
+          <td>民族</td>
+          <td class="four wide">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>出生日期</td>
+          <td class="four wide">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>籍贯</td>
+          <td class="four wide">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>学历</td>
+          <td class="four wide">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>出生地</td>
+          <td class="four wide">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>学位</td>
+          <td class="four wide">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="ui table  selectable celled structured fixed unstackable" style="margin: 0px;">
+      <tbody>
+        <tr>
+          <td class="two wide">健康状况</td>
+          <td class="four wide">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td class="two wide">联系电话</td>
+          <td class="six wide" colspan="2">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="two wide">政治面貌</td>
+          <td class="four wide">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td class="two wide">身份证号</td>
+          <td class="six wide" colspan="2">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="two wide">职务</td>
+          <td class="four wide">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td class="two wide" rowspan="3">薪资情况</td>
+          <td class="two wide">岗位标准</td>
+          <td class="four wide">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="two wide">部门</td>
+          <td class="four wide">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td class="two wide">岗位系数</td>
+          <td class="four wide">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="two wide">家庭住址</td>
+          <td class="four wide">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td class="two wide">岗位工资</td>
+          <td class="four wide">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="ui table  selectable celled structured fixed unstackable" style="margin: 0px; border-top: 0px;">
+      <tbody>
+        <tr>
+          <td class="four wide">何年何月何处参加工作</td>
+          <td>
+            <div class="field">
+              <textarea rows="3"></textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="four wide">何年何月何人介绍加入中国共产党，何时转正</td>
+          <td>
+            <div class="field">
+              <textarea rows="3"></textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="four wide">何年何月加入中国共产主义青年团</td>
+          <td>
+            <div class="field">
+              <textarea rows="3"></textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="four wide">何年何月何人介绍加入何民主党派，任何职务</td>
+          <td>
+            <div class="field">
+              <textarea rows="3"></textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="four wide">历次何时经由何部门审批通过何专业技术职务任职资格及现所聘专业技术职务</td>
+          <td>
+            <div class="field">
+              <textarea rows="3"></textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="four wide">何时经由何部门审批通过何专业技术工种、何技术等级资格及现所聘专业技术工种等级职务</td>
+          <td>
+            <div class="field">
+              <textarea rows="3"></textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="four wide">何年何月何机关授予何军种、警衔</td>
+          <td>
+            <div class="field">
+              <textarea rows="3"></textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="four wide">何年何月至何年何月参加何单位举办的政治理论或业务培训（包括各级党校培训或学习）</td>
+          <td>
+            <div class="field">
+              <textarea rows="5"></textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="four wide">有何业务技术专长、重要发明创造、科研成果、著作、译著</td>
+          <td>
+            <div class="field">
+              <textarea rows="3"></textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="four wide">何时何处参加何社会团体，任何职务</td>
+          <td>
+            <div class="field">
+              <textarea rows="3"></textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="four wide">有何宗教信仰</td>
+          <td>
+            <div class="field">
+              <textarea rows="3"></textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="four wide">何年何月出国（境）及参加重大国际性活动的情况</td>
+          <td>
+            <div class="field">
+              <textarea rows="3"></textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="four wide">掌握何种外语或少数民族语言及其他技能情况</td>
+          <td>
+            <div class="field">
+              <textarea rows="3"></textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="four wide">何时何处何原因受过何种奖励</td>
+          <td>
+            <div class="field">
+              <textarea rows="3"></textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="four wide">何时何处何原因受过何种处分</td>
+          <td>
+            <div class="field">
+              <textarea rows="3"></textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="four wide">历史上参加过何种发动组织，任何职务，有何结论</td>
+          <td>
+            <div class="field">
+              <textarea rows="3"></textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="four wide">“文化大革命”中犯有何种错误，组织意见如何</td>
+          <td>
+            <div class="field">
+              <textarea rows="3"></textarea>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="ui table  selectable celled structured fixed unstackable study" style="margin: 0px; border-top: 0px;">
+      <thead>
+        <tr>
+          <th colspan="5">
+            <h2 style="text-align: center">学习简历</h2>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>起止年月</td>
+          <td>院校及系、专业</td>
+          <td>毕（结、肄）业</td>
+          <td>学位</td>
+          <td>证明人</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="ui table  selectable celled structured fixed unstackable work" style="margin: 0px; border-top: 0px;">
+      <thead>
+        <tr>
+          <th colspan="3">
+            <h2 style="text-align: center">工作经历</h2>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>起止年月</td>
+          <td>单位、部门及职务</td>
+          <td>证明人</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="ui table  selectable celled structured fixed unstackable politics" style="margin: 0px; border-top: 0px;">
+      <thead>
+        <tr>
+          <th colspan="3">
+            <h2 style="text-align: center">当选人民代表大会、政治协商会议、中国共产党及民主党派、群众团体代表大会代表、委员等情况</h2>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>何年何月</td>
+          <td>会议名称</td>
+          <td>身份及职务</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="ui table  selectable celled structured fixed unstackable family" style="margin: 0px; border-top: 0px;">
+      <thead>
+        <tr>
+          <th colspan="8">
+            <h2 style="text-align: center">家庭情况</h2>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="3">本人婚姻状况</td>
+          <td colspan="5">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="12">家庭主要成员情况</td>
+          <td rowspan="6">配偶</td>
+          <td>姓名</td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>出生日期</td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>民族</td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>籍贯</td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>参加工作时间</td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td>政治面貌</td>
+          <td>
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>学历</td>
+          <td colspan="3">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td rowspan="2">工资情况</td>
+          <td rowspan="2">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>专业技术职务</td>
+          <td colspan="3">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">毕业院校及专业</td>
+          <td colspan="4">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">工作单位及职务</td>
+          <td colspan="4">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="6">其他成员</td>
+          <td>关系</td>
+          <td>姓名</td>
+          <td>出生日期</td>
+          <td>政治面貌</td>
+          <td colspan="2">工作单位及职务</td>
+        </tr>
+        <tr>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="2">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="2">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="2">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="2">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="2">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td rowspan="5" colspan="2">国内外主要社会关系情况</td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="2">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="2">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="2">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="2">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+          <td colspan="2">
+            <div class="ui input transparent">
+              <input type="text" placeholder="请输入">
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <script src="../jquery-3.3.1.min.js"></script>
+  <script src="../semantic/semantic.min.js"></script>
 </body>
+
 </html>

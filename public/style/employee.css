@@ -1,0 +1,12 @@
+.employee {
+  padding: 40px 80px;
+}
+.inputfile {
+  opacity: 0;
+}
+.inputfile {
+  position:absolute;clip:rect(0 0 0 0);
+}
+.inputfile {
+  z-index: -11111;  width: 0px;  height: 1px;
+}
