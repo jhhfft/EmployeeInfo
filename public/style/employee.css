@@ -1,12 +1,90 @@
 .employee {
   padding: 40px 80px;
 }
-.inputfile {
+
+#portrait {
+  position: relative;
+}
+#portrait input{
   opacity: 0;
+  width: 0;
+  height: 0;
+  position:absolute;
+  z-index: -11111;
 }
-.inputfile {
-  position:absolute;clip:rect(0 0 0 0);
+
+#portrait label {
+  display: inline-block;
+  width: 100px;
+  height: 137px;
+  line-height: 137px;
+  text-align: center;
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -69px;
+  margin-left: -50px;
+  z-index: 100;
 }
-.inputfile {
-  z-index: -11111;  width: 0px;  height: 1px;
+
+#portrait img{
+  width: 100px;
+  height: 137px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -69px;
+  margin-left: -50px;
+  /* opacity: 0; */
+  display: none;
+}
+td>div {
+  width: 100%;
+}
+td>div>select {
+  width: 70% !important; 
+}
+td>div>input {
+  width: 80%;
+}
+
+#add-study>i,
+#add-work>i,
+#add-politics>i {
+  cursor: pointer;
+}
+
+#btn-save {
+  display: block;
+  margin: 0 auto 40px auto;
+}
+
+
+input:-webkit-autofill { 
+  -webkit-box-shadow: 0 0 0px 1000px white inset; 
+  border: 1px solid #CCC!important; 
+} 
+
+#study .detail td:first-child input,
+#work .detail td:first-child input {
+  width: 40% !important;
+}
+
+#study .detail td:first-child span,
+#work .detail td:first-child span {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+#study tr:first-child td,
+#work tr:first-child td,
+#politics tr:first-child td {
+  text-align: center;
+  font-weight: bolder;
+}
+
+#study tr td input,
+#work  tr td input,
+#politics tr td input {
+  text-align: center;
 }
