@@ -47,10 +47,7 @@
           </td>
           <td class="cell-birthday">出生日期<i style="color:red; font-size: 16px;">*</i></td>
           <td class="four wide cell-birthday" style="overflow:visible">
-            <!-- <div class="ui input transparent">
-              <input type="date" name="birthday" id="birthday">
-            </div> -->
-            <div class="ui calendar" id="example1">
+            <div class="ui calendar date-picker">
               <div class="ui input left icon  input transparent">
                 <i class="calendar icon"></i>
                 <input type="text" name="birthday">
@@ -65,7 +62,7 @@
               <input type="text" name="hometown" id="hometown">
             </div>
           </td>
-          <td  class="cell-education">学历<i style="color:red; font-size: 16px;">*</i></td>
+          <td class="cell-education">学历<i style="color:red; font-size: 16px;">*</i></td>
           <td class="four wide cell-education">
             <!-- <div class="ui input transparent">
               <input type="text" name="education">
@@ -107,39 +104,22 @@
               <input type="text" name="health" id="health">
             </div>
           </td>
-          <td class="two wide cell-phone">联系电话<i style="color:red; font-size: 16px;">*</i></td>
-          <td class="six wide  cell-phone" colspan="2">
+          <td class="two wide cell-school">毕业院校<i style="color:red; font-size: 16px;">*</i></td>
+          <td class="six wide  cell-school" colspan="2">
             <div class="ui input transparent">
-              <input type="text" name="phone" id="phone">
+              <input type="text" name="school" id="school">
             </div>
           </td>
         </tr>
         <tr>
           <td class="two wide  cell-politicalStatus">政治面貌<i style="color:red; font-size: 16px;">*</i></td>
           <td class="four wide cell-politicalStatus">
-            <!-- <div class="ui input transparent">
-              <input type="text" name="politicalStatus">
-            </div> -->
-            <!-- <div class="field">
-              <div class="ui selection dropdown">
-                <input type="hidden" name="politicalStatus">
-                <i class="dropdown icon"></i>
-                <div class="default text"></div>
-                <div class="menu">
-                  <div class="item" data-value="党员">党员</div>
-                  <div class="item" data-value="预备党员">预备党员</div>
-                  <div class="item" data-value="共青团员">共青团员</div>
-                  <div class="item" data-value="群众">群众</div>
-                  <div class="item" data-value="民主党派成员">民主党派成员</div>
-                </div>
-              </div>
-            </div> -->
             <div>
               <select style="padding: 0" id="politicalStatus">
                 <option value="群众">群众</option>
-                <option value="党员">党员</option>
-                <option value="预备党员">预备党员</option>
                 <option value="共青团员">共青团员</option>
+                <option value="预备党员">预备党员</option>
+                <option value="党员">党员</option>
                 <option value="民主党派成员">民主党派成员</option>
               </select>
             </div>
@@ -148,6 +128,20 @@
           <td class="six wide cell-idNum" colspan="2">
             <div class="ui input transparent">
               <input type="text" name="idNum" id="idNum">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="cell-phone">联系电话<i style="color:red; font-size: 16px;">*</i></td>
+          <td class="four wide cell-phone">
+            <div class="ui input transparent">
+              <input type="text" name="phone" id="nation">
+            </div>
+          </td>
+          <td class="cell-address">家庭住址<i style="color:red; font-size: 16px;">*</i></td>
+          <td class="six wide cell-address" colspan="2">
+            <div class="ui input transparent">
+              <input type="text" name="address" id="address">
             </div>
           </td>
         </tr>
@@ -181,10 +175,13 @@
           </td>
         </tr>
         <tr>
-          <td class="two wide  cell-address">家庭住址<i style="color:red; font-size: 16px;">*</i></td>
-          <td class="four wide  cell-address">
-            <div class="ui input transparent">
-              <input type="text" name="address" id="address">
+          <td class="two wide  cell-workdate">参加工作时间<i style="color:red; font-size: 16px;">*</i></td>
+          <td class="four wide  cell-workdate" style="overflow:visible">
+            <div class="ui calendar date-picker">
+              <div class="ui input left icon  input transparent">
+                <i class="calendar icon"></i>
+                <input type="text" name="birthday">
+              </div>
             </div>
           </td>
           <td class="two wide">岗位工资</td>
@@ -353,11 +350,19 @@
           <td>证明人</td>
         </tr>
         <tr class="detail">
-          <td>
+          <td style="overflow:visible">
             <div class="ui input transparent">
-              <input type="text" class="study-start">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="study-start">
+                </div>
+              </div>
               <span>至</span>
-              <input type="text" class="study-end">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="study-end">
+                </div>
+              </div>
             </div>
           </td>
           <td>
@@ -382,11 +387,19 @@
           </td>
         </tr>
         <tr class="detail">
-          <td>
+          <td style="overflow:visible">
             <div class="ui input transparent">
-              <input type="text" class="study-start">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="study-start">
+                </div>
+              </div>
               <span>至</span>
-              <input type="text" class="study-end">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="study-end">
+                </div>
+              </div>
             </div>
           </td>
           <td>
@@ -411,11 +424,19 @@
           </td>
         </tr>
         <tr class="detail">
-          <td>
+          <td style="overflow:visible">
             <div class="ui input transparent">
-              <input type="text" class="study-start">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="study-start">
+                </div>
+              </div>
               <span>至</span>
-              <input type="text" class="study-end">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="study-end">
+                </div>
+              </div>
             </div>
           </td>
           <td>
@@ -440,11 +461,19 @@
           </td>
         </tr>
         <tr class="detail">
-          <td>
+          <td style="overflow:visible">
             <div class="ui input transparent">
-              <input type="text" class="study-start">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="study-start">
+                </div>
+              </div>
               <span>至</span>
-              <input type="text" class="study-end">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="study-end">
+                </div>
+              </div>
             </div>
           </td>
           <td>
@@ -469,11 +498,19 @@
           </td>
         </tr>
         <tr class="detail">
-          <td>
+          <td style="overflow:visible">
             <div class="ui input transparent">
-              <input type="text" class="study-start">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="study-start">
+                </div>
+              </div>
               <span>至</span>
-              <input type="text" class="study-end">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="study-end">
+                </div>
+              </div>
             </div>
           </td>
           <td>
@@ -517,11 +554,19 @@
           <td>证明人</td>
         </tr>
         <tr class="detail">
-          <td>
+          <td style="overflow:visible">
             <div class="ui input transparent">
-              <input type="text" class="work-start">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="work-start">
+                </div>
+              </div>
               <span>至</span>
-              <input type="text" class="woork-end">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="work-end">
+                </div>
+              </div>
             </div>
           </td>
           <td>
@@ -536,11 +581,19 @@
           </td>
         </tr>
         <tr class="detail">
-          <td>
+          <td style="overflow:visible">
             <div class="ui input transparent">
-              <input type="text" class="work-start">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="work-start">
+                </div>
+              </div>
               <span>至</span>
-              <input type="text" class="woork-end">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="work-end">
+                </div>
+              </div>
             </div>
           </td>
           <td>
@@ -555,11 +608,19 @@
           </td>
         </tr>
         <tr class="detail">
-          <td>
+          <td style="overflow:visible">
             <div class="ui input transparent">
-              <input type="text" class="work-start">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="work-start">
+                </div>
+              </div>
               <span>至</span>
-              <input type="text" class="woork-end">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="work-end">
+                </div>
+              </div>
             </div>
           </td>
           <td>
@@ -574,11 +635,19 @@
           </td>
         </tr>
         <tr class="detail">
-          <td>
+          <td style="overflow:visible">
             <div class="ui input transparent">
-              <input type="text" class="work-start">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="work-start">
+                </div>
+              </div>
               <span>至</span>
-              <input type="text" class="woork-end">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="work-end">
+                </div>
+              </div>
             </div>
           </td>
           <td>
@@ -593,11 +662,19 @@
           </td>
         </tr>
         <tr class="detail">
-          <td>
+          <td style="overflow:visible">
             <div class="ui input transparent">
-              <input type="text" class="work-start">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="work-start">
+                </div>
+              </div>
               <span>至</span>
-              <input type="text" class="woork-end">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="work-end">
+                </div>
+              </div>
             </div>
           </td>
           <td>
@@ -631,9 +708,13 @@
           <td>身份及职务</td>
         </tr>
         <tr class="detail">
-          <td>
+          <td style="overflow:visible">
             <div class="ui input transparent">
-              <input type="text" class="politics-time">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="work-start">
+                </div>
+              </div>
             </div>
           </td>
           <td>
@@ -648,9 +729,13 @@
           </td>
         </tr>
         <tr class="detail">
-          <td>
+          <td style="overflow:visible">
             <div class="ui input transparent">
-              <input type="text" class="politics-time">
+              <div class="ui calendar month-picker">
+                <div class="ui input left input transparent">
+                  <input type="text" class="work-start">
+                </div>
+              </div>
             </div>
           </td>
           <td>
@@ -696,9 +781,14 @@
             </div>
           </td>
           <td>出生日期</td>
-          <td>
-            <div class="ui input transparent">
+          <td style="overflow:visible">
+            <!-- <div class="ui input transparent">
               <input type="text" id="mate-birthday">
+            </div> -->
+            <div class="ui calendar date-picker" id="mate-birthday">
+              <div class="ui input left input transparent">
+                <input type="text" name="birthday">
+              </div>
             </div>
           </td>
           <td>民族</td>
@@ -785,9 +875,16 @@
               <input type="text" class="family-name">
             </div>
           </td>
-          <td colspan="1">
+          <!-- <td colspan="1">
             <div class="ui input transparent">
               <input type="text" class="family-birthday">
+            </div>
+          </td> -->
+          <td colspan="1" style="overflow:visible">
+            <div class="ui calendar date-picker">
+              <div class="ui input left input transparent">
+                <input type="text" class="family-birthday">
+              </div>
             </div>
           </td>
           <td colspan="1">
@@ -812,9 +909,16 @@
               <input type="text" class="family-name">
             </div>
           </td>
-          <td colspan="1">
+          <!-- <td colspan="1">
             <div class="ui input transparent">
               <input type="text" class="family-birthday">
+            </div>
+          </td> -->
+          <td colspan="1" style="overflow:visible">
+            <div class="ui calendar date-picker">
+              <div class="ui input left input transparent">
+                <input type="text" class="family-birthday">
+              </div>
             </div>
           </td>
           <td colspan="1">
@@ -839,9 +943,16 @@
               <input type="text" class="family-name">
             </div>
           </td>
-          <td colspan="1">
+          <!-- <td colspan="1">
             <div class="ui input transparent">
               <input type="text" class="family-birthday">
+            </div>
+          </td> -->
+          <td colspan="1" style="overflow:visible">
+            <div class="ui calendar date-picker">
+              <div class="ui input left input transparent">
+                <input type="text" class="family-birthday">
+              </div>
             </div>
           </td>
           <td colspan="1">
@@ -866,9 +977,16 @@
               <input type="text" class="family-name">
             </div>
           </td>
-          <td colspan="1">
+          <!-- <td colspan="1">
             <div class="ui input transparent">
               <input type="text" class="family-birthday">
+            </div>
+          </td> -->
+          <td colspan="1" style="overflow:visible">
+            <div class="ui calendar date-picker">
+              <div class="ui input left input transparent">
+                <input type="text" class="family-birthday">
+              </div>
             </div>
           </td>
           <td colspan="1">
@@ -893,9 +1011,16 @@
               <input type="text" class="family-name">
             </div>
           </td>
-          <td colspan="1">
+          <!-- <td colspan="1">
             <div class="ui input transparent">
               <input type="text" class="family-birthday">
+            </div>
+          </td> -->
+          <td colspan="1" style="overflow:visible">
+            <div class="ui calendar date-picker">
+              <div class="ui input left input transparent">
+                <input type="text" class="family-birthday">
+              </div>
             </div>
           </td>
           <td colspan="1">
@@ -919,12 +1044,19 @@
           </td>
           <td colspan="1">
             <div class="ui input transparent">
-              <input type="text"  class="social-name">
+              <input type="text" class="social-name">
             </div>
           </td>
-          <td colspan="1">
+          <!-- <td colspan="1">
             <div class="ui input transparent">
               <input type="text" class="social-birthday">
+            </div>
+          </td> -->
+          <td colspan="1" style="overflow:visible">
+            <div class="ui calendar date-picker">
+              <div class="ui input left input transparent">
+                <input type="text" class="social-birthday">
+              </div>
             </div>
           </td>
           <td colspan="1">
@@ -934,7 +1066,7 @@
           </td>
           <td colspan="2">
             <div class="ui input transparent">
-              <input type="text"  class="social-job">
+              <input type="text" class="social-job">
             </div>
           </td>
         </tr>
@@ -946,12 +1078,19 @@
           </td>
           <td colspan="1">
             <div class="ui input transparent">
-              <input type="text"  class="social-name">
+              <input type="text" class="social-name">
             </div>
           </td>
-          <td colspan="1">
+          <!-- <td colspan="1">
             <div class="ui input transparent">
               <input type="text" class="social-birthday">
+            </div>
+          </td> -->
+          <td colspan="1" style="overflow:visible">
+            <div class="ui calendar date-picker">
+              <div class="ui input left input transparent">
+                <input type="text" class="social-birthday">
+              </div>
             </div>
           </td>
           <td colspan="1">
@@ -961,7 +1100,7 @@
           </td>
           <td colspan="2">
             <div class="ui input transparent">
-              <input type="text"  class="social-job">
+              <input type="text" class="social-job">
             </div>
           </td>
         </tr>
@@ -973,12 +1112,19 @@
           </td>
           <td colspan="1">
             <div class="ui input transparent">
-              <input type="text"  class="social-name">
+              <input type="text" class="social-name">
             </div>
           </td>
-          <td colspan="1">
+          <!-- <td colspan="1">
             <div class="ui input transparent">
               <input type="text" class="social-birthday">
+            </div>
+          </td> -->
+          <td colspan="1" style="overflow:visible">
+            <div class="ui calendar date-picker">
+              <div class="ui input left input transparent">
+                <input type="text" class="social-birthday">
+              </div>
             </div>
           </td>
           <td colspan="1">
@@ -988,7 +1134,7 @@
           </td>
           <td colspan="2">
             <div class="ui input transparent">
-              <input type="text"  class="social-job">
+              <input type="text" class="social-job">
             </div>
           </td>
         </tr>
@@ -1000,12 +1146,19 @@
           </td>
           <td colspan="1">
             <div class="ui input transparent">
-              <input type="text"  class="social-name">
+              <input type="text" class="social-name">
             </div>
           </td>
-          <td colspan="1">
+          <!-- <td colspan="1">
             <div class="ui input transparent">
               <input type="text" class="social-birthday">
+            </div>
+          </td> -->
+          <td colspan="1" style="overflow:visible">
+            <div class="ui calendar date-picker">
+              <div class="ui input left input transparent">
+                <input type="text" class="social-birthday">
+              </div>
             </div>
           </td>
           <td colspan="1">
@@ -1015,7 +1168,7 @@
           </td>
           <td colspan="2">
             <div class="ui input transparent">
-              <input type="text"  class="social-job">
+              <input type="text" class="social-job">
             </div>
           </td>
         </tr>
@@ -1027,12 +1180,19 @@
           </td>
           <td colspan="1">
             <div class="ui input transparent">
-              <input type="text"  class="social-name">
+              <input type="text" class="social-name">
             </div>
           </td>
-          <td colspan="1">
+          <!-- <td colspan="1">
             <div class="ui input transparent">
               <input type="text" class="social-birthday">
+            </div>
+          </td> -->
+          <td colspan="1" style="overflow:visible">
+            <div class="ui calendar date-picker">
+              <div class="ui input left input transparent">
+                <input type="text" class="social-birthday">
+              </div>
             </div>
           </td>
           <td colspan="1">
@@ -1042,7 +1202,7 @@
           </td>
           <td colspan="2">
             <div class="ui input transparent">
-              <input type="text"  class="social-job">
+              <input type="text" class="social-job">
             </div>
           </td>
         </tr>

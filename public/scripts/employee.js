@@ -1,5 +1,23 @@
-$('#example1').calendar({
-  type: 'date',
+// $('#example1').calendar({
+//   type: 'date',
+//   formatter: { // 自定义日期的格式
+//     date: function (date, settings) {
+//       if (!date) return '';
+
+//       var year = date.getFullYear();
+//       var month = date.getMonth() + 1;
+//       var day = date.getDate();
+
+//       month = month < 10 ? '0' + month : month;
+//       day = day < 10 ? '0' + day : day;
+
+//       return year + '-' + month + '-' + day;
+//     }
+//   }
+// });
+
+$('.date-picker').calendar({
+  type: 'date', // month
   formatter: { // 自定义日期的格式
     date: function (date, settings) {
       if (!date) return '';
@@ -14,20 +32,44 @@ $('#example1').calendar({
       return year + '-' + month + '-' + day;
     }
   }
-});
+})
+$('.month-picker').calendar({
+  type: 'month', // month
+  formatter: { // 自定义日期的格式
+    date: function (date, settings) {
+      if (!date) return '';
 
-const today = new Date()
-const year = today.getFullYear()
-const month = today.getMonth() + 1
-const date = today.getDate()
-$('.cell-birthday input').val(year + '-' + month + '-' + date)
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      var day = date.getDate();
+
+      month = month < 10 ? '0' + month : month;
+      day = day < 10 ? '0' + day : day;
+
+      return year + '-' + month;
+    }
+  }
+})
+// const today = new Date()
+// const year = today.getFullYear()
+// const month = today.getMonth() + 1
+// const date = today.getDate()
+// $('.cell-birthday input').val(year + '-' + month + '-' + date)
 
 const study_row = `<tr class="detail">
-<td>
+<td style="overflow:visible">
   <div class="ui input transparent">
-    <input type="text" class="study-start">
+    <div class="ui calendar month-picker">
+      <div class="ui input left input transparent">
+        <input type="text" class="study-start">
+      </div>
+    </div>
     <span>至</span>
-    <input type="text" class="study-end">
+    <div class="ui calendar month-picker">
+      <div class="ui input left input transparent">
+        <input type="text" class="study-end">
+      </div>
+    </div>
   </div>
 </td>
 <td>
@@ -56,11 +98,19 @@ $('#add-study').click(function (e) {
 })
 
 const work_row = `<tr class="detail">
-<td>
+<td style="overflow:visible">
   <div class="ui input transparent">
-    <input type="text" class="work-start">
+    <div class="ui calendar month-picker">
+      <div class="ui input left input transparent">
+        <input type="text" class="work-start">
+      </div>
+    </div>
     <span>至</span>
-    <input type="text" class="woork-end">
+    <div class="ui calendar month-picker">
+      <div class="ui input left input transparent">
+        <input type="text" class="work-end">
+      </div>
+    </div>
   </div>
 </td>
 <td>
@@ -80,9 +130,13 @@ $('#add-work').click(function (e) {
 })
 
 const politics_row = `<tr class="detail">
-<td>
+<td style="overflow:visible">
   <div class="ui input transparent">
-    <input type="text" class="politics-time">
+    <div class="ui calendar month-picker">
+      <div class="ui input left input transparent">
+        <input type="text" class="work-start">
+      </div>
+    </div>
   </div>
 </td>
 <td>
@@ -137,7 +191,9 @@ let name_flag = false,
   idNum_flag = false,
   marriage_flag = false,
   portrait_flag = false,
-  education_flag = false
+  education_flag = false,
+  school_flag = false,
+  workdate_flag = false
 
 $('input[name=name]').change(function (e) {
   const name = $(this).val()
@@ -243,6 +299,18 @@ $('input[name=marriage]').change(function (e) {
   }
 })
 
+$('input[name=birthday]').change(function (e) {
+  birthday_flag = true
+})
+
+$('input[name=workdate]').change(function (e) {
+  workdate_flag = true
+})
+
+$('input[name=school]').change(function (e) {
+  school_flag = true
+})
+
 // 表单提交 信息收集以及验证
 
 function formValidate() {
@@ -294,6 +362,24 @@ function formValidate() {
     alert('请输入正确的婚姻状况！')
     return false
   }
+  if(!school_flag){
+    $('.cell-school').addClass('error')
+    school_flag = false
+    alert('请输入正确的毕业院校！')
+    return false
+  }
+  if(!birthday_flag){
+    $('.cell-birthday').addClass('error')
+    birthday_flag = false
+    alert('请输入正确的出生日期！')
+    return false
+  }
+  if(!workdate_flag){
+    $('.cell-workdate').addClass('error')
+    workdate_flag = false
+    alert('请输入正确的参加工作时间！')
+    return false
+  }
   return true
 }
 
@@ -315,12 +401,14 @@ $('#btn-save').click(function (e) {
   formData.append('birthplace', $('input[name=birthplace]').val())
   formData.append('degree', $('input[name=degree]').val())
   formData.append('health', $('input[name=health]').val())
-  formData.append('phone', $('input[name=phone]').val())
+  formData.append('school', $('input[name=school]').val())
   formData.append('politicalStatus', $('select#politicalStatus').val())
   formData.append('idNum', $('input[name=idNum]').val())
-  formData.append('job', $('input[name=job]').val())
+  formData.append('phone', $('input[name=phone]').val())
   formData.append('address', $('input[name=address]').val())
+  formData.append('job', $('input[name=job]').val())  
   formData.append('department', $('input[name=department]').val())
+  formData.append('workdate', $('input[name=workdate]').val())
   formData.append('postLevel', $('input[name=postLevel]').val())
   formData.append('postSalary', $('input[name=postSalary]').val())
   formData.append('postRatio', $('input[name=postRatio]').val())
@@ -387,7 +475,7 @@ $('#btn-save').click(function (e) {
   const mate = {}
   if ($('#mate-name').val()) {
     mate.name = $('#mate-name').val()
-    mate.birthday = $('#mate-birthday').val()
+    mate.birthday = $('#mate-birthday input').val()
     mate.nation = $('#mate-nation').val()
     mate.hometown = $('#mate-hometown').val()
     mate.startwork = $('#mate-startwork').val()
