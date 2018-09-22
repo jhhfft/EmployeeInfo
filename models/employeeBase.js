@@ -14,6 +14,7 @@ var sequelize = new Sequelize('employee', undefined, undefined, {
 //     console.log('error')
 // })
 
+// 可以增加 曾用名和专业 字段
 const EmployeeBase = sequelize.define('employeeBase', {
     id: {
         type: Sequelize.INTEGER,
@@ -23,100 +24,105 @@ const EmployeeBase = sequelize.define('employeeBase', {
     // 姓名
     name: {
         type: Sequelize.STRING,
-        allowNull: false
-    },
-    // 曾用名
-    oldname: {
-        type: Sequelize.STRING
+        // allowNull: false
     },
     // 性别
     sex: {
         type: Sequelize.STRING,
-        allowNull: false
+        // allowNull: false
+    },
+    // 照片
+    headportrait: {
+        type: Sequelize.STRING
     },
     // 民族
     nation: {
         type: Sequelize.STRING,
-        allowNull: false,
+        // allowNull: false,
     },
     // 出生日期
     birthday: {
         type: Sequelize.DATE,
-        allowNull: false
+        // allowNull: false
     },
     // 籍贯
     hometown: {
         type: Sequelize.STRING,
-        allowNull: false
-    },
-    // 出生地
-    birthplace: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    // 身份证号
-    idNum: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    // 家庭住址
-    address: {
-        type: Sequelize.STRING
-    },
-    // 联系电话
-    phone: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    // 健康状况
-    health: {
-        type: Sequelize.STRING,
-        allowNull: false
+        // allowNull: false
     },
     // 学历
     education: {
         type: Sequelize.STRING,
-        allowNull: false
+        // allowNull: false
+    },
+    // 出生地
+    birthplace: {
+        type: Sequelize.STRING
     },
     // 学位
     degree: {
+        type: Sequelize.STRING
+    },
+    // 健康状况
+    health: {
+        type: Sequelize.STRING,
+        // allowNull: false
+    },
+    // 毕业院校
+    school: {
+        type: Sequelize.STRING,
+        // allowNull: false
+    },
+    // 政治面貌
+    politicalStatus: {
+        type: Sequelize.STRING,
+        // allowNull: false
+    },
+    // 身份证号
+    idNum: {
+        type: Sequelize.STRING,
+        // allowNull: false
+    },
+    // 联系电话
+    phone: {
+        type: Sequelize.STRING,
+        // allowNull: false
+    },
+    // 家庭住址
+    address: {
         type: Sequelize.STRING
     },
     // 专业
     major: {
         type: Sequelize.STRING,
     },
-    // 政治面貌
-    politicalStatus: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    // 照片
-    photo: {
-        type: Sequelize.STRING
-    },
-    // 部门
-    department: {
-        type: Sequelize.STRING
-    },
     // 职务
     job: {
         type: Sequelize.STRING
-    },
-    startwork: {
-        type: Sequelize.DATE
     },
     // 岗位标准
     postLevel: {
         type: Sequelize.STRING,
     },
+    // 部门
+    department: {
+        type: Sequelize.STRING
+    },
     // 岗位系数
     postRatio: {
         type: Sequelize.STRING,
     },
+    // 参加工作时间
+    workdate: {
+        type: Sequelize.DATE
+    },
     // 岗位工资
     postSalary: {
         type: Sequelize.INTEGER
+    },
+    // 婚姻状况
+    marriage: {
+        type: Sequelize.STRING,
     }
 },
     {
@@ -130,7 +136,7 @@ module.exports = EmployeeBase
 
 // const opts = {
 //     where: {
-       
+
 //     },
 //     offset: (3-1)*2, // (page - 1) * pageSize
 //     limit: 2 // (page - 1) * pageSize
