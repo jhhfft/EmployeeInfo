@@ -474,19 +474,30 @@ $('#btn-save').click(function (e) {
 
   // 婚姻状况
   formData.append('marriage',$('#marriage').val())
-  const mate = {}
+  const mate = []
   if ($('#mate-name').val()) {
-    mate.name = $('#mate-name').val()
-    mate.birthday = $('#mate-birthday input').val()
-    mate.nation = $('#mate-nation').val()
-    mate.hometown = $('#mate-hometown').val()
-    mate.startwork = $('#mate-startwork').val()
-    mate.politicalStatus = $('#mate-politicalStatus').val()
-    mate.education = $('#mate-education').val()
-    mate.salary = $('#mate-salary').val()
-    mate.techjob = $('#mate-techjob').val()
-    mate.school = $('#mate-school').val()
-    mate.unit = $('#mate-unit').val()
+    let mate_name = $('#mate-name').val()
+    let mate_birthday = $('#mate-birthday input').val()
+    let mate_nation = $('#mate-nation').val()
+    let mate_hometown = $('#mate-hometown').val()
+    let mate_startwork = $('#mate-startwork').val()
+    let mate_politicalStatus = $('#mate-politicalStatus').val()
+    let mate_education = $('#mate-education').val()
+    let mate_salary = $('#mate-salary').val()
+    let mate_techjob = $('#mate-techjob').val()
+    let mate_school = $('#mate-school').val()
+    let mate_unit = $('#mate-unit').val()
+    mate.push(mate_name)
+    mate.push(mate_birthday)
+    mate.push(mate_nation)
+    mate.push(mate_hometown)
+    mate.push(mate_startwork)
+    mate.push(mate_politicalStatus)
+    mate.push(mate_education)
+    mate.push(mate_salary)
+    mate.push(mate_techjob)
+    mate.push(mate_school)
+    mate.push(mate_unit)
   }
   formData.append('mate',mate)
 
