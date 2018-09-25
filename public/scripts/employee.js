@@ -391,9 +391,11 @@ $('#btn-save').click(function (e) {
   // }
 
   const formData = new FormData()
-  // 基本信息
+  // 基本信息 20个
   formData.append('name', $('input[name=name]').val())
   formData.append('sex', $('input[name=sex]:checked').val())
+  // 头像
+  formData.append("portrait", $('#headportrait')[0].files[0])
   formData.append('nation', $('input[name=nation]').val())
   formData.append('birthday', $('input[name=birthday]').val())
   formData.append('hometown', $('input[name=hometown]').val())
@@ -501,7 +503,7 @@ $('#btn-save').click(function (e) {
     }
   })
   formData.append('family',family)
-
+  // 社会关系
   const social_rela = []
   $('.social-relation').each(function () {
     let rela = $(this).find(".social-rela").val()
@@ -515,7 +517,7 @@ $('#btn-save').click(function (e) {
   })
   formData.append('social_rela',social_rela)
 
-  formData.append("portrait", $('#headportrait')[0].files[0])
+  
   $.ajax({
     url: './save',
     type: 'POST',
