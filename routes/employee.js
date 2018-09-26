@@ -5,6 +5,7 @@ var fs = require('fs')
 var multer = require('multer')
 
 const EmployeeBase = require('../models/employeeBase');
+const EmployeeOther = require('../models/employeeOther');
 
 let portrait_dir = ''
 // // 使用硬盘存储模式设置存放接收到的文件的路径以及文件名
@@ -15,7 +16,7 @@ var storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     // 将保存文件名设置为 时间戳 + 文件原始名，比如 151342376785-123.jpg
-    portrait_dir = req.body.name + '-' + Date.now() + '-' + file.originalname  
+    portrait_dir = req.body.name + '-' + Date.now() + '-' + file.originalname
     cb(null, portrait_dir);
   }
 });
@@ -116,7 +117,7 @@ const addEmployeeFunc = (req, res, next) => {
   res.render('employee', { id: 1 });
 }
 
-const postEmployeeFunc = (req, res, next) => {
+const postEmployeeFunc = async (req, res, next) => {
   // var name = req.body.name
   // console.log(req.body)
   // var file = req.file;
@@ -127,12 +128,15 @@ const postEmployeeFunc = (req, res, next) => {
   // console.log('文件保存路径：%s', file.path);
   // 接收文件成功后返回数据给前端
   // res.json({ res_code: '0' });
-  let { name, sex, nation, hometown, education, birthplace, degree, 
+  let { name, sex, nation, hometown, education, birthplace, degree,
     health, school, politicalStatus, idNum, phone, address, job, department,
-    postLevel, postRatio, postSalary, marriage } = req.body
+    postLevel, postRatio, postSalary, marriage, startwork, startCPC, startCCYL,
+    startCDP, techpost, techlevel, police, train, create, socialgroup, religion,
+    internation, language, award, punish, negative, revolution, study, work, politics, mate,
+    family, relation } = req.body
   let birthday = new Date(req.body.birthday)
   let workdate = new Date(req.body.workdate)
-  let portrait = 'upload-img/'+ portrait_dir
+  let portrait = 'upload-img/' + portrait_dir
   // console.log(portrait)
 
   // console.log({
@@ -140,16 +144,29 @@ const postEmployeeFunc = (req, res, next) => {
   //     health, school, politicalStatus, idNum, phone, address, job, department,
   //     workdate, postLevel, postRatio, postSalary, marriage
   //   })
-  EmployeeBase.create({
-    name, sex, portrait, nation, birthday, hometown, education, birthplace, degree, 
-    health, school, politicalStatus, idNum, phone, address, job, department,
-    workdate, postLevel, postRatio, postSalary, marriage
-  }).then(function (result) {
-    console.log(result);
-  }).catch(function (err) {
-    console.log(err.message);
-  });
-
+  try{
+    const BaseResult = await EmployeeBase.create({
+      name, sex, portrait, nation, birthday, hometown, education, birthplace, degree,
+      health, school, politicalStatus, idNum, phone, address, job, department,
+      workdate, postLevel, postRatio, postSalary, marriage
+    })
+    EmployeeOther.create({
+      id: BaseResult.dataValues.id, startwork, startCPC, startCCYL,
+      startCDP, techpost, techlevel, police, train, create, socialgroup,
+      religion, internation, language, award, punish, negative, revolution,
+      study, work, politics, mate, family, relation
+    })
+    res.send({
+      code: 1,
+      state: 'success'
+    })
+  }catch(err){
+    res.send({
+      code: 0,
+      state: 'fail'
+    })
+  }
+  
 }
 
 router.post('/base', basePostFunc);

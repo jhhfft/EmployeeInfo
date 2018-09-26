@@ -167,7 +167,7 @@ $('#portrait input').on('change', function () {
     error_prompt_alert('上传错误,文件格式必须为：png/jpg/jpeg');
     return;
   }
-  $('#portrait label').css("opacity","0");
+  $('#portrait label').css("opacity", "0");
   $('#portrait img').attr('src', src);
   $('#portrait img').show();
 });
@@ -362,19 +362,19 @@ function formValidate() {
     alert('请输入正确的婚姻状况！')
     return false
   }
-  if(!school_flag){
+  if (!school_flag) {
     $('.cell-school').addClass('error')
     school_flag = false
     alert('请输入正确的毕业院校！')
     return false
   }
-  if(!birthday_flag){
+  if (!birthday_flag) {
     $('.cell-birthday').addClass('error')
     birthday_flag = false
     alert('请输入正确的出生日期！')
     return false
   }
-  if(!workdate_flag){
+  if (!workdate_flag) {
     $('.cell-workdate').addClass('error')
     workdate_flag = false
     alert('请输入正确的参加工作时间！')
@@ -408,7 +408,7 @@ $('#btn-save').click(function (e) {
   formData.append('idNum', $('input[name=idNum]').val())
   formData.append('phone', $('input[name=phone]').val())
   formData.append('address', $('input[name=address]').val())
-  formData.append('job', $('input[name=job]').val())  
+  formData.append('job', $('input[name=job]').val())
   formData.append('department', $('input[name=department]').val())
   formData.append('workdate', $('input[name=workdate]').val())
   formData.append('postLevel', $('input[name=postLevel]').val())
@@ -418,20 +418,20 @@ $('#btn-save').click(function (e) {
   formData.append('startwork', $('#startwork').val())
   formData.append('startCPC', $('#startCPC').val())
   formData.append('startCCYL', $('#startCCYL').val())
-  formData.append('startCDP',$('#startCDP').val())
-  formData.append('techpost',$('#techpost').val())
-  formData.append('techlevel',$('#techlevel').val())
-  formData.append('police',$('#police').val())
-  formData.append('train',$('#train').val())
-  formData.append('create',$('#create').val())
-  formData.append('socialgroup',$('#socialgroup').val())
-  formData.append('religion',$('#religion').val())
-  formData.append('internation',$('#internation').val())
-  formData.append('language',$('#language').val())
-  formData.append('award',$('#award').val())
-  formData.append('punish',$('#punish').val())
-  formData.append('negative',$('#negative').val())
-  formData.append('revolution',$('#revolution').val())
+  formData.append('startCDP', $('#startCDP').val())
+  formData.append('techpost', $('#techpost').val())
+  formData.append('techlevel', $('#techlevel').val())
+  formData.append('police', $('#police').val())
+  formData.append('train', $('#train').val())
+  formData.append('create', $('#create').val())
+  formData.append('socialgroup', $('#socialgroup').val())
+  formData.append('religion', $('#religion').val())
+  formData.append('internation', $('#internation').val())
+  formData.append('language', $('#language').val())
+  formData.append('award', $('#award').val())
+  formData.append('punish', $('#punish').val())
+  formData.append('negative', $('#negative').val())
+  formData.append('revolution', $('#revolution').val())
   // 学习简历
   const study_exp = []
   $('#study .detail').each(function () {
@@ -445,7 +445,7 @@ $('#btn-save').click(function (e) {
       study_exp.push(start + ';' + end + ';' + school + ';' + state + ';' + degree + ';' + evidence)
     }
   })
-  formData.append('study_exp',study_exp)
+  formData.append('study_exp', study_exp)
 
   // 工作经历
   const work_exp = []
@@ -458,7 +458,7 @@ $('#btn-save').click(function (e) {
       work_exp.push(start + ';' + end + ';' + department + ';' + evidence)
     }
   })
-  formData.append('work_exp',work_exp)
+  formData.append('work_exp', work_exp)
 
   // 政治经历
   const politics_exp = []
@@ -470,10 +470,10 @@ $('#btn-save').click(function (e) {
       politics_exp.push(time + ';' + meeting + ';' + duty)
     }
   })
-  formData.append('politics_exp',politics_exp)
+  formData.append('politics_exp', politics_exp)
 
   // 婚姻状况
-  formData.append('marriage',$('#marriage').val())
+  formData.append('marriage', $('#marriage').val())
   const mate = []
   if ($('#mate-name').val()) {
     let mate_name = $('#mate-name').val()
@@ -499,7 +499,7 @@ $('#btn-save').click(function (e) {
     mate.push(mate_school)
     mate.push(mate_unit)
   }
-  formData.append('mate',mate)
+  formData.append('mate', mate)
 
   // 家庭情况
   const family = []
@@ -513,7 +513,7 @@ $('#btn-save').click(function (e) {
       family.push(rela + ';' + name + ';' + birthday + ';' + political + ';' + job)
     }
   })
-  formData.append('family',family)
+  formData.append('family', family)
   // 社会关系
   const social_rela = []
   $('.social-relation').each(function () {
@@ -526,15 +526,34 @@ $('#btn-save').click(function (e) {
       social_rela.push(rela + ';' + name + ';' + birthday + ';' + political + ';' + job)
     }
   })
-  formData.append('social_rela',social_rela)
+  formData.append('social_rela', social_rela)
 
-  
+
   $.ajax({
     url: './save',
     type: 'POST',
     cache: false,
     data: formData,
     processData: false,
-    contentType: false
+    contentType: false,
+    beforeSend: function () {
+      $('.layer-wrapper-wait').show()
+    },
+    error: function () {
+      
+      $('.layer-wrapper-error').show()
+      $('.layer-wrapper-wait').hide()
+      setTimeout(()=>{
+        $('.layer-wrapper-error').hide()
+      }, 1000)
+    },
+    success: function (data, textStatus) {
+      $('.layer-wrapper-success').show()
+      $('.layer-wrapper-wait').hide()
+      setTimeout(()=>{
+        $('.layer-wrapper-success').hide()
+        $('.layer-wrapper-finish').show()
+      }, 1000)
+    }
   })
 })

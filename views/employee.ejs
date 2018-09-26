@@ -1210,6 +1210,23 @@
     </table>
   </form>
   <button class="ui primary button" id="btn-save">保存员工信息</button>
+  <div class="layer-wrapper layer-wrapper-wait">
+    <div class="ui icon message wait-layer">
+      <i class="notched circle loading icon"></i>
+      <div>请稍等，正在添加员工信息</div>
+    </div>
+  </div>
+  <div class="layer-wrapper layer-wrapper-success">
+    <div class="ui icon success message success-layer">
+      <div>添加成功！</div>
+    </div>
+  </div>
+  <div class="layer-wrapper layer-wrapper-error">
+    <div class="ui icon error message error-layer">
+      <div>网络故障，请稍后再试！</div>
+    </div>
+  </div>
+  <div class="layer-wrapper layer-wrapper-finish"></div>
   <script src="/jquery-3.3.1.min.js"></script>
   <script src="/semantic/semantic.min.js"></script>
   <script src="/scripts/calendar.js"></script>

@@ -14,7 +14,7 @@ var sequelize = new Sequelize('employee', undefined, undefined, {
 //     console.log('error')
 // })
 
-const EmployeeFamily = sequelize.define('employeeOther', {
+const EmployeeOther = sequelize.define('employeeOther', {
     id: {
         type: Sequelize.INTEGER,
         allowNull: false,

@@ -88,3 +88,42 @@ input:-webkit-autofill {
 #politics tr td input {
   text-align: center;
 }
+
+.layer-wrapper {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+.layer-wrapper .wait-layer,
+.layer-wrapper .success-layer,
+.layer-wrapper .error-layer {
+  display: none;
+  width: 400px !important;
+  height: 200px;
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  margin-top: -100px !important;
+  margin-left: -200px !important;
+  border: 0 !important;
+  z-index: 500;
+}
+.wait-layer div,
+.success-layer div,
+.error-layer div {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.5em;
+  line-height: 3em;
+  vertical-align: middle;
+}
+.wait-layer .icon {
+  padding: 0 !important;
+  margin: 0 !important;
+  margin-left: 10px !important;
+}
