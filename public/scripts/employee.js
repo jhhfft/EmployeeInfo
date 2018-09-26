@@ -167,7 +167,7 @@ $('#portrait input').on('change', function () {
     error_prompt_alert('上传错误,文件格式必须为：png/jpg/jpeg');
     return;
   }
-  $('#portrait label').hide()
+  $('#portrait label').css("opacity","0");
   $('#portrait img').attr('src', src);
   $('#portrait img').show();
 });
