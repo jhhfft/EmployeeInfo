@@ -540,20 +540,28 @@ $('#btn-save').click(function (e) {
       $('.layer-wrapper-wait').show()
     },
     error: function () {
-      
+
       $('.layer-wrapper-error').show()
       $('.layer-wrapper-wait').hide()
-      setTimeout(()=>{
+      setTimeout(() => {
         $('.layer-wrapper-error').hide()
       }, 1000)
     },
     success: function (data, textStatus) {
-      $('.layer-wrapper-success').show()
-      $('.layer-wrapper-wait').hide()
-      setTimeout(()=>{
-        $('.layer-wrapper-success').hide()
-        $('.layer-wrapper-finish').show()
-      }, 1000)
+      if (data.code != 1) {
+        $('.layer-wrapper-error').show()
+        $('.layer-wrapper-wait').hide()
+        setTimeout(() => {
+          $('.layer-wrapper-error').hide()
+        }, 1000)
+      } else {
+        $('.layer-wrapper-success').show()
+        $('.layer-wrapper-wait').hide()
+        setTimeout(() => {
+          $('.layer-wrapper-success').hide()
+          $('.layer-wrapper-finish').show()
+        }, 1000)
+      }
     }
   })
 })
