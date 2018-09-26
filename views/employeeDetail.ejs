@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>添加员工信息</title>
+  <title>员工信息详情</title>
   <link rel="stylesheet" type="text/css" href="/semantic/semantic.min.css">
-  <link rel="stylesheet" type="text/css" href="/style/employee.css">
+  <link rel="stylesheet" type="text/css" href="/style/employeeDetail.css">
   <link rel="stylesheet" type="text/css" href="/style/calendar.css">
 </head>
 
@@ -19,30 +19,39 @@
           <td class="two wide cell-name">姓名<i style="color:red; font-size: 16px;">*</i></td>
           <td class="four wide cell-name">
             <div class="ui input transparent">
-              <input type="text" name="name" id="name">
+              <input type="text" name="name" id="name" value=<%=name %>>
             </div>
           </td>
           <td class="two wide cell-sex">性别<i style="color:red; font-size: 16px;">*</i></td>
           <td class="four wide cell-sex">
             <div class="inline field">
               <span></span>
+              <% if (sex == '男') { %>
               <input type="radio" name="sex" value="男" checked>
+              <% } else { %>
+              <input type="radio" name="sex" value="男">
+              <% } %>
               <label style="display:inline-block;margin-right:20px;">男</label>
+              <% if (sex == '女') { %>
+              <input type="radio" name="sex" value="女" checked>
+              <% }else { %>
               <input type="radio" name="sex" value="女">
+              <% } %>
               <label>女</label>
             </div>
           </td>
           <td class="two wide cell-protrait" rowspan="5" id="portrait">
             <input type="file" name="headportrait" id="headportrait" name="portrait" />
             <label for="headportrait">上传图片</label>
-            <img alt="">
+            <p></p>
+            <img alt="" src="<%= '/' + portrait%>">
           </td>
         </tr>
         <tr>
           <td class="cell-nation">民族<i style="color:red; font-size: 16px;">*</i></td>
           <td class="four wide cell-nation">
             <div class="ui input transparent">
-              <input type="text" name="nation" id="nation">
+              <input type="text" name="nation" id="nation" value=<%=nation %>>
             </div>
           </td>
           <td class="cell-birthday">出生日期<i style="color:red; font-size: 16px;">*</i></td>
@@ -50,7 +59,7 @@
             <div class="ui calendar date-picker">
               <div class="ui input left icon  input transparent">
                 <i class="calendar icon"></i>
-                <input type="text" name="birthday">
+                <input type="text" name="birthday" value=<%=birthday %>>
               </div>
             </div>
           </td>
@@ -59,7 +68,7 @@
           <td class="cell-hometown">籍贯<i style="color:red; font-size: 16px;">*</i></td>
           <td class="four wide cell-hometown">
             <div class="ui input transparent">
-              <input type="text" name="hometown" id="hometown">
+              <input type="text" name="hometown" id="hometown" value=<%=hometown %>>
             </div>
           </td>
           <td class="cell-education">学历<i style="color:red; font-size: 16px;">*</i></td>
@@ -69,12 +78,41 @@
             </div> -->
             <div>
               <select style="padding: 0" id="education">
+                <% if (education == '初中') { %>
+                <option value="初中" selected>初中</option>
+                <% } else { %>
                 <option value="初中">初中</option>
+                <% } %>
+
+                <% if (education == '高中') { %>
+                <option value="高中" selected>高中</option>
+                <% } else { %>
                 <option value="高中">高中</option>
-                <option value="中专">中专</option>
+                <% } %>
+
+                <% if (education == '中专') { %>
+                <option value="中专" selected>中专</option>
+                <% } else { %>
+                <option value="中专"></option>
+                <% } %>
+
+                <% if (education == '大专') { %>
+                <option value="大专" selected>大专</option>
+                <% } else { %>
                 <option value="大专">大专</option>
+                <% } %>
+
+                <% if (education == '本科') { %>
+                <option value="本科" selected>本科</option>
+                <% } else { %>
                 <option value="本科">本科</option>
+                <% } %>
+
+                <% if (education == '硕士研究生') { %>
+                <option value="硕士研究生" selected>硕士研究生</option>
+                <% } else { %>
                 <option value="硕士研究生">硕士研究生</option>
+                <% } %>
               </select>
             </div>
           </td>
@@ -83,13 +121,13 @@
           <td class="cell-birthplace">出生地<i style="color:red; font-size: 16px;">*</i></td>
           <td class="four wide cell-birthplace">
             <div class="ui input transparent">
-              <input type="text" name="birthplace" id="birthplace">
+              <input type="text" name="birthplace" id="birthplace" value=<%=birthplace %>>
             </div>
           </td>
           <td class="cell-degree">学位</td>
           <td class="four wide cell-degree">
             <div class="ui input transparent">
-              <input type="text" name="degree" id="degree">
+              <input type="text" name="degree" id="degree" value=<%=degree %>>
             </div>
           </td>
         </tr>
@@ -101,13 +139,13 @@
           <td class="two wide cell-health">健康状况<i style="color:red; font-size: 16px;">*</i></td>
           <td class="four wide cell-health">
             <div class="ui input transparent">
-              <input type="text" name="health" id="health">
+              <input type="text" name="health" id="health" value=<%=health %>>
             </div>
           </td>
           <td class="two wide cell-school">毕业院校<i style="color:red; font-size: 16px;">*</i></td>
           <td class="six wide  cell-school" colspan="2">
             <div class="ui input transparent">
-              <input type="text" name="school" id="school">
+              <input type="text" name="school" id="school" value=<%=school %>>
             </div>
           </td>
         </tr>
@@ -116,18 +154,38 @@
           <td class="four wide cell-politicalStatus">
             <div>
               <select style="padding: 0" id="politicalStatus">
+                <% if (politicalStatus == '群众') { %>
+                <option value="群众" selected>群众</option>
+                <% } else { %>
                 <option value="群众">群众</option>
+                <% } %>
+                <% if (politicalStatus == '共青团员') { %>
+                <option value="共青团员" selected>共青团员</option>
+                <% } else { %>
                 <option value="共青团员">共青团员</option>
+                <% } %>
+                <% if (politicalStatus == '预备党员') { %>
+                <option value="预备党员" selected>预备党员</option>
+                <% } else { %>
                 <option value="预备党员">预备党员</option>
+                <% } %>
+                <% if (politicalStatus == '党员') { %>
+                <option value="党员" selected>党员</option>
+                <% } else { %>
                 <option value="党员">党员</option>
+                <% } %>
+                <% if (politicalStatus == '民主党派成员') { %>
+                <option value="民主党派成员" selected>民主党派成员</option>
+                <% } else { %>
                 <option value="民主党派成员">民主党派成员</option>
+                <% } %>
               </select>
             </div>
           </td>
           <td class="two wide cell-idNum">身份证号<i style="color:red; font-size: 16px;">*</i></td>
           <td class="six wide cell-idNum" colspan="2">
             <div class="ui input transparent">
-              <input type="text" name="idNum" id="idNum">
+              <input type="text" name="idNum" id="idNum" value=<%=idNum %>>
             </div>
           </td>
         </tr>
@@ -135,13 +193,13 @@
           <td class="cell-phone">联系电话<i style="color:red; font-size: 16px;">*</i></td>
           <td class="four wide cell-phone">
             <div class="ui input transparent">
-              <input type="text" name="phone" id="phone">
+              <input type="text" name="phone" id="phone" value=<%=phone %>>
             </div>
           </td>
           <td class="cell-address">家庭住址<i style="color:red; font-size: 16px;">*</i></td>
           <td class="six wide cell-address" colspan="2">
             <div class="ui input transparent">
-              <input type="text" name="address" id="address">
+              <input type="text" name="address" id="address" value=<%=address %>>
             </div>
           </td>
         </tr>
@@ -149,14 +207,14 @@
           <td class="two wide">职务</td>
           <td class="four wide">
             <div class="ui input transparent">
-              <input type="text" name="job" id="job">
+              <input type="text" name="job" id="job" value=<%=job %>>
             </div>
           </td>
           <td class="two wide" rowspan="3">薪资情况</td>
           <td class="two wide">岗位标准</td>
           <td class="four wide">
             <div class="ui input transparent">
-              <input type="text" name="postLevel" id="postLevel">
+              <input type="text" name="postLevel" id="postLevel" value=<%=postLevel %>>
             </div>
           </td>
         </tr>
@@ -164,13 +222,13 @@
           <td class="two wide">部门</td>
           <td class="four wide">
             <div class="ui input transparent">
-              <input type="text" name="department" id="department">
+              <input type="text" name="department" id="department" value=<%=department %>>
             </div>
           </td>
           <td class="two wide">岗位系数</td>
           <td class="four wide">
             <div class="ui input transparent">
-              <input type="text" name="postRatio" id="postRatio">
+              <input type="text" name="postRatio" id="postRatio" value=<%=postRatio %>>
             </div>
           </td>
         </tr>
@@ -180,14 +238,14 @@
             <div class="ui calendar date-picker">
               <div class="ui input left icon  input transparent">
                 <i class="calendar icon"></i>
-                <input type="text" name="workdate">
+                <input type="text" name="workdate" value=<%=workdate %>>
               </div>
             </div>
           </td>
           <td class="two wide">岗位工资</td>
           <td class="four wide">
             <div class="ui input transparent">
-              <input type="text" name="postSalary" id="postSalary">
+              <input type="text" name="postSalary" id="postSalary" value=<%=postSalary %>>
             </div>
           </td>
         </tr>
@@ -199,7 +257,7 @@
           <td class="four wide">何年何月何处参加工作</td>
           <td>
             <div class="field">
-              <textarea rows="3" id="startwork"></textarea>
+              <textarea rows="3" id="startwork"><%= startwork.trim() %></textarea>
             </div>
           </td>
         </tr>
@@ -207,7 +265,7 @@
           <td class="four wide">何年何月何人介绍加入中国共产党，何时转正</td>
           <td>
             <div class="field">
-              <textarea rows="3" id="startCPC"></textarea>
+              <textarea rows="3" id="startCPC"><%= startCPC.trim() %></textarea>
             </div>
           </td>
         </tr>
@@ -215,7 +273,7 @@
           <td class="four wide">何年何月加入中国共产主义青年团</td>
           <td>
             <div class="field">
-              <textarea rows="3" id="startCCYL"></textarea>
+              <textarea rows="3" id="startCCYL"><%= startCCYL.trim() %></textarea>
             </div>
           </td>
         </tr>
@@ -223,7 +281,7 @@
           <td class="four wide">何年何月何人介绍加入何民主党派，任何职务</td>
           <td>
             <div class="field">
-              <textarea rows="3" id="startCDP"></textarea>
+              <textarea rows="3" id="startCDP"><%= startCDP.trim() %></textarea>
             </div>
           </td>
         </tr>
@@ -231,7 +289,7 @@
           <td class="four wide">历次何时经由何部门审批通过何专业技术职务任职资格及现所聘专业技术职务</td>
           <td>
             <div class="field">
-              <textarea rows="3" id="techpost"></textarea>
+              <textarea rows="3" id="techpost"><%= techpost.trim() %></textarea>
             </div>
           </td>
         </tr>
@@ -239,7 +297,7 @@
           <td class="four wide">何时经由何部门审批通过何专业技术工种、何技术等级资格及现所聘专业技术工种等级职务</td>
           <td>
             <div class="field">
-              <textarea rows="3" id="techlevel"></textarea>
+              <textarea rows="3" id="techlevel"><%= techlevel.trim() %></textarea>
             </div>
           </td>
         </tr>
@@ -247,7 +305,7 @@
           <td class="four wide">何年何月何机关授予何军种、警衔</td>
           <td>
             <div class="field">
-              <textarea rows="3" id="police"></textarea>
+              <textarea rows="3" id="police"><%= police.trim() %></textarea>
             </div>
           </td>
         </tr>
@@ -255,7 +313,7 @@
           <td class="four wide">何年何月至何年何月参加何单位举办的政治理论或业务培训（包括各级党校培训或学习）</td>
           <td>
             <div class="field">
-              <textarea rows="5" id="train"></textarea>
+              <textarea rows="5" id="train"><%= train.trim() %></textarea>
             </div>
           </td>
         </tr>
@@ -263,7 +321,7 @@
           <td class="four wide">有何业务技术专长、重要发明创造、科研成果、著作、译著</td>
           <td>
             <div class="field">
-              <textarea rows="3" id="create"></textarea>
+              <textarea rows="3" id="create"><%= create.trim() %></textarea>
             </div>
           </td>
         </tr>
@@ -271,7 +329,7 @@
           <td class="four wide">何时何处参加何社会团体，任何职务</td>
           <td>
             <div class="field">
-              <textarea rows="3" id="socialgroup"></textarea>
+              <textarea rows="3" id="socialgroup"><%= socialgroup.trim() %></textarea>
             </div>
           </td>
         </tr>
@@ -279,7 +337,7 @@
           <td class="four wide">有何宗教信仰</td>
           <td>
             <div class="field">
-              <textarea rows="3" id="religion"></textarea>
+              <textarea rows="3" id="religion"><%= religion.trim() %></textarea>
             </div>
           </td>
         </tr>
@@ -287,7 +345,7 @@
           <td class="four wide">何年何月出国（境）及参加重大国际性活动的情况</td>
           <td>
             <div class="field">
-              <textarea rows="3" id="internation"></textarea>
+              <textarea rows="3" id="internation"><%= internation.trim() %></textarea>
             </div>
           </td>
         </tr>
@@ -295,7 +353,7 @@
           <td class="four wide">掌握何种外语或少数民族语言及其他技能情况</td>
           <td>
             <div class="field">
-              <textarea rows="3" id="language"></textarea>
+              <textarea rows="3" id="language"><%= language.trim() %></textarea>
             </div>
           </td>
         </tr>
@@ -303,7 +361,7 @@
           <td class="four wide">何时何处何原因受过何种奖励</td>
           <td>
             <div class="field">
-              <textarea rows="3" id="award"></textarea>
+              <textarea rows="3" id="award"><%= award.trim() %></textarea>
             </div>
           </td>
         </tr>
@@ -311,7 +369,7 @@
           <td class="four wide">何时何处何原因受过何种处分</td>
           <td>
             <div class="field">
-              <textarea rows="3" id="punish"></textarea>
+              <textarea rows="3" id="punish"><%= punish.trim() %></textarea>
             </div>
           </td>
         </tr>
@@ -319,7 +377,7 @@
           <td class="four wide">历史上参加过何种反动组织，任何职务，有何结论</td>
           <td>
             <div class="field">
-              <textarea rows="3" id="negative"></textarea>
+              <textarea rows="3" id="negative"><%= negative.trim() %></textarea>
             </div>
           </td>
         </tr>
@@ -327,7 +385,7 @@
           <td class="four wide">“文化大革命”中犯有何种错误，组织意见如何</td>
           <td>
             <div class="field">
-              <textarea rows="3" id="revolution"></textarea>
+              <textarea rows="3" id="revolution"><%= revolution.trim() %></textarea>
             </div>
           </td>
         </tr>
@@ -349,191 +407,45 @@
           <td>学位</td>
           <td>证明人</td>
         </tr>
+        <% study_exp.split(',').forEach(function(study){ var words = study.split(';')%>
         <tr class="detail">
           <td style="overflow:visible">
             <div class="ui input transparent">
               <div class="ui calendar month-picker">
                 <div class="ui input left input transparent">
-                  <input type="text" class="study-start">
+                  <input type="text" class="study-start" value= <%= words[0]%>>
                 </div>
               </div>
               <span>至</span>
               <div class="ui calendar month-picker">
                 <div class="ui input left input transparent">
-                  <input type="text" class="study-end">
+                  <input type="text" class="study-end" value= <%= words[1]%>>
                 </div>
               </div>
             </div>
           </td>
           <td>
             <div class="ui input transparent">
-              <input type="text" class="study-school">
+              <input type="text" class="study-school" value= <%= words[2]%>>
             </div>
           </td>
           <td>
             <div class="ui input transparent">
-              <input type="text" class="study-state">
+              <input type="text" class="study-state" value= <%= words[3]%>>
             </div>
           </td>
           <td>
             <div class="ui input transparent">
-              <input type="text" class="study-degree">
+              <input type="text" class="study-degree" value= <%= words[4]%>>
             </div>
           </td>
           <td>
             <div class="ui input transparent">
-              <input type="text" class="study-evidence">
+              <input type="text" class="study-evidence" value= <%= words[5]%>>
             </div>
           </td>
         </tr>
-        <tr class="detail">
-          <td style="overflow:visible">
-            <div class="ui input transparent">
-              <div class="ui calendar month-picker">
-                <div class="ui input left input transparent">
-                  <input type="text" class="study-start">
-                </div>
-              </div>
-              <span>至</span>
-              <div class="ui calendar month-picker">
-                <div class="ui input left input transparent">
-                  <input type="text" class="study-end">
-                </div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="study-school">
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="study-state">
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="study-degree">
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="study-evidence">
-            </div>
-          </td>
-        </tr>
-        <tr class="detail">
-          <td style="overflow:visible">
-            <div class="ui input transparent">
-              <div class="ui calendar month-picker">
-                <div class="ui input left input transparent">
-                  <input type="text" class="study-start">
-                </div>
-              </div>
-              <span>至</span>
-              <div class="ui calendar month-picker">
-                <div class="ui input left input transparent">
-                  <input type="text" class="study-end">
-                </div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="study-school">
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="study-state">
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="study-degree">
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="study-evidence">
-            </div>
-          </td>
-        </tr>
-        <tr class="detail">
-          <td style="overflow:visible">
-            <div class="ui input transparent">
-              <div class="ui calendar month-picker">
-                <div class="ui input left input transparent">
-                  <input type="text" class="study-start">
-                </div>
-              </div>
-              <span>至</span>
-              <div class="ui calendar month-picker">
-                <div class="ui input left input transparent">
-                  <input type="text" class="study-end">
-                </div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="study-school">
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="study-state">
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="study-degree">
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="study-evidence">
-            </div>
-          </td>
-        </tr>
-        <tr class="detail">
-          <td style="overflow:visible">
-            <div class="ui input transparent">
-              <div class="ui calendar month-picker">
-                <div class="ui input left input transparent">
-                  <input type="text" class="study-start">
-                </div>
-              </div>
-              <span>至</span>
-              <div class="ui calendar month-picker">
-                <div class="ui input left input transparent">
-                  <input type="text" class="study-end">
-                </div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="study-school">
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="study-state">
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="study-degree">
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="study-evidence">
-            </div>
-          </td>
-        </tr>
+        <% }); %>
         <tr>
           <td colspan="5" style="text-align: center;" id="add-study"><i class="add circle icon"></i></td>
         </tr>
@@ -553,141 +465,35 @@
           <td>单位、部门及职务</td>
           <td>证明人</td>
         </tr>
+        <% work_exp.split(',').forEach(function(work){ var words = work.split(';')%>
         <tr class="detail">
           <td style="overflow:visible">
             <div class="ui input transparent">
               <div class="ui calendar month-picker">
                 <div class="ui input left input transparent">
-                  <input type="text" class="work-start">
+                  <input type="text" class="work-start" value= <%= words[0]%>>
                 </div>
               </div>
               <span>至</span>
               <div class="ui calendar month-picker">
                 <div class="ui input left input transparent">
-                  <input type="text" class="work-end">
+                  <input type="text" class="work-end" value= <%= words[1]%>>
                 </div>
               </div>
             </div>
           </td>
           <td>
             <div class="ui input transparent">
-              <input type="text" class="work-department">
+              <input type="text" class="work-department" value= <%= words[2]%>>
             </div>
           </td>
           <td>
             <div class="ui input transparent">
-              <input type="text" class="work-evidence">
+              <input type="text" class="work-evidence" value= <%= words[3]%>>
             </div>
           </td>
         </tr>
-        <tr class="detail">
-          <td style="overflow:visible">
-            <div class="ui input transparent">
-              <div class="ui calendar month-picker">
-                <div class="ui input left input transparent">
-                  <input type="text" class="work-start">
-                </div>
-              </div>
-              <span>至</span>
-              <div class="ui calendar month-picker">
-                <div class="ui input left input transparent">
-                  <input type="text" class="work-end">
-                </div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="work-department">
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="work-evidence">
-            </div>
-          </td>
-        </tr>
-        <tr class="detail">
-          <td style="overflow:visible">
-            <div class="ui input transparent">
-              <div class="ui calendar month-picker">
-                <div class="ui input left input transparent">
-                  <input type="text" class="work-start">
-                </div>
-              </div>
-              <span>至</span>
-              <div class="ui calendar month-picker">
-                <div class="ui input left input transparent">
-                  <input type="text" class="work-end">
-                </div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="work-department">
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="work-evidence">
-            </div>
-          </td>
-        </tr>
-        <tr class="detail">
-          <td style="overflow:visible">
-            <div class="ui input transparent">
-              <div class="ui calendar month-picker">
-                <div class="ui input left input transparent">
-                  <input type="text" class="work-start">
-                </div>
-              </div>
-              <span>至</span>
-              <div class="ui calendar month-picker">
-                <div class="ui input left input transparent">
-                  <input type="text" class="work-end">
-                </div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="work-department">
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="work-evidence">
-            </div>
-          </td>
-        </tr>
-        <tr class="detail">
-          <td style="overflow:visible">
-            <div class="ui input transparent">
-              <div class="ui calendar month-picker">
-                <div class="ui input left input transparent">
-                  <input type="text" class="work-start">
-                </div>
-              </div>
-              <span>至</span>
-              <div class="ui calendar month-picker">
-                <div class="ui input left input transparent">
-                  <input type="text" class="work-end">
-                </div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="work-department">
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="work-evidence">
-            </div>
-          </td>
-        </tr>
+        <% }); %>
         <tr>
           <td colspan="3" style="text-align: center;" id="add-work"><i class="add circle icon"></i></td>
         </tr>
@@ -707,48 +513,29 @@
           <td>会议名称</td>
           <td>身份及职务</td>
         </tr>
+        <% politics_exp.split(',').forEach(function(politics){ var words = politics.split(';')%>
         <tr class="detail">
           <td style="overflow:visible">
             <div class="ui input transparent">
               <div class="ui calendar month-picker">
                 <div class="ui input left input transparent">
-                  <input type="text" class="politics-time">
+                  <input type="text" class="politics-time"  value= <%= words[0]%>>
                 </div>
               </div>
             </div>
           </td>
           <td>
             <div class="ui input transparent">
-              <input type="text" class="politics-meeting">
+              <input type="text" class="politics-meeting"  value= <%= words[1]%>>
             </div>
           </td>
           <td>
             <div class="ui input transparent">
-              <input type="text" class="politics-duty">
+              <input type="text" class="politics-duty"  value= <%= words[2]%>>
             </div>
           </td>
         </tr>
-        <tr class="detail">
-          <td style="overflow:visible">
-            <div class="ui input transparent">
-              <div class="ui calendar month-picker">
-                <div class="ui input left input transparent">
-                  <input type="text" class="politics-time">
-                </div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="politics-meeting">
-            </div>
-          </td>
-          <td>
-            <div class="ui input transparent">
-              <input type="text" class="politics-duty">
-            </div>
-          </td>
-        </tr>
+        <% }); %>
         <tr>
           <td colspan="3" style="text-align: center;" id="add-politics"><i class="add circle icon"></i></td>
         </tr>
@@ -767,17 +554,18 @@
           <td colspan="3" class="cell-marriage">本人婚姻状况</td>
           <td colspan="5" class="cell-marriage">
             <div class="ui input transparent">
-              <input type="text" id="marriage" name="marriage">
+              <input type="text" id="marriage" name="marriage" value= <%= marriage%>>
             </div>
           </td>
         </tr>
+ 
         <tr>
           <td rowspan="12">家庭主要成员情况</td>
           <td rowspan="6">配偶</td>
           <td>姓名</td>
           <td>
             <div class="ui input transparent">
-              <input type="text" id="mate-name">
+              <input type="text" id="mate-name" value= <%= mate.split(',')[0]%>>
             </div>
           </td>
           <td>出生日期</td>
@@ -787,14 +575,14 @@
             </div> -->
             <div class="ui calendar date-picker" id="mate-birthday">
               <div class="ui input left input transparent">
-                <input type="text" name="birthday">
+                <input type="text" name="birthday" value= <%= mate.split(',')[1]%>>
               </div>
             </div>
           </td>
           <td>民族</td>
           <td>
             <div class="ui input transparent">
-              <input type="text" id="mate-nation">
+              <input type="text" id="mate-nation" value= <%= mate.split(',')[2]%>>
             </div>
           </td>
         </tr>
@@ -802,7 +590,7 @@
           <td>籍贯</td>
           <td>
             <div class="ui input transparent">
-              <input type="text" id="mate-hometown">
+              <input type="text" id="mate-hometown" value= <%= mate.split(',')[3]%>>
             </div>
           </td>
           <td>参加工作时间</td>
@@ -811,15 +599,14 @@
               <input type="text" id="mate-startwork">
             </div> -->
             <div class="ui calendar date-picker">
-              <div class="ui input left icon  input transparent">
-                <i class="calendar icon"></i>
-                <input type="text" id="mate-startwork">
+              <div class="ui input left input transparent">
+                <input type="text" id="mate-startwork" value= <%= mate.split(',')[4]%>>
               </div>
           </td>
           <td>政治面貌</td>
           <td>
             <div class="ui input transparent">
-              <input type="text" id="mate-politicalStatus">
+              <input type="text" id="mate-politicalStatus" value= <%= mate.split(',')[5]%>>
             </div>
           </td>
         </tr>
@@ -827,13 +614,13 @@
           <td>学历</td>
           <td colspan="3">
             <div class="ui input transparent">
-              <input type="text" id="mate-education">
+              <input type="text" id="mate-education" value= <%= mate.split(',')[6]%>>
             </div>
           </td>
           <td rowspan="2">工资情况</td>
           <td rowspan="2">
             <div class="ui input transparent">
-              <input type="text" id="mate-salary">
+              <input type="text" id="mate-salary" value= <%= mate.split(',')[7]%>>
             </div>
           </td>
         </tr>
@@ -841,7 +628,7 @@
           <td>专业技术职务</td>
           <td colspan="3">
             <div class="ui input transparent">
-              <input type="text" id="mate-techjob">
+              <input type="text" id="mate-techjob" value= <%= mate.split(',')[8]%>>
             </div>
           </td>
         </tr>
@@ -849,7 +636,7 @@
           <td colspan="2">毕业院校及专业</td>
           <td colspan="4">
             <div class="ui input transparent">
-              <input type="text" id="mate-school">
+              <input type="text" id="mate-school" value= <%= mate.split(',')[9]%>>
             </div>
           </td>
         </tr>
@@ -857,7 +644,7 @@
           <td colspan="2">工作单位及职务</td>
           <td colspan="4">
             <div class="ui input transparent">
-              <input type="text" id="mate-unit">
+              <input type="text" id="mate-unit" value= <%= mate.split(',')[10]%>>
             </div>
           </td>
         </tr>
@@ -869,6 +656,43 @@
           <td>政治面貌</td>
           <td colspan="2">工作单位及职务</td>
         </tr>
+        <% family.split(',').forEach(function(member){ var words = member.split(';')%>
+        <tr class="family-member">
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" class="family-rela" value=<%= words[0]%>>
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" class="family-name" value=<%= words[1]%>>
+            </div>
+          </td>
+          <!-- <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" class="family-birthday">
+            </div>
+          </td> -->
+          <td colspan="1" style="overflow:visible">
+            <div class="ui calendar date-picker">
+              <div class="ui input left input transparent">
+                <input type="text" class="family-birthday" value=<%= words[2]%>>
+              </div>
+            </div>
+          </td>
+          <td colspan="1">
+            <div class="ui input transparent">
+              <input type="text" class="family-political" value=<%= words[3]%>>
+            </div>
+          </td>
+          <td colspan="2">
+            <div class="ui input transparent">
+              <input type="text" class="family-job" value=<%= words[4]%>>
+            </div>
+          </td>
+        </tr>
+        <% }); %>
+        <% for(var i=0; i< 5 - family.split(',').length; i++){ %>
         <tr class="family-member">
           <td colspan="1">
             <div class="ui input transparent">
@@ -903,153 +727,20 @@
             </div>
           </td>
         </tr>
-        <tr class="family-member">
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="family-rela">
-            </div>
-          </td>
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="family-name">
-            </div>
-          </td>
-          <!-- <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="family-birthday">
-            </div>
-          </td> -->
-          <td colspan="1" style="overflow:visible">
-            <div class="ui calendar date-picker">
-              <div class="ui input left input transparent">
-                <input type="text" class="family-birthday">
-              </div>
-            </div>
-          </td>
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="family-political">
-            </div>
-          </td>
-          <td colspan="2">
-            <div class="ui input transparent">
-              <input type="text" class="family-job">
-            </div>
-          </td>
-        </tr>
-        <tr class="family-member">
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="family-rela">
-            </div>
-          </td>
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="family-name">
-            </div>
-          </td>
-          <!-- <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="family-birthday">
-            </div>
-          </td> -->
-          <td colspan="1" style="overflow:visible">
-            <div class="ui calendar date-picker">
-              <div class="ui input left input transparent">
-                <input type="text" class="family-birthday">
-              </div>
-            </div>
-          </td>
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="family-political">
-            </div>
-          </td>
-          <td colspan="2">
-            <div class="ui input transparent">
-              <input type="text" class="family-job">
-            </div>
-          </td>
-        </tr>
-        <tr class="family-member">
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="family-rela">
-            </div>
-          </td>
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="family-name">
-            </div>
-          </td>
-          <!-- <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="family-birthday">
-            </div>
-          </td> -->
-          <td colspan="1" style="overflow:visible">
-            <div class="ui calendar date-picker">
-              <div class="ui input left input transparent">
-                <input type="text" class="family-birthday">
-              </div>
-            </div>
-          </td>
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="family-political">
-            </div>
-          </td>
-          <td colspan="2">
-            <div class="ui input transparent">
-              <input type="text" class="family-job">
-            </div>
-          </td>
-        </tr>
-        <tr class="family-member">
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="family-rela">
-            </div>
-          </td>
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="family-name">
-            </div>
-          </td>
-          <!-- <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="family-birthday">
-            </div>
-          </td> -->
-          <td colspan="1" style="overflow:visible">
-            <div class="ui calendar date-picker">
-              <div class="ui input left input transparent">
-                <input type="text" class="family-birthday">
-              </div>
-            </div>
-          </td>
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="family-political">
-            </div>
-          </td>
-          <td colspan="2">
-            <div class="ui input transparent">
-              <input type="text" class="family-job">
-            </div>
-          </td>
-        </tr>
+        <% } %>
+        
 
         <tr class="social-relation">
           <td rowspan="5" colspan="2">国内外主要社会关系情况</td>
+          <% social_rela.split(',').forEach(function(member){ var words = member.split(';')%>
           <td colspan="1">
             <div class="ui input transparent">
-              <input type="text" class="social-rela">
+              <input type="text" class="social-rela" value=<%=words[0] %>>
             </div>
           </td>
           <td colspan="1">
             <div class="ui input transparent">
-              <input type="text" class="social-name">
+              <input type="text" class="social-name" value=<%=words[1] %>>
             </div>
           </td>
           <!-- <td colspan="1">
@@ -1060,21 +751,23 @@
           <td colspan="1" style="overflow:visible">
             <div class="ui calendar date-picker">
               <div class="ui input left input transparent">
-                <input type="text" class="social-birthday">
+                <input type="text" class="social-birthday" value=<%=words[2] %>>
               </div>
             </div>
           </td>
           <td colspan="1">
             <div class="ui input transparent">
-              <input type="text" class="social-political">
+              <input type="text" class="social-political"  value=<%=words[3] %>>
             </div>
           </td>
           <td colspan="2">
             <div class="ui input transparent">
-              <input type="text" class="social-job">
+              <input type="text" class="social-job" value=<%=words[4] %>>
             </div>
           </td>
         </tr>
+        <% }); %>
+        <% for(var i=0; i< 5 - social_rela.split(',').length; i++){ %>
         <tr class="social-relation">
           <td colspan="1">
             <div class="ui input transparent">
@@ -1109,133 +802,16 @@
             </div>
           </td>
         </tr>
-        <tr class="social-relation">
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="social-rela">
-            </div>
-          </td>
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="social-name">
-            </div>
-          </td>
-          <!-- <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="social-birthday">
-            </div>
-          </td> -->
-          <td colspan="1" style="overflow:visible">
-            <div class="ui calendar date-picker">
-              <div class="ui input left input transparent">
-                <input type="text" class="social-birthday">
-              </div>
-            </div>
-          </td>
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="social-political">
-            </div>
-          </td>
-          <td colspan="2">
-            <div class="ui input transparent">
-              <input type="text" class="social-job">
-            </div>
-          </td>
-        </tr>
-        <tr class="social-relation">
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="social-rela">
-            </div>
-          </td>
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="social-name">
-            </div>
-          </td>
-          <!-- <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="social-birthday">
-            </div>
-          </td> -->
-          <td colspan="1" style="overflow:visible">
-            <div class="ui calendar date-picker">
-              <div class="ui input left input transparent">
-                <input type="text" class="social-birthday">
-              </div>
-            </div>
-          </td>
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="social-political">
-            </div>
-          </td>
-          <td colspan="2">
-            <div class="ui input transparent">
-              <input type="text" class="social-job">
-            </div>
-          </td>
-        </tr>
-        <tr class="social-relation">
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="social-rela">
-            </div>
-          </td>
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="social-name">
-            </div>
-          </td>
-          <!-- <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="social-birthday">
-            </div>
-          </td> -->
-          <td colspan="1" style="overflow:visible">
-            <div class="ui calendar date-picker">
-              <div class="ui input left input transparent">
-                <input type="text" class="social-birthday">
-              </div>
-            </div>
-          </td>
-          <td colspan="1">
-            <div class="ui input transparent">
-              <input type="text" class="social-political">
-            </div>
-          </td>
-          <td colspan="2">
-            <div class="ui input transparent">
-              <input type="text" class="social-job">
-            </div>
-          </td>
-        </tr>
+      <% }; %>
       </tbody>
     </table>
   </form>
-  <button class="ui primary button" id="btn-save">保存员工信息</button>
-  <div class="layer-wrapper layer-wrapper-wait">
-    <div class="ui icon message wait-layer">
-      <i class="notched circle loading icon"></i>
-      <div>请稍等，正在添加员工信息</div>
-    </div>
-  </div>
-  <div class="layer-wrapper layer-wrapper-success">
-    <div class="ui icon success message success-layer">
-      <div>添加成功！</div>
-    </div>
-  </div>
-  <div class="layer-wrapper layer-wrapper-error">
-    <div class="ui icon error message error-layer">
-      <div>网络故障，请稍后再试！</div>
-    </div>
-  </div>
+  <!-- <button class="ui primary button" id="btn-save">保存员工信息</button> -->
   <div class="layer-wrapper layer-wrapper-finish"></div>
   <script src="/jquery-3.3.1.min.js"></script>
   <script src="/semantic/semantic.min.js"></script>
-  <script src="/scripts/calendar.js"></script>
-  <script src="/scripts/employee.js"></script>
+  <!-- <script src="/scripts/calendar.js"></script>
+  <script src="/scripts/employee.js"></script> -->
 </body>
 
 </html>

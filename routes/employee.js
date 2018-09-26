@@ -40,7 +40,7 @@ var upload = multer({ storage: storage });
 
 
 const getBaseInfo = (queryResult) => {
-  const baseTitle = ['name', 'sex', 'birthday', 'phone', 'hometown', 'education', 'major', 'politicalStatus', 'department', 'job', 'startwork', 'id'];
+  const baseTitle = ['name', 'sex', 'birthday', 'workdate', 'phone', 'hometown', 'education', 'major', 'politicalStatus', 'department', 'job', 'startwork', 'id'];
   const finalResult = []
   queryResult.forEach((item, index) => {
     finalResult[index] = {}
@@ -83,34 +83,29 @@ const basePostFunc = async (req, res, next) => {
 }
 
 const getDetailFunc = async (req, res, next) => {
-  console.log(req.query.id)
-  res.render('employee', { id: req.query.id });
-  // res.send('hello world')
-  // if (req.session.user) {
-  //   // 未登录
-  //   res.send({
-  //     code: 0,
-  //     state: 'fail'
-  //   })
-  //   return
-  // } else {
-  //   console.log("rrrrrrrrrrrrrrrrrrrr", req.body)
-  //   const opts = {}
-  //   opts.where = req.body.where;
-  //   const current = req.body.current
-  //   const pageSize = req.body.pageSize
-  //   opts.offset = (current - 1) * pageSize
-  //   opts.limit = pageSize
-  //   const queryResult = await EmployeeBase.findAndCountAll(opts)
-  //   const total = queryResult.count
-  //   const currentPageEmployee = getBaseInfo(queryResult.rows)
-  //   res.send({
-  //     code: 1,
-  //     state: 'success',
-  //     employee: currentPageEmployee,
-  //     total
-  //   })
-  // }
+  // console.log(req.query.id)
+  if (req.session.user) {
+    // 未登录
+    res.send({
+      code: 0,
+      state: 'fail'
+    })
+    return
+  } else {
+    const opts = {}
+    opts.where = {id: req.query.id}
+    const baseResult = await EmployeeBase.findOne(opts)
+    const otherResult = await EmployeeOther.findOne(opts)
+    console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbb')
+    console.log(baseResult)
+    console.log(otherResult)
+    let birthday = new Date(baseResult.dataValues.birthday)
+    let workdate = new Date(baseResult.dataValues.workdate)
+    res.render('employeeDetail', { ...baseResult.dataValues, ...otherResult.dataValues, birthday: birthday.toLocaleDateString(), workdate: workdate.toLocaleDateString() });
+  }
+  
+  
+ 
 }
 
 const addEmployeeFunc = (req, res, next) => {
@@ -132,8 +127,8 @@ const postEmployeeFunc = async (req, res, next) => {
     health, school, politicalStatus, idNum, phone, address, job, department,
     postLevel, postRatio, postSalary, marriage, startwork, startCPC, startCCYL,
     startCDP, techpost, techlevel, police, train, create, socialgroup, religion,
-    internation, language, award, punish, negative, revolution, study, work, politics, mate,
-    family, relation } = req.body
+    internation, language, award, punish, negative, revolution, study_exp, work_exp, politics_exp, mate,
+    family, social_rela } = req.body
   let birthday = new Date(req.body.birthday)
   let workdate = new Date(req.body.workdate)
   let portrait = 'upload-img/' + portrait_dir
@@ -154,7 +149,7 @@ const postEmployeeFunc = async (req, res, next) => {
       id: BaseResult.dataValues.id, startwork, startCPC, startCCYL,
       startCDP, techpost, techlevel, police, train, create, socialgroup,
       religion, internation, language, award, punish, negative, revolution,
-      study, work, politics, mate, family, relation
+      study_exp, work_exp, politics_exp, mate, family, social_rela
     })
     res.send({
       code: 1,

@@ -58,8 +58,8 @@ const columns = [{
 
 }, {
   title: '参加工作时间',
-  dataIndex: 'startwork',
-  key: 'startwork',
+  dataIndex: 'workdate',
+  key: 'workdate',
 
 }, {
   title: '操作',
@@ -91,7 +91,7 @@ const selfdata = [{
   politicalStatus: '共青团员',
   department: '人力资源部',
   job: '职员',
-  startwork: '2018/08/23'
+  workdate: '2018/08/23'
 }, {
   id: 2,
   key: '2',
@@ -105,7 +105,7 @@ const selfdata = [{
   politicalStatus: '共青团员',
   department: '人力资源部',
   job: '职员',
-  startwork: '2018/08/23'
+  workdate: '2018/08/23'
 },
 {
   id: 3,
@@ -120,7 +120,7 @@ const selfdata = [{
   politicalStatus: '共青团员',
   department: '人力资源部',
   job: '职员',
-  startwork: '2018/08/23'
+  workdate: '2018/08/23'
 }, {
   id: 4,
   key: '4',
@@ -134,7 +134,7 @@ const selfdata = [{
   politicalStatus: '共青团员',
   department: '人力资源部',
   job: '职员',
-  startwork: '2018/08/23'
+  workdate: '2018/08/23'
 }, {
   id: 5,
   key: '5',
@@ -148,7 +148,7 @@ const selfdata = [{
   politicalStatus: '共青团员',
   department: '人力资源部',
   job: '职员',
-  startwork: '2018/08/23'
+  workdate: '2018/08/23'
 },
 {
   id: 6,
@@ -163,7 +163,7 @@ const selfdata = [{
   politicalStatus: '共青团员',
   department: '人力资源部',
   job: '职员',
-  startwork: '2018/08/23'
+  workdate: '2018/08/23'
 }];
 
 class ResultTable extends React.Component {
@@ -236,8 +236,8 @@ class ResultTable extends React.Component {
           />
           <Column
             title="参加工作时间"
-            dataIndex="startwork"
-            key="startwork"
+            dataIndex="workdate"
+            key="workdate"
           />
           <Column
             title="操作"

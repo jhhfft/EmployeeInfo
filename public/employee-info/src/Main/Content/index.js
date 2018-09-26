@@ -20,11 +20,11 @@ class Content extends React.Component{
   }
   formatData = (result) =>{
     result.forEach((item,index)=>{
-      let {birthday, startwork} = item
+      let {birthday, workdate} = item
       let date = new Date(birthday)
       item.birthday= date.toLocaleDateString()
-      date = new Date(startwork)
-      item.startwork = date.toLocaleDateString()
+      date = new Date(workdate)
+      item.workdate = date.toLocaleDateString()
 
       item.key = item.id
       // delete item.id

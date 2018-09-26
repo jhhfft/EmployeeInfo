@@ -32,7 +32,7 @@ const EmployeeBase = sequelize.define('employeeBase', {
         // allowNull: false
     },
     // 照片
-    headportrait: {
+    portrait: {
         type: Sequelize.STRING
     },
     // 民族

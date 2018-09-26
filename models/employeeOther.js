@@ -85,15 +85,15 @@ const EmployeeOther = sequelize.define('employeeOther', {
         type: Sequelize.STRING
     },
     // 学习简历
-    study: {
+    study_exp: {
         type: Sequelize.STRING
     },
     // 工作经历
-    work: {
+    work_exp: {
         type: Sequelize.STRING
     },
     // 政治经历
-    politics: {
+    politics_exp: {
         type: Sequelize.STRING
     },
     // 配偶信息
@@ -105,7 +105,7 @@ const EmployeeOther = sequelize.define('employeeOther', {
         type: Sequelize.STRING
     },
     // 社会关系信息
-    relation: {
+    social_rela: {
         type: Sequelize.STRING
     }
 },
