@@ -6,15 +6,17 @@ var multer = require('multer')
 
 const EmployeeBase = require('../models/employeeBase');
 
+let portrait_dir = ''
 // // 使用硬盘存储模式设置存放接收到的文件的路径以及文件名
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     // 接收到文件后输出的保存路径（若不存在则需要创建）
-    cb(null, 'upload/');
+    cb(null, 'public/upload-img/');
   },
   filename: function (req, file, cb) {
     // 将保存文件名设置为 时间戳 + 文件原始名，比如 151342376785-123.jpg
-    cb(null, req.body.idNum + '-' + file.originalname);
+    portrait_dir = req.body.name + '-' + Date.now() + '-' + file.originalname  
+    cb(null, portrait_dir);
   }
 });
 
@@ -30,7 +32,7 @@ var createFolder = function (folder) {
   }
 };
 
-var uploadFolder = './upload/';
+var uploadFolder = './public/upload-img';
 createFolder(uploadFolder);
 // 创建 multer 对象
 var upload = multer({ storage: storage });
@@ -115,16 +117,39 @@ const addEmployeeFunc = (req, res, next) => {
 }
 
 const postEmployeeFunc = (req, res, next) => {
-  var name = req.body.name
-  console.log(req.body)
-  var file = req.file;
-  console.log(file)
-  console.log('文件类型：%s', file.mimetype);
-  console.log('原始文件名：%s', file.originalname);
-  console.log('文件大小：%s', file.size);
-  console.log('文件保存路径：%s', file.path);
+  // var name = req.body.name
+  // console.log(req.body)
+  // var file = req.file;
+  // console.log(file)
+  // console.log('文件类型：%s', file.mimetype);
+  // console.log('原始文件名：%s', file.originalname);
+  // console.log('文件大小：%s', file.size);
+  // console.log('文件保存路径：%s', file.path);
   // 接收文件成功后返回数据给前端
-  res.json({ res_code: '0' });
+  // res.json({ res_code: '0' });
+  let { name, sex, nation, hometown, education, birthplace, degree, 
+    health, school, politicalStatus, idNum, phone, address, job, department,
+    postLevel, postRatio, postSalary, marriage } = req.body
+  let birthday = new Date(req.body.birthday)
+  let workdate = new Date(req.body.workdate)
+  let portrait = 'upload-img/'+ portrait_dir
+  // console.log(portrait)
+
+  // console.log({
+  //     name, sex, portrait, nation, birthday, hometown, education, birthplace, degree, 
+  //     health, school, politicalStatus, idNum, phone, address, job, department,
+  //     workdate, postLevel, postRatio, postSalary, marriage
+  //   })
+  EmployeeBase.create({
+    name, sex, portrait, nation, birthday, hometown, education, birthplace, degree, 
+    health, school, politicalStatus, idNum, phone, address, job, department,
+    workdate, postLevel, postRatio, postSalary, marriage
+  }).then(function (result) {
+    console.log(result);
+  }).catch(function (err) {
+    console.log(err.message);
+  });
+
 }
 
 router.post('/base', basePostFunc);

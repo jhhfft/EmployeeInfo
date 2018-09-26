@@ -391,7 +391,7 @@ $('#btn-save').click(function (e) {
   // }
 
   const formData = new FormData()
-  // 基本信息 20个
+  // 基本信息 21个
   formData.append('name', $('input[name=name]').val())
   formData.append('sex', $('input[name=sex]:checked').val())
   // 头像
