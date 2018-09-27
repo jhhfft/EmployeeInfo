@@ -196,15 +196,15 @@ const postUpdateFunc = async (req, res, next) => {
     family, social_rela } = req.body
   let birthday = new Date(req.body.birthday)
   let workdate = new Date(req.body.workdate)
-  
+
   let portrait = null
-  if(!req.file){
-    const baseInfo = await EmployeeBase.findOne({ where: {id: req.query.id}})
+  if (!req.file) {
+    const baseInfo = await EmployeeBase.findOne({ where: { id: req.query.id } })
     portrait = baseInfo.dataValues.portrait
-  }else {
+  } else {
     portrait = 'upload-img/' + portrait_dir
   }
-  
+
   try {
     await EmployeeBase.update({
       name, sex, portrait, nation, birthday, hometown, education, birthplace, degree,
@@ -229,15 +229,49 @@ const postUpdateFunc = async (req, res, next) => {
   }
 }
 
-const deleteEmployeeFunc = async (req, res, next)=>{
-  const id = req.query.id
-  const baseInfo = await EmployeeBase.findOne({ where: {id: req.query.id}})
-  const portrait = baseInfo.dataValues.portrait
-  console.log(process.cwd())
+const deleteEmployeeFunc = async (req, res, next) => {
+  if (req.session.user) {
+    // 未登录
+    res.send({
+      code: 0,
+      state: 'fail'
+    })
+    return
+  }
+  const { id, current, pageSize, where } = req.body
+  try {
+    await EmployeeBase.destroy({ where: { id } })
+    await EmployeeOther.destroy({ where: { id } })
+  } catch (err) {
+    res.send({
+      code: 2,
+      state: 'fail'
+    })
+    return
+  }
+
+  try {
+    const opts = {}
+    opts.where = where
+    opts.offset = (current - 1) * pageSize
+    opts.limit = pageSize
+    const queryResult = await EmployeeBase.findAndCountAll(opts)
+    const total = queryResult.count
+    const currentPageEmployee = getBaseInfo(queryResult.rows)
+    res.send({
+      code: 1,
+      state: 'success',
+      employee: currentPageEmployee,
+      total
+    })
+  } catch (err) {
+    res.send({
+      code: 2,
+      state: 'fail'
+    })
+  }
+
 }
-
-
-
 
 router.post('/base', basePostFunc);
 router.get('/detail', getDetailFunc);
@@ -245,6 +279,6 @@ router.get('/addpage', addEmployeeFunc);
 router.post('/save', upload.single('portrait'), postEmployeeFunc);
 router.get('/updatepage', getUpdatePageFunc);
 router.post('/update', upload.single('portrait'), postUpdateFunc);
-router.get('/delete', deleteEmployeeFunc);
+router.post('/delete', deleteEmployeeFunc);
 
 module.exports = router;

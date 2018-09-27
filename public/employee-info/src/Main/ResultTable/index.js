@@ -1,8 +1,9 @@
 import React from 'react';
 import './index.css';
-import { Table, Icon, Button } from 'antd';
+import { Table, Icon, Button, Modal, Spin } from 'antd';
 
 const { Column } = Table
+const confirm = Modal.confirm
 
 const columns = [{
   title: '姓名',
@@ -172,13 +173,26 @@ class ResultTable extends React.Component {
   }
   handleDelete = (e, id) => {
     e.preventDefault()
-    this.props.deleteInfo(id)
+    let self = this
+    confirm({
+      title: '确定要删除该员工信息?',
+      content: '此信息一旦删除将无法恢复',
+      okText: '确定',
+      okType: 'danger',
+      cancelText: '取消',
+      onOk() {
+        self.props.deleteInfo(id)
+      },
+      onCancel() {
+
+      },
+    });
   }
   handleAdd = () => {
     this.props.addEmployee()
   }
   render() {
-    const { data, pagination } = this.props
+    const { data, pagination,isShow } = this.props
     const self = this
     return (
       <div className="result-table">
@@ -252,6 +266,9 @@ class ResultTable extends React.Component {
           />
         </Table >
         <Button className="add-new" type="primary" onClick={this.handleAdd}>添加员工信息</Button>
+        <div className={isShow ? 'wait-layer': 'wait-layer hide'} >
+          <Spin size="large" className="spin"/>
+        </div>
       </div>
     )
   }

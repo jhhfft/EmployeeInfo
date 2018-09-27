@@ -1,5 +1,5 @@
 import React from 'react';
-import {withRouter} from "react-router-dom"
+import { withRouter } from "react-router-dom"
 
 import { message, Button } from 'antd';
 import './index.css';
@@ -7,22 +7,23 @@ import WrapperSearchForm from '../WrapperSearchForm';
 import ResultTable from '../ResultTable';
 import post from '../../utils/post'
 
-class Content extends React.Component{
-  constructor(props){
+class Content extends React.Component {
+  constructor(props) {
     super(props);
     this.state = {
       opts: null,
       employeeList: null,
       current: 0, // 当前页数
-      pageSize: 2, 
-      total: 0 // 数据总数
+      pageSize: 2,
+      total: 0, // 数据总数
+      isShowSpin: false // 是否显示等待框
     }
   }
-  formatData = (result) =>{
-    result.forEach((item,index)=>{
-      let {birthday, workdate} = item
+  formatData = (result) => {
+    result.forEach((item, index) => {
+      let { birthday, workdate } = item
       let date = new Date(birthday)
-      item.birthday= date.toLocaleDateString()
+      item.birthday = date.toLocaleDateString()
       date = new Date(workdate)
       item.workdate = date.toLocaleDateString()
 
@@ -31,31 +32,33 @@ class Content extends React.Component{
     })
   }
   deleteInfo = async (id) => {
-    const {current, pageSize} = this.state
-    try{
-      let result = await post('http://127.0.0.1:8080/employee/delete', {id})
-      if(result.code == 0){
+    const { opts, current, pageSize } = this.state
+    this.setState({ isShowSpin: true })
+    try {
+      let result = await post('http://127.0.0.1:8080/employee/delete', { id, current, pageSize, where: opts })
+
+      if (result.code == 0) {
         // 说明用户未登录
         message.error('请先登录');
         this.props.history.push('/login');
-      }else if(result.code == 1){
-        message.success('删除成功')
+      } else if (result.code == 2) {
+        message.error('删除失败，请稍后再试');
+      } else {
         let employeeList = result.employee
         let total = result.total
         this.formatData(employeeList)
-        this.setState({employeeList, total, current, pageSize})
-      } else {
-        message.error('删除失败，请稍后再试')
+        this.setState({ employeeList, total, current, pageSize, opts, isShowSpin: false })
       }
-    }catch(e){
-      message.error('删除失败，请稍后再试')
+    } catch (e) {
+      this.setState({ isShowSpin: false })
+      message.error('网络故障，请稍后再试')
     }
   }
-  addEmployee = ()=>{
+  addEmployee = () => {
     window.open('http://127.0.0.1:8080/employee/addpage')
   }
   queryInfor = async (opts) => {
-    const {current, pageSize} = this.state
+    const { current, pageSize } = this.state
     // const employee = {}
     // for(let i in opts){
     //   if(opts[i]){
@@ -63,40 +66,40 @@ class Content extends React.Component{
     //   }
     // }
     // console.log('this is content',employee)
-    let result = await post('http://127.0.0.1:8080/employee/base',{where: opts, current: 1, pageSize})
-    if(result.code == 0){
+    let result = await post('http://127.0.0.1:8080/employee/base', { where: opts, current: 1, pageSize })
+    if (result.code == 0) {
       // 说明用户未登录
       message.error('请先登录');
       this.props.history.push('/login');
-    }else {
+    } else {
       let employeeList = result.employee
       let total = result.total
       this.formatData(employeeList)
-      this.setState({employeeList, total, current: 1, pageSize, opts})
+      this.setState({ employeeList, total, current: 1, pageSize, opts })
     }
   }
-  onPageChange = async (newPage, pageSize) =>{
+  onPageChange = async (newPage, pageSize) => {
     // console.log(newPage)
-    const {opts} = this.state
-    let result = await post('http://127.0.0.1:8080/employee/base',{where: opts, current: newPage, pageSize})
-    if(result.code == 0){
+    const { opts } = this.state
+    let result = await post('http://127.0.0.1:8080/employee/base', { where: opts, current: newPage, pageSize })
+    if (result.code == 0) {
       // 说明用户未登录
       message.error('请先登录');
       this.props.history.push('/login');
-    }else {
+    } else {
       let employeeList = result.employee
       let total = result.total
       this.formatData(employeeList)
-      this.setState({employeeList, total, current: newPage, pageSize})
+      this.setState({ employeeList, total, current: newPage, pageSize })
     }
   }
-  render(){
-    const {employeeList, current, total, pageSize} = this.state
+  render() {
+    const { employeeList, current, total, pageSize, isShowSpin } = this.state
     console.log(total)
     return (
       <div className="content">
-        <WrapperSearchForm queryInfor={this.queryInfor}/>
-        <ResultTable data={employeeList} pagination={{current, total, pageSize, onChange: this.onPageChange}} deleteInfo={this.deleteInfo} addEmployee={this.addEmployee}/>
+        <WrapperSearchForm queryInfor={this.queryInfor} />
+        <ResultTable data={employeeList} pagination={{ current, total, pageSize, onChange: this.onPageChange }} deleteInfo={this.deleteInfo} addEmployee={this.addEmployee} isShow={isShowSpin} />
       </div>
     )
   }

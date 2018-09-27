@@ -24,3 +24,21 @@
 .result-table .ant-table-placeholder{
   height: 100px;
 }
+
+.wait-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.wait-layer.hide {
+  display: none;
+}
+.wait-layer > .spin {
+  position: absolute;
+  top: 49%;
+  left: 49%;
+}
