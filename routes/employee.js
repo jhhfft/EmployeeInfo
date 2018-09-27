@@ -228,11 +228,23 @@ const postUpdateFunc = async (req, res, next) => {
     })
   }
 }
+
+const deleteEmployeeFunc = async (req, res, next)=>{
+  const id = req.query.id
+  const baseInfo = await EmployeeBase.findOne({ where: {id: req.query.id}})
+  const portrait = baseInfo.dataValues.portrait
+  console.log(process.cwd())
+}
+
+
+
+
 router.post('/base', basePostFunc);
 router.get('/detail', getDetailFunc);
 router.get('/addpage', addEmployeeFunc);
 router.post('/save', upload.single('portrait'), postEmployeeFunc);
 router.get('/updatepage', getUpdatePageFunc);
 router.post('/update', upload.single('portrait'), postUpdateFunc);
+router.get('/delete', deleteEmployeeFunc);
 
 module.exports = router;
