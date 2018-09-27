@@ -61,7 +61,7 @@ const basePostFunc = async (req, res, next) => {
     })
     return
   } else {
-    console.log("rrrrrrrrrrrrrrrrrrrr", req.body)
+    // console.log("rrrrrrrrrrrrrrrrrrrr", req.body)
     const opts = {}
     opts.where = req.body.where;
     const current = req.body.current
@@ -93,19 +93,19 @@ const getDetailFunc = async (req, res, next) => {
     return
   } else {
     const opts = {}
-    opts.where = {id: req.query.id}
+    opts.where = { id: req.query.id }
     const baseResult = await EmployeeBase.findOne(opts)
     const otherResult = await EmployeeOther.findOne(opts)
-    console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbb')
-    console.log(baseResult)
-    console.log(otherResult)
+    // console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbb')
+    // console.log(baseResult)
+    // console.log(otherResult)
     let birthday = new Date(baseResult.dataValues.birthday)
     let workdate = new Date(baseResult.dataValues.workdate)
     res.render('employeeDetail', { ...baseResult.dataValues, ...otherResult.dataValues, birthday: birthday.toLocaleDateString(), workdate: workdate.toLocaleDateString() });
   }
-  
-  
- 
+
+
+
 }
 
 const addEmployeeFunc = (req, res, next) => {
@@ -139,7 +139,7 @@ const postEmployeeFunc = async (req, res, next) => {
   //     health, school, politicalStatus, idNum, phone, address, job, department,
   //     workdate, postLevel, postRatio, postSalary, marriage
   //   })
-  try{
+  try {
     const BaseResult = await EmployeeBase.create({
       name, sex, portrait, nation, birthday, hometown, education, birthplace, degree,
       health, school, politicalStatus, idNum, phone, address, job, department,
@@ -155,17 +155,84 @@ const postEmployeeFunc = async (req, res, next) => {
       code: 1,
       state: 'success'
     })
-  }catch(err){
+  } catch (err) {
     res.send({
       code: 0,
       state: 'fail'
     })
   }
-  
+
 }
 
+const getUpdatePageFunc = async (req, res, next) => {
+  // console.log(req.query.id)
+  if (req.session.user) {
+    // 未登录
+    res.send({
+      code: 0,
+      state: 'fail'
+    })
+    return
+  } else {
+    const opts = {}
+    opts.where = { id: req.query.id }
+    const baseResult = await EmployeeBase.findOne(opts)
+    const otherResult = await EmployeeOther.findOne(opts)
+    // console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbb')
+    // console.log(baseResult)
+    // console.log(otherResult)
+    let birthday = new Date(baseResult.dataValues.birthday)
+    let workdate = new Date(baseResult.dataValues.workdate)
+    res.render('employeeUpdate', { ...baseResult.dataValues, ...otherResult.dataValues, birthday: birthday.toLocaleDateString(), workdate: workdate.toLocaleDateString() });
+  }
+}
+
+const postUpdateFunc = async (req, res, next) => {
+  let { name, sex, nation, hometown, education, birthplace, degree,
+    health, school, politicalStatus, idNum, phone, address, job, department,
+    postLevel, postRatio, postSalary, marriage, startwork, startCPC, startCCYL,
+    startCDP, techpost, techlevel, police, train, create, socialgroup, religion,
+    internation, language, award, punish, negative, revolution, study_exp, work_exp, politics_exp, mate,
+    family, social_rela } = req.body
+  let birthday = new Date(req.body.birthday)
+  let workdate = new Date(req.body.workdate)
+  
+  let portrait = null
+  if(!req.file){
+    const baseInfo = await EmployeeBase.findOne({ where: {id: req.query.id}})
+    portrait = baseInfo.dataValues.portrait
+  }else {
+    portrait = 'upload-img/' + portrait_dir
+  }
+  
+  try {
+    await EmployeeBase.update({
+      name, sex, portrait, nation, birthday, hometown, education, birthplace, degree,
+      health, school, politicalStatus, idNum, phone, address, job, department,
+      workdate, postLevel, postRatio, postSalary, marriage
+    }, { where: { id: req.query.id } })
+    await EmployeeOther.update({
+      startwork, startCPC, startCCYL,
+      startCDP, techpost, techlevel, police, train, create, socialgroup,
+      religion, internation, language, award, punish, negative, revolution,
+      study_exp, work_exp, politics_exp, mate, family, social_rela
+    }, { where: { id: req.query.id } })
+    res.send({
+      code: 1,
+      state: 'success'
+    })
+  } catch (err) {
+    res.send({
+      code: 0,
+      state: 'fail'
+    })
+  }
+}
 router.post('/base', basePostFunc);
 router.get('/detail', getDetailFunc);
 router.get('/addpage', addEmployeeFunc);
-router.post('/save', upload.single('portrait'), postEmployeeFunc)
+router.post('/save', upload.single('portrait'), postEmployeeFunc);
+router.get('/updatepage', getUpdatePageFunc);
+router.post('/update', upload.single('portrait'), postUpdateFunc);
+
 module.exports = router;

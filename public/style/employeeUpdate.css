@@ -1,0 +1,130 @@
+.employee {
+    padding: 40px 80px;
+  }
+  
+  #portrait {
+    position: relative;
+  }
+  #portrait input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position:absolute;
+    z-index: -11111;
+  }
+  
+  #portrait label {
+    display: inline-block;
+    width: 100px;
+    height: 137px;
+    line-height: 137px;
+    text-align: center;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -69px;
+    margin-left: -50px;
+    z-index: 100;
+    opacity: 0;
+  }
+  
+  #portrait img{
+    width: 100px;
+    height: 137px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -69px;
+    margin-left: -50px;
+    /* opacity: 0; */
+  }
+  td>div {
+    width: 100%;
+  }
+  td>div>select {
+    width: 70% !important; 
+  }
+  td>div>input {
+    width: 80%;
+  }
+  
+  #add-study>i,
+  #add-work>i,
+  #add-politics>i {
+    cursor: pointer;
+  }
+  
+  #btn-save {
+    display: block;
+    margin: 0 auto 40px auto;
+  }
+  
+  
+  input:-webkit-autofill { 
+    -webkit-box-shadow: 0 0 0px 1000px white inset; 
+    border: 1px solid #CCC!important; 
+  } 
+  
+  #study .detail td:first-child input,
+  #work .detail td:first-child input {
+    width: 40% !important;
+  }
+  
+  #study .detail td:first-child span,
+  #work .detail td:first-child span {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  
+  #study tr:first-child td,
+  #work tr:first-child td,
+  #politics tr:first-child td {
+    text-align: center;
+    font-weight: bolder;
+  }
+  
+  #study tr td input,
+  #work  tr td input,
+  #politics tr td input {
+    text-align: center;
+  }
+  
+  .layer-wrapper {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+  .layer-wrapper .wait-layer,
+  .layer-wrapper .success-layer,
+  .layer-wrapper .error-layer {
+    display: none;
+    width: 400px !important;
+    height: 200px;
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    margin-top: -100px !important;
+    margin-left: -200px !important;
+    border: 0 !important;
+    z-index: 500;
+  }
+  .wait-layer div,
+  .success-layer div,
+  .error-layer div {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    line-height: 3em;
+    vertical-align: middle;
+  }
+  .wait-layer .icon {
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-left: 10px !important;
+  }
+  

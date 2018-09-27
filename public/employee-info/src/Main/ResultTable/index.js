@@ -244,7 +244,7 @@ class ResultTable extends React.Component {
             key="action"
             render={(text, record) => (
               <span>
-                <a href={'http://127.0.0.1:8080/employee/update?id=' + record.id} target='_blank'>修改</a>
+                <a href={'http://127.0.0.1:8080/employee/updatepage?id=' + record.id} target='_blank'>修改</a>
                 <span className="ant-divider" />
                 <a onClick={(e) => self.handleDelete(e, record.id)}>删除</a>
               </span>
