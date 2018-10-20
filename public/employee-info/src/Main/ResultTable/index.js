@@ -2,6 +2,8 @@ import React from 'react';
 import './index.css';
 import { Table, Icon, Button, Modal, Spin } from 'antd';
 
+import URL from '../../Constant'
+
 const { Column } = Table
 const confirm = Modal.confirm
 
@@ -10,7 +12,7 @@ const columns = [{
   dataIndex: 'name',
   key: 'name',
   render: (text, record) => {
-    return <a href={'http://127.0.0.1:8080/employee/detail?id=' + record.id} target='_blank'>{text}</a>
+    return <a href={URL.detail + '?id=' + record.id} target='_blank'>{text}</a>
   }
 }, {
   title: '性别',
@@ -71,7 +73,7 @@ const columns = [{
     // console.log(record)
     return (
       <span>
-        <a href={'http://127.0.0.1:8080/employee/update?id=' + record.id} target='_blank'>修改</a>
+        <a href={URL.updatepage + '?id=' + record.id} target='_blank'>修改</a>
         <span className="ant-divider" />
         <a href={'#'} onClick={() => { console.log(this.props) }}>删除</a>
       </span>
@@ -201,7 +203,7 @@ class ResultTable extends React.Component {
             title="姓名"
             dataIndex='name'
             key='name'
-            render={(text, record) => <a href={'http://127.0.0.1:8080/employee/detail?id=' + record.id} target='_blank'>{text}</a>}>
+            render={(text, record) => <a href={ URL.detail + '?id=' + record.id} target='_blank'>{text}</a>}>
           </Column>
           <Column
             title="性别"
@@ -258,7 +260,7 @@ class ResultTable extends React.Component {
             key="action"
             render={(text, record) => (
               <span>
-                <a href={'http://127.0.0.1:8080/employee/updatepage?id=' + record.id} target='_blank'>修改</a>
+                <a href={URL.updatepage + '?id=' + record.id} target='_blank'>修改</a>
                 <span className="ant-divider" />
                 <a onClick={(e) => self.handleDelete(e, record.id)}>删除</a>
               </span>

@@ -7,6 +7,8 @@ import WrapperSearchForm from '../WrapperSearchForm';
 import ResultTable from '../ResultTable';
 import post from '../../utils/post'
 
+import URL from '../../Constant'
+
 class Content extends React.Component {
   constructor(props) {
     super(props);
@@ -35,7 +37,7 @@ class Content extends React.Component {
     const { opts, current, pageSize } = this.state
     this.setState({ isShowSpin: true })
     try {
-      let result = await post('http://127.0.0.1:8080/employee/delete', { id, current, pageSize, where: opts })
+      let result = await post(URL.delete, { id, current, pageSize, where: opts })
 
       if (result.code == 0) {
         // 说明用户未登录
@@ -55,7 +57,7 @@ class Content extends React.Component {
     }
   }
   addEmployee = () => {
-    window.open('http://127.0.0.1:8080/employee/addpage')
+    window.open(URL.addpage)
   }
   queryInfor = async (opts) => {
     const { current, pageSize } = this.state
@@ -66,7 +68,7 @@ class Content extends React.Component {
     //   }
     // }
     // console.log('this is content',employee)
-    let result = await post('http://127.0.0.1:8080/employee/base', { where: opts, current: 1, pageSize })
+    let result = await post(URL.search, { where: opts, current: 1, pageSize })
     if (result.code == 0) {
       // 说明用户未登录
       message.error('请先登录');
@@ -81,7 +83,7 @@ class Content extends React.Component {
   onPageChange = async (newPage, pageSize) => {
     // console.log(newPage)
     const { opts } = this.state
-    let result = await post('http://127.0.0.1:8080/employee/base', { where: opts, current: newPage, pageSize })
+    let result = await post(URL.search, { where: opts, current: newPage, pageSize })
     if (result.code == 0) {
       // 说明用户未登录
       message.error('请先登录');
