@@ -35,7 +35,7 @@ class SearchForm extends React.Component {
       wrapperCol: { span: 17 },
     };
     return (
-      <Form className="search-form" onSubmit={this.handleSubmit}>
+      <Form className="search-form" onSubmit={this.handleSubmit} autocomplete="off" >
         <Row gutter={30}>
           <Col span={6} key='name'>
             <FormItem {...formItemLayout} label="姓名">

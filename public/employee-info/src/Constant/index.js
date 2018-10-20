@@ -1,4 +1,4 @@
-const base = 'http://110.179.67.171:8080'
+const base = 'http://127.0.0.1:8080'
 URL = {
   search: base+'/employee/base',
   detail: base+'/employee/detail',

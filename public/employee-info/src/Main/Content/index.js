@@ -16,7 +16,7 @@ class Content extends React.Component {
       opts: null,
       employeeList: null,
       current: 0, // 当前页数
-      pageSize: 2,
+      pageSize: 5,
       total: 0, // 数据总数
       isShowSpin: false // 是否显示等待框
     }
