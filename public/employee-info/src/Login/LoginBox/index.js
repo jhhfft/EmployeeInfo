@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 
-import {withRouter} from "react-router-dom"
+import { withRouter } from "react-router-dom"
 import axios from 'axios';
 import { message } from 'antd';
 
@@ -25,32 +25,63 @@ import { message } from 'antd';
 // export default LoginBox;
 
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
+
+import URL from '../../Constant'
+
 const FormItem = Form.Item;
 
 class NormalLoginForm extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  componentDidMount() {
+    window.localStorage.setItem('rememberPwd', true)
+    const username = window.localStorage.getItem('username')
+    const password = window.localStorage.getItem('password')
+    this.props.form.setFieldsValue({
+      username, password
+    })
+
+  }
+  handleRememberChange = (e) => {
+    if (e.target.checked) {
+      window.localStorage.setItem('rememberPwd', true)
+    } else {
+      window.localStorage.setItem('rememberPwd', false)
+      window.localStorage.removeItem('username')
+      window.localStorage.removeItem('password')
+    }
+  }
   handleSubmit = (e) => {
     e.preventDefault();
     const self = this;
     this.props.form.validateFields((err, values) => {
       if (!err) {
+        if (window.localStorage.getItem('rememberPwd')) {
+          window.localStorage.setItem('username', values.username)
+          window.localStorage.setItem('password', values.password)
+        }else{
+          window.localStorage.removeItem('username', values.username)
+          window.localStorage.removeItem('password', values.password)
+        }
         //console.log('asdfadsfasdfasdf', values);
-        axios.post('http://127.0.0.1:8080/user', values).then(function(response){
-          if(response.data.code === 1){
+        axios.post(URL.user, values).then(function (response) {
+          if (response.data.code === 1) {
             self.props.history.push('/main')
-          }else {
+          } else {
             message.error('用户名或者密码错误');
           }
-        }).catch(function(err){
+        }).catch(function (err) {
           console.log(err)
         })
-        
+
       }
     });
   }
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <Form onSubmit={this.handleSubmit} className="login-form"  autocomplete="off" >
+      <Form onSubmit={this.handleSubmit} className="login-form" autocomplete="off" >
         <FormItem>
           {getFieldDecorator('username', {
             rules: [{ required: true, message: '请输入用户名!' }],
@@ -70,7 +101,7 @@ class NormalLoginForm extends React.Component {
             valuePropName: 'checked',
             initialValue: true,
           })(
-            <Checkbox>记住密码</Checkbox>
+            <Checkbox onChange={this.handleRememberChange}>记住密码</Checkbox>
           )}
           <Button type="primary" htmlType="submit" className="login-form-button">
             登录
