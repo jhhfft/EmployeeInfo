@@ -125,8 +125,8 @@ const postEmployeeFunc = async (req, res, next) => {
   // 接收文件成功后返回数据给前端
   // res.json({ res_code: '0' });
   let { name, sex, nation, hometown, education, birthplace, degree,
-    health, school, politicalStatus, idNum, phone, address, job, department,
-    postLevel, postRatio, postSalary, marriage, startwork, startCPC, startCCYL,
+    health, school, politicalStatus, idNum, phone, address, contract, job, jobLevel, department,
+    postLevelA, postLevelB, postRatio, postSalary, marriage, startwork, startCPC, startCCYL,
     startCDP, techpost, techlevel, police, train, create, socialgroup, religion,
     internation, language, award, punish, negative, revolution, study_exp, work_exp, politics_exp, mate,
     family, social_rela } = req.body
@@ -135,16 +135,12 @@ const postEmployeeFunc = async (req, res, next) => {
   let portrait = 'upload-img/' + portrait_dir
   // console.log(portrait)
 
-  // console.log({
-  //     name, sex, portrait, nation, birthday, hometown, education, birthplace, degree, 
-  //     health, school, politicalStatus, idNum, phone, address, job, department,
-  //     workdate, postLevel, postRatio, postSalary, marriage
-  //   })
+  // console.log(req.body)
   try {
     const BaseResult = await EmployeeBase.create({
       name, sex, portrait, nation, birthday, hometown, education, birthplace, degree,
-      health, school, politicalStatus, idNum, phone, address, job, department,
-      workdate, postLevel, postRatio, postSalary, marriage
+      health, school, politicalStatus, idNum, phone, address, job, jobLevel, department,
+      workdate, contract, postLevelA, postLevelB, postRatio, postSalary, marriage
     })
     EmployeeOther.create({
       id: BaseResult.dataValues.id, startwork, startCPC, startCCYL,
@@ -190,8 +186,8 @@ const getUpdatePageFunc = async (req, res, next) => {
 
 const postUpdateFunc = async (req, res, next) => {
   let { name, sex, nation, hometown, education, birthplace, degree,
-    health, school, politicalStatus, idNum, phone, address, job, department,
-    postLevel, postRatio, postSalary, marriage, startwork, startCPC, startCCYL,
+    health, school, politicalStatus, idNum, phone, address, contract, job, jobLevel, department,
+    postLevelA, postLevelB, postRatio, postSalary, marriage, startwork, startCPC, startCCYL,
     startCDP, techpost, techlevel, police, train, create, socialgroup, religion,
     internation, language, award, punish, negative, revolution, study_exp, work_exp, politics_exp, mate,
     family, social_rela } = req.body
@@ -209,8 +205,8 @@ const postUpdateFunc = async (req, res, next) => {
   try {
     await EmployeeBase.update({
       name, sex, portrait, nation, birthday, hometown, education, birthplace, degree,
-      health, school, politicalStatus, idNum, phone, address, job, department,
-      workdate, postLevel, postRatio, postSalary, marriage
+      health, school, politicalStatus, idNum, phone, address, contract, job, jobLevel, department,
+      workdate, postLevelA, postLevelB, postRatio, postSalary, marriage
     }, { where: { id: req.query.id } })
     await EmployeeOther.update({
       startwork, startCPC, startCCYL,

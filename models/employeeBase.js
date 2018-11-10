@@ -100,9 +100,16 @@ const EmployeeBase = sequelize.define('employeeBase', {
     job: {
         type: Sequelize.STRING
     },
+    // 职级
+    jobLevel: {
+        type: Sequelize.INTEGER
+    },
     // 岗位标准
-    postLevel: {
-        type: Sequelize.STRING,
+    postLevelA: {
+        type: Sequelize.INTEGER,
+    },
+    postLevelB: {
+        type: Sequelize.INTEGER,
     },
     // 部门
     department: {
@@ -115,6 +122,10 @@ const EmployeeBase = sequelize.define('employeeBase', {
     // 参加工作时间
     workdate: {
         type: Sequelize.DATE
+    },
+    // 合同类别
+    contract: {
+        type: Sequelize.INTEGER
     },
     // 岗位工资
     postSalary: {

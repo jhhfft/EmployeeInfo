@@ -213,166 +213,404 @@
                 </div>
               </div>
             </td>
-          
-          <td class="two wide" rowspan="3">薪资情况</td>
-          <td class="two wide">岗位标准</td>
-          <td class="four wide">
-            <div class="ui input transparent">
-              <input type="text" name="postLevel" id="postLevel" value=<%=postLevel %>>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td class="two wide">部门</td>
-          <td class="four wide">
-            <!-- <div class="ui input transparent">
-              <input type="text" name="department" id="department" value=<%=department %>>
-            </div> -->
-            <div>
-              <select style="padding: 0" id="department">
-                <% if (department == '办公室') { %>
-                  <option value="办公室" selected>办公室</option>
-                <% } else { %>
-                  <option value="办公室">办公室</option>
-                <% } %>
-                <% if (department == '财务管理部') { %>
-                  <option value="财务管理部" selected>财务管理部</option>
-                <% } else { %>
-                  <option value="财务管理部">财务管理部</option>
-                <% } %>
-                <% if (department == '党群工作部') { %>
-                  <option value="党群工作部" selected>党群工作部</option>
-                <% } else { %>
-                  <option value="党群工作部">党群工作部</option>
-                <% } %>
-                <% if (department == '人力资源部') { %>
-                  <option value="人力资源部" selected>人力资源部</option>
-                <% } else { %>
-                  <option value="人力资源部">人力资源部</option>
-                <% } %>
-                <% if (department == '运行维护部') { %>
-                  <option value="运行维护部" selected>运行维护部</option>
-                <% } else { %>
-                  <option value="运行维护部">运行维护部</option>
-                <% } %>
-                <% if (department == '网络发展部') { %>
-                  <option value="网络发展部" selected>网络发展部</option>
-                <% } else { %>
-                  <option value="网络发展部">网络发展部</option>
-                <% } %>
-                <% if (department == '客户服务部') { %>
-                  <option value="客户服务部" selected>客户服务部</option>
-                <% } else { %>
-                  <option value="客户服务部">客户服务部</option>
-                <% } %>
-                <% if (department == '市场营销部') { %>
-                  <option value="市场营销部" selected>市场营销部</option>
-                <% } else { %>
-                  <option value="市场营销部">市场营销部</option>
-                <% } %>
-                <% if (department == '业务管理支撑中心') { %>
-                  <option value="业务管理支撑中心" selected>业务管理支撑中心</option>
-                <% } else { %>
-                  <option value="业务管理支撑中心">业务管理支撑中心</option>
-                <% } %>
-                <% if (department == '渠道销售部') { %>
-                  <option value="渠道销售部" selected>渠道销售部</option>
-                <% } else { %>
-                  <option value="渠道销售部">渠道销售部</option>
-                <% } %>
-                <% if (department == '政企客户部') { %>
-                  <option value="政企客户部" selected>政企客户部</option>
-                <% } else { %>
-                  <option value="政企客户部">政企客户部</option>
-                <% } %>
-                <% if (department == '东城分局') { %>
-                  <option value="东城分局" selected>东城分局</option>
-                <% } else { %>
-                  <option value="东城分局">东城分局</option>
-                <% } %>
-                <% if (department == '西城分局') { %>
-                  <option value="西城分局" selected>西城分局</option>
-                <% } else { %>
-                  <option value="西城分局">西城分局</option>
-                <% } %>
-                <% if (department == '商圈分局') { %>
-                  <option value="商圈分局" selected>商圈分局</option>
-                <% } else { %>
-                  <option value="商圈分局">商圈分局</option>
-                <% } %>
-                <% if (department == '高平分公司') { %>
-                  <option value="高平分公司" selected>高平分公司</option>
-                <% } else { %>
-                  <option value="高平分公司">高平分公司</option>
-                <% } %>
-                <% if (department == '陵川分公司') { %>
-                  <option value="陵川分公司" selected>陵川分公司</option>
-                <% } else { %>
-                  <option value="陵川分公司">陵川分公司</option>
-                <% } %>
-                <% if (department == '沁水分公司') { %>
-                  <option value="沁水分公司" selected>沁水分公司</option>
-                <% } else { %>
-                  <option value="沁水分公司">沁水分公司</option>
-                <% } %>
-                <% if (department == '阳城分公司') { %>
-                  <option value="阳城分公司" selected>阳城分公司</option>
-                <% } else { %>
-                  <option value="阳城分公司">阳城分公司</option>
-                <% } %>
-                <% if (department == '泽州分公司') { %>
-                  <option value="泽州分公司" selected>泽州分公司</option>
-                <% } else { %>
-                  <option value="泽州分公司">泽州分公司</option>
-                <% } %>
-              </select>
-            </div>
-          </td>
-          <td class="two wide">岗位系数</td>
-          <td class="four wide">
-            <div class="ui input transparent">
-              <input type="text" name="postRatio" id="postRatio" value=<%=postRatio %>>
-            </div>
-          </td>
-        </tr>
-        <tr>
-            <td class="two wide">职务</td>
+            <!-- 合同类别 -->
+            <td class="two wide  cell-contract">合同类别<i style="color:red; font-size: 16px;">*</i></td>
+            <td class="six wide cell-contract" colspan="2" style="overflow:visible">
+                <div class="inline field">
+                    <span></span>
+                    <% if (contract == 0) { %>
+                      <input type="radio" name="contract" value="0" checked>
+                    <% } else { %>
+                      <input type="radio" name="contract" value="0">
+                    <% } %>
+                    <label style="display:inline-block;margin-right:20px;">劳动合同制</label>
+                    <% if (contract == 1) { %>
+                      <input type="radio" name="contract" value="1" checked>
+                    <% }else { %>
+                      <input type="radio" name="contract" value="1">
+                    <% } %>
+                    <label>业务外包制</label>
+                  </div>
+              </td>
+          </tr>
+          <tr>
+              <td class="two wide">部门</td>
+              <td class="four wide">
+                <!-- <div class="ui input transparent">
+                  <input type="text" name="department" id="department" value=<%=department %>>
+                </div> -->
+                <div>
+                  <select style="padding: 0" id="department">
+                    <% if (department == '办公室') { %>
+                      <option value="办公室" selected>办公室</option>
+                    <% } else { %>
+                      <option value="办公室">办公室</option>
+                    <% } %>
+                    <% if (department == '财务管理部') { %>
+                      <option value="财务管理部" selected>财务管理部</option>
+                    <% } else { %>
+                      <option value="财务管理部">财务管理部</option>
+                    <% } %>
+                    <% if (department == '党群工作部') { %>
+                      <option value="党群工作部" selected>党群工作部</option>
+                    <% } else { %>
+                      <option value="党群工作部">党群工作部</option>
+                    <% } %>
+                    <% if (department == '人力资源部') { %>
+                      <option value="人力资源部" selected>人力资源部</option>
+                    <% } else { %>
+                      <option value="人力资源部">人力资源部</option>
+                    <% } %>
+                    <% if (department == '运行维护部') { %>
+                      <option value="运行维护部" selected>运行维护部</option>
+                    <% } else { %>
+                      <option value="运行维护部">运行维护部</option>
+                    <% } %>
+                    <% if (department == '网络发展部') { %>
+                      <option value="网络发展部" selected>网络发展部</option>
+                    <% } else { %>
+                      <option value="网络发展部">网络发展部</option>
+                    <% } %>
+                    <% if (department == '客户服务部') { %>
+                      <option value="客户服务部" selected>客户服务部</option>
+                    <% } else { %>
+                      <option value="客户服务部">客户服务部</option>
+                    <% } %>
+                    <% if (department == '市场营销部') { %>
+                      <option value="市场营销部" selected>市场营销部</option>
+                    <% } else { %>
+                      <option value="市场营销部">市场营销部</option>
+                    <% } %>
+                    <% if (department == '业务管理支撑中心') { %>
+                      <option value="业务管理支撑中心" selected>业务管理支撑中心</option>
+                    <% } else { %>
+                      <option value="业务管理支撑中心">业务管理支撑中心</option>
+                    <% } %>
+                    <% if (department == '渠道销售部') { %>
+                      <option value="渠道销售部" selected>渠道销售部</option>
+                    <% } else { %>
+                      <option value="渠道销售部">渠道销售部</option>
+                    <% } %>
+                    <% if (department == '政企客户部') { %>
+                      <option value="政企客户部" selected>政企客户部</option>
+                    <% } else { %>
+                      <option value="政企客户部">政企客户部</option>
+                    <% } %>
+                    <% if (department == '东城分局') { %>
+                      <option value="东城分局" selected>东城分局</option>
+                    <% } else { %>
+                      <option value="东城分局">东城分局</option>
+                    <% } %>
+                    <% if (department == '西城分局') { %>
+                      <option value="西城分局" selected>西城分局</option>
+                    <% } else { %>
+                      <option value="西城分局">西城分局</option>
+                    <% } %>
+                    <% if (department == '商圈分局') { %>
+                      <option value="商圈分局" selected>商圈分局</option>
+                    <% } else { %>
+                      <option value="商圈分局">商圈分局</option>
+                    <% } %>
+                    <% if (department == '高平分公司') { %>
+                      <option value="高平分公司" selected>高平分公司</option>
+                    <% } else { %>
+                      <option value="高平分公司">高平分公司</option>
+                    <% } %>
+                    <% if (department == '陵川分公司') { %>
+                      <option value="陵川分公司" selected>陵川分公司</option>
+                    <% } else { %>
+                      <option value="陵川分公司">陵川分公司</option>
+                    <% } %>
+                    <% if (department == '沁水分公司') { %>
+                      <option value="沁水分公司" selected>沁水分公司</option>
+                    <% } else { %>
+                      <option value="沁水分公司">沁水分公司</option>
+                    <% } %>
+                    <% if (department == '阳城分公司') { %>
+                      <option value="阳城分公司" selected>阳城分公司</option>
+                    <% } else { %>
+                      <option value="阳城分公司">阳城分公司</option>
+                    <% } %>
+                    <% if (department == '泽州分公司') { %>
+                      <option value="泽州分公司" selected>泽州分公司</option>
+                    <% } else { %>
+                      <option value="泽州分公司">泽州分公司</option>
+                    <% } %>
+                  </select>
+                </div>
+              </td>
+            <td class="two wide" rowspan="3">薪资情况</td>
+            <td class="two wide">岗位标准</td>
             <td class="four wide">
-              <!-- <div class="ui input transparent">
-                <input type="text" name="job" id="job" value=<%=job %>>
-              </div> -->
-              <div>
-                <select style="padding: 0" id="job">
-                  <% if (job == '员工') { %>
-                    <option value="员工" selected>员工</option>
-                  <% } else { %>
-                    <option value="员工">员工</option>
-                  <% } %>
-                  <% if (job == '助理') { %>
-                    <option value="助理" selected>助理</option>
-                  <% } else { %>
-                    <option value="助理">助理</option>
-                  <% } %>
-                  <% if (job == '中层干部') { %>
-                    <option value="中层干部" selected>中层干部</option>
-                  <% } else { %>
-                    <option value="中层干部">中层干部</option>
-                  <% } %>
-                  <% if (job == '公司领导') { %>
-                    <option value="公司领导" selected>公司领导</option>
-                  <% } else { %>
-                    <option value="公司领导">公司领导</option>
-                  <% } %>
-                </select>
+                <div>
+                    <select style="padding: 0; width: 30% !important; display: inline-block !important" id="postLevelA">
+                      <% if (postLevelA == 1) { %>
+                        <option value="1" selected>1</option>
+                      <% } else { %>
+                        <option value="1">1</option>
+                      <% } %>
+                      <% if (postLevelA == 2) { %>
+                        <option value="2" selected>2</option>
+                      <% } else { %>
+                        <option value="2">2</option>
+                      <% } %>
+                      <% if (postLevelA == 3) { %>
+                        <option value="3" selected>3</option>
+                      <% } else { %>
+                        <option value="3">3</option>
+                      <% } %>
+                      <% if (postLevelA == 4) { %>
+                        <option value="4" selected>4</option>
+                      <% } else { %>
+                        <option value="4">4</option>
+                      <% } %>
+                      <% if (postLevelA == 5) { %>
+                        <option value="5" selected>5</option>
+                      <% } else { %>
+                        <option value="5">5</option>
+                      <% } %>
+                      <% if (postLevelA == 6) { %>
+                        <option value="6" selected>6</option>
+                      <% } else { %>
+                        <option value="6">6</option>
+                      <% } %>
+                      <% if (postLevelA == 7) { %>
+                        <option value="7" selected>7</option>
+                      <% } else { %>
+                        <option value="7">7</option>
+                      <% } %>
+                      <% if (postLevelA == 8) { %>
+                        <option value="8" selected>8</option>
+                      <% } else { %>
+                        <option value="8">8</option>
+                      <% } %>
+                      <% if (postLevelA == 9) { %>
+                        <option value="9" selected>9</option>
+                      <% } else { %>
+                        <option value="9">9</option>
+                      <% } %>
+                      <% if (postLevelA == 1) { %>
+                        <option value="1" selected>1</option>
+                      <% } else { %>
+                        <option value="1">1</option>
+                      <% } %>
+                      <% if (postLevelA == 10) { %>
+                        <option value="10" selected>10</option>
+                      <% } else { %>
+                        <option value="10">10</option>
+                      <% } %>
+                      <% if (postLevelA == 11) { %>
+                        <option value="11" selected>11</option>
+                      <% } else { %>
+                        <option value="11">11</option>
+                      <% } %>
+                      <% if (postLevelA == 12) { %>
+                        <option value="12" selected>12</option>
+                      <% } else { %>
+                        <option value="12">12</option>
+                      <% } %>
+                      <% if (postLevelA == 13) { %>
+                        <option value="13" selected>13</option>
+                      <% } else { %>
+                        <option value="13">13</option>
+                      <% } %>
+                      <% if (postLevelA == 14) { %>
+                        <option value="14" selected>14</option>
+                      <% } else { %>
+                        <option value="14">14</option>
+                      <% } %>
+                      <% if (postLevelA == 15) { %>
+                        <option value="15" selected>15</option>
+                      <% } else { %>
+                        <option value="15">15</option>
+                      <% } %>
+                      <% if (postLevelA == 16) { %>
+                        <option value="16" selected>16</option>
+                      <% } else { %>
+                        <option value="16">16</option>
+                      <% } %>
+                      <% if (postLevelA == 17) { %>
+                        <option value="17" selected>17</option>
+                      <% } else { %>
+                        <option value="17">17</option>
+                      <% } %>
+                      <% if (postLevelA == 18) { %>
+                        <option value="18" selected>18</option>
+                      <% } else { %>
+                        <option value="18">18</option>
+                      <% } %>
+                      <% if (postLevelA == 19) { %>
+                        <option value="19" selected>19</option>
+                      <% } else { %>
+                        <option value="19">19</option>
+                      <% } %>
+                      <% if (postLevelA == 20) { %>
+                        <option value="20" selected>20</option>
+                      <% } else { %>
+                        <option value="20">20</option>
+                      <% } %>
+                      <% if (postLevelA == 21) { %>
+                        <option value="21" selected>21</option>
+                      <% } else { %>
+                        <option value="21">21</option>
+                      <% } %>
+                      <% if (postLevelA == 22) { %>
+                        <option value="22" selected>22</option>
+                      <% } else { %>
+                        <option value="22">22</option>
+                      <% } %>
+                      <% if (postLevelA == 23) { %>
+                        <option value="23" selected>23</option>
+                      <% } else { %>
+                        <option value="23">23</option>
+                      <% } %>
+                      <% if (postLevelA == 24) { %>
+                        <option value="24" selected>24</option>
+                      <% } else { %>
+                        <option value="24">24</option>
+                      <% } %>
+                      <% if (postLevelA == 25) { %>
+                        <option value="25" selected>25</option>
+                      <% } else { %>
+                        <option value="25">25</option>
+                      <% } %>
+                    </select>
+                    <select style="padding: 0; width: 30% !important;  display: inline-block !important" id="postLevelB">
+                        <% if (postLevelB == 1) { %>
+                          <option value="1" selected>A</option>
+                        <% } else { %>
+                          <option value="1">A</option>
+                        <% } %>
+                        <% if (postLevelB == 2) { %>
+                          <option value="2" selected>B</option>
+                        <% } else { %>
+                          <option value="2">B</option>
+                        <% } %>
+                        <% if (postLevelB == 3) { %>
+                          <option value="3" selected>C</option>
+                        <% } else { %>
+                          <option value="3">C</option>
+                        <% } %>
+                        <% if (postLevelB == 4) { %>
+                          <option value="4" selected>D</option>
+                        <% } else { %>
+                          <option value="4">D</option>
+                        <% } %>
+                        <% if (postLevelB == 5) { %>
+                          <option value="5" selected>E</option>
+                        <% } else { %>
+                          <option value="5">E</option>
+                        <% } %>
+                        <% if (postLevelB == 6) { %>
+                          <option value="6" selected>F</option>
+                        <% } else { %>
+                          <option value="6">F</option>
+                        <% } %>
+                        <% if (postLevelB == 7) { %>
+                          <option value="7" selected>G</option>
+                        <% } else { %>
+                          <option value="7">G</option>
+                        <% } %>
+                        <% if (postLevelB == 8) { %>
+                          <option value="8" selected>H</option>
+                        <% } else { %>
+                          <option value="8">H</option>
+                        <% } %>
+                        <% if (postLevelB == 9) { %>
+                          <option value="9" selected>I</option>
+                        <% } else { %>
+                          <option value="9">I</option>
+                        <% } %>
+                        <% if (postLevelB == 10) { %>
+                          <option value="10" selected>J</option>
+                        <% } else { %>
+                          <option value="10">J</option>
+                        <% } %>
+  
+                    </select>
+                  </div>
+            </td>
+          </tr>
+          <tr>
+              <td class="two wide">职务</td>
+              <td class="four wide">
+                <div>
+                  <select style="padding: 0" id="job">
+                    <% if (job == '员工') { %>
+                      <option value="员工" selected>员工</option>
+                    <% } else { %>
+                      <option value="员工">员工</option>
+                    <% } %>
+                    <% if (job == '助理') { %>
+                      <option value="助理" selected>助理</option>
+                    <% } else { %>
+                      <option value="助理">助理</option>
+                    <% } %>
+                    <% if (job == '中层干部') { %>
+                      <option value="中层干部" selected>中层干部</option>
+                    <% } else { %>
+                      <option value="中层干部">中层干部</option>
+                    <% } %>
+                    <% if (job == '公司领导') { %>
+                      <option value="公司领导" selected>公司领导</option>
+                    <% } else { %>
+                      <option value="公司领导">公司领导</option>
+                    <% } %>
+                  </select>
+                </div>
+              </td>
+            <td class="two wide">岗位系数</td>
+            <td class="four wide">
+              <div class="ui input transparent">
+                <input type="text" name="postRatio" id="postRatio" value=<%=postRatio %>>
               </div>
             </td>
-          <td class="two wide">岗位工资</td>
-          <td class="four wide">
-            <div class="ui input transparent">
-              <input type="text" name="postSalary" id="postSalary" value=<%=postSalary %>>
-            </div>
-          </td>
-        </tr>
+          </tr>
+          <tr>
+              <td class="two wide">职级</td>
+              <td class="four wide">
+                <div>
+                  <select style="padding: 0" id="jobLevel">
+                    <% if (jobLevel == 0) { %>
+                      <option value="0" selected>无</option>
+                    <% } else { %>
+                      <option value="0">无</option>
+                    <% } %>
+                    <% if (jobLevel == 1) { %>
+                      <option value="5" selected>五级正</option>
+                    <% } else { %>
+                      <option value="5">五级正</option>
+                    <% } %>
+                    <% if (jobLevel == 2) { %>
+                      <option value="4" selected>四级副</option>
+                    <% } else { %>
+                      <option value="4">四级副</option>
+                    <% } %>
+                    <% if (jobLevel == 3) { %>
+                      <option value="3" selected>四级正</option>
+                    <% } else { %>
+                      <option value="3">四级正</option>
+                    <% } %>
+                    <% if (jobLevel == 3) { %>
+                      <option value="2" selected>三级副</option>
+                    <% } else { %>
+                      <option value="2">三级副</option>
+                    <% } %>
+                    <% if (jobLevel == 4) { %>
+                      <option value="1" selected>三级正</option>
+                    <% } else { %>
+                      <option value="1">三级正</option>
+                    <% } %>
+                  </select>
+                </div>
+              </td>
+            <td class="two wide">岗位工资</td>
+            <td class="four wide">
+              <div class="ui input transparent">
+                <input type="text" name="postSalary" id="postSalary" value=<%=postSalary %>>
+              </div>
+            </td>
+          </tr>
       </tbody>
     </table>
     <table class="ui table  selectable celled structured fixed unstackable" style="margin: 0px; border-top: 0px;">
