@@ -39,12 +39,14 @@ const columns = [{
   dataIndex: 'education',
   key: 'education',
 
-}, {
-  title: '专业',
-  dataIndex: 'major',
-  key: 'major',
+}, 
+// {
+//   title: '专业',
+//   dataIndex: 'major',
+//   key: 'major',
 
-}, {
+// }, 
+{
   title: '政治面貌',
   dataIndex: 'politicalStatus',
   key: 'politicalStatus',
@@ -230,11 +232,11 @@ class ResultTable extends React.Component {
             dataIndex="education"
             key="education"
           />
-          <Column
+          {/* <Column
             title="专业"
             dataIndex="major"
             key="major"
-          />
+          /> */}
           <Column
             title="政治面貌"
             dataIndex="politicalStatus"
