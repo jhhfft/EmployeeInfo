@@ -146,7 +146,6 @@
           </td>
         </tr>
         <tr>
-          <!--  -->
           <td class="two wide  cell-workdate">参加工作时间<i style="color:red; font-size: 16px;">*</i></td>
           <td class="four wide  cell-workdate" style="overflow:visible">
             <div class="ui calendar date-picker">
@@ -156,44 +155,106 @@
               </div>
             </div>
           </td>
+          <td class="two wide  cell-contract">合同类别<i style="color:red; font-size: 16px;">*</i></td>
+          <td class="six wide cell-contract" colspan="2" style="overflow:visible">
+              <div class="inline field">
+                <span></span>
+                <input type="radio" name="contract" value="劳动合同制" checked>
+                <label style="display:inline-block;margin-right:20px;">劳动合同制</label>
+                <input type="radio" name="contract" value="业务外包制">
+                <label>业务外包制</label>
+              </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="two wide">部门</td>
+            <td class="four wide">
+              <div>
+                <select style="padding: 0" id="department">
+                  <option value="办公室">办公室</option>
+                  <option value="财务管理部">财务管理部</option>
+                  <option value="党群工作部">党群工作部</option>
+                  <option value="人力资源部">人力资源部</option>
+                  <option value="运行维护部">运行维护部</option>
+                  <option value="网络发展部">网络发展部</option>
+                  <option value="客户服务部">客户服务部</option>
+                  <option value="市场营销部">市场营销部</option>
+                  <option value="业务管理支撑中心">业务管理支撑中心</option>
+                  <option value="渠道销售部">渠道销售部</option>
+                  <option value="政企客户部">政企客户部</option>
+                  <option value="东城分局">东城分局</option>
+                  <option value="西城分局">西城分局</option>
+                  <option value="商圈分局">商圈分局</option>
+                  <option value="高平分公司">高平分公司</option>
+                  <option value="陵川分公司">陵川分公司</option>
+                  <option value="沁水分公司">沁水分公司</option>
+                  <option value="阳城分公司">阳城分公司</option>
+                  <option value="泽州分公司">泽州分公司</option>
+                </select>
+              </div>
+            </td>
           <td class="two wide" rowspan="3">薪资情况</td>
           <td class="two wide">岗位标准</td>
           <td class="four wide">
-            <div class="ui input transparent">
+            <!-- <div class="ui input transparent">
               <input type="text" name="postLevel" id="postLevel">
-            </div>
+            </div> -->
+            <div>
+                <select style="padding: 0; width: 30% !important; display: inline-block !important" id="postLevelA">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="20">21</option>
+                  <option value="20">22</option>
+                  <option value="20">23</option>
+                  <option value="20">24</option>
+                  <option value="20">25</option>
+                  <option value="20">26</option>
+                </select>
+                <select style="padding: 0; width: 30% !important;  display: inline-block !important" id="postLevelB">
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                  <option value="D">D</option>
+                  <option value="E">E</option>
+                  <option value="F">F</option>
+                  <option value="G">G</option>
+                  <option value="H">H</option>
+                  <option value="I">I</option>
+                  <option value="J">J</option>
+                </select>
+              </div>
           </td>
         </tr>
         <tr>
-          <td class="two wide">部门</td>
-          <td class="four wide">
-            <!-- <div class="ui input transparent">
-              <input type="text" name="department" id="department">
-            </div> -->
-            <div>
-              <select style="padding: 0" id="department">
-                <option value="办公室">办公室</option>
-                <option value="财务管理部">财务管理部</option>
-                <option value="党群工作部">党群工作部</option>
-                <option value="人力资源部">人力资源部</option>
-                <option value="运行维护部">运行维护部</option>
-                <option value="网络发展部">网络发展部</option>
-                <option value="客户服务部">客户服务部</option>
-                <option value="市场营销部">市场营销部</option>
-                <option value="业务管理支撑中心">业务管理支撑中心</option>
-                <option value="渠道销售部">渠道销售部</option>
-                <option value="政企客户部">政企客户部</option>
-                <option value="东城分局">东城分局</option>
-                <option value="西城分局">西城分局</option>
-                <option value="商圈分局">商圈分局</option>
-                <option value="高平分公司">高平分公司</option>
-                <option value="陵川分公司">陵川分公司</option>
-                <option value="沁水分公司">沁水分公司</option>
-                <option value="阳城分公司">阳城分公司</option>
-                <option value="泽州分公司">泽州分公司</option>
-              </select>
-            </div>
-          </td>
+            <td class="two wide">职务</td>
+            <td class="four wide">
+              <div>
+                <select style="padding: 0" id="job">
+                  <option value="员工">员工</option>
+                  <option value="助理">助理</option>
+                  <option value="中层干部">中层干部</option>
+                  <option value="公司领导">公司领导</option>
+                </select>
+              </div>
+            </td>
           <td class="two wide">岗位系数</td>
           <td class="four wide">
             <div class="ui input transparent">
@@ -202,14 +263,16 @@
           </td>
         </tr>
         <tr>
-          <td class="two wide">职务</td>
+          <td class="two wide">职级</td>
           <td class="four wide">
             <div>
-              <select style="padding: 0" id="job">
-                <option value="员工">员工</option>
-                <option value="助理">助理</option>
-                <option value="中层干部">中层干部</option>
-                <option value="公司领导">公司领导</option>
+              <select style="padding: 0" id="jobLevel">
+                <option value="无">无</option>
+                <option value="5">五级正</option>
+                <option value="4.5">四级副</option>
+                <option value="4">四级正</option>
+                <option value="3.5">三级副</option>
+                <option value="3">三级正</option>
               </select>
             </div>
           </td>

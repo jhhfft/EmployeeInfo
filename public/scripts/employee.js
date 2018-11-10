@@ -408,10 +408,16 @@ $('#btn-save').click(function (e) {
   formData.append('idNum', $('input[name=idNum]').val())
   formData.append('phone', $('input[name=phone]').val())
   formData.append('address', $('input[name=address]').val())
+  
+  formData.append('workdate', $('input[name=workdate]').val())
+  formData.append('contract', $('input[name=contract]:checked').val())
+
   formData.append('job', $('select#job').val())
   formData.append('department', $('select#department').val())
-  formData.append('workdate', $('input[name=workdate]').val())
-  formData.append('postLevel', $('input[name=postLevel]').val())
+  formData.append('jobLevel', $('select#jobLevel').val())
+
+  formData.append('postLevelA', $('select#postLevelA').val())
+  formData.append('postLevelB', $('select#postLevelB').val())
   formData.append('postSalary', $('input[name=postSalary]').val())
   formData.append('postRatio', $('input[name=postRatio]').val())
   // 经历与资格 17个
