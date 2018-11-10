@@ -204,12 +204,16 @@
           </td>
         </tr>
         <tr>
-          <td class="two wide">职务</td>
-          <td class="four wide">
-            <div class="ui input transparent">
-              <input type="text" name="job" id="job" value=<%=job %>>
-            </div>
-          </td>
+            <td class="two wide  cell-workdate">参加工作时间<i style="color:red; font-size: 16px;">*</i></td>
+            <td class="four wide  cell-workdate" style="overflow:visible">
+              <div class="ui calendar date-picker">
+                <div class="ui input left icon  input transparent">
+                  <i class="calendar icon"></i>
+                  <input type="text" name="workdate" value=<%=workdate %>>
+                </div>
+              </div>
+            </td>
+          
           <td class="two wide" rowspan="3">薪资情况</td>
           <td class="two wide">岗位标准</td>
           <td class="four wide">
@@ -221,8 +225,107 @@
         <tr>
           <td class="two wide">部门</td>
           <td class="four wide">
-            <div class="ui input transparent">
+            <!-- <div class="ui input transparent">
               <input type="text" name="department" id="department" value=<%=department %>>
+            </div> -->
+            <div>
+              <select style="padding: 0" id="department">
+                <% if (department == '办公室') { %>
+                  <option value="办公室" selected>办公室</option>
+                <% } else { %>
+                  <option value="办公室">办公室</option>
+                <% } %>
+                <% if (department == '财务管理部') { %>
+                  <option value="财务管理部" selected>财务管理部</option>
+                <% } else { %>
+                  <option value="财务管理部">财务管理部</option>
+                <% } %>
+                <% if (department == '党群工作部') { %>
+                  <option value="党群工作部" selected>党群工作部</option>
+                <% } else { %>
+                  <option value="党群工作部">党群工作部</option>
+                <% } %>
+                <% if (department == '人力资源部') { %>
+                  <option value="人力资源部" selected>人力资源部</option>
+                <% } else { %>
+                  <option value="人力资源部">人力资源部</option>
+                <% } %>
+                <% if (department == '运行维护部') { %>
+                  <option value="运行维护部" selected>运行维护部</option>
+                <% } else { %>
+                  <option value="运行维护部">运行维护部</option>
+                <% } %>
+                <% if (department == '网络发展部') { %>
+                  <option value="网络发展部" selected>网络发展部</option>
+                <% } else { %>
+                  <option value="网络发展部">网络发展部</option>
+                <% } %>
+                <% if (department == '客户服务部') { %>
+                  <option value="客户服务部" selected>客户服务部</option>
+                <% } else { %>
+                  <option value="客户服务部">客户服务部</option>
+                <% } %>
+                <% if (department == '市场营销部') { %>
+                  <option value="市场营销部" selected>市场营销部</option>
+                <% } else { %>
+                  <option value="市场营销部">市场营销部</option>
+                <% } %>
+                <% if (department == '业务管理支撑中心') { %>
+                  <option value="业务管理支撑中心" selected>业务管理支撑中心</option>
+                <% } else { %>
+                  <option value="业务管理支撑中心">业务管理支撑中心</option>
+                <% } %>
+                <% if (department == '渠道销售部') { %>
+                  <option value="渠道销售部" selected>渠道销售部</option>
+                <% } else { %>
+                  <option value="渠道销售部">渠道销售部</option>
+                <% } %>
+                <% if (department == '政企客户部') { %>
+                  <option value="政企客户部" selected>政企客户部</option>
+                <% } else { %>
+                  <option value="政企客户部">政企客户部</option>
+                <% } %>
+                <% if (department == '东城分局') { %>
+                  <option value="东城分局" selected>东城分局</option>
+                <% } else { %>
+                  <option value="东城分局">东城分局</option>
+                <% } %>
+                <% if (department == '西城分局') { %>
+                  <option value="西城分局" selected>西城分局</option>
+                <% } else { %>
+                  <option value="西城分局">西城分局</option>
+                <% } %>
+                <% if (department == '商圈分局') { %>
+                  <option value="商圈分局" selected>商圈分局</option>
+                <% } else { %>
+                  <option value="商圈分局">商圈分局</option>
+                <% } %>
+                <% if (department == '高平分公司') { %>
+                  <option value="高平分公司" selected>高平分公司</option>
+                <% } else { %>
+                  <option value="高平分公司">高平分公司</option>
+                <% } %>
+                <% if (department == '陵川分公司') { %>
+                  <option value="陵川分公司" selected>陵川分公司</option>
+                <% } else { %>
+                  <option value="陵川分公司">陵川分公司</option>
+                <% } %>
+                <% if (department == '沁水分公司') { %>
+                  <option value="沁水分公司" selected>沁水分公司</option>
+                <% } else { %>
+                  <option value="沁水分公司">沁水分公司</option>
+                <% } %>
+                <% if (department == '阳城分公司') { %>
+                  <option value="阳城分公司" selected>阳城分公司</option>
+                <% } else { %>
+                  <option value="阳城分公司">阳城分公司</option>
+                <% } %>
+                <% if (department == '泽州分公司') { %>
+                  <option value="泽州分公司" selected>泽州分公司</option>
+                <% } else { %>
+                  <option value="泽州分公司">泽州分公司</option>
+                <% } %>
+              </select>
             </div>
           </td>
           <td class="two wide">岗位系数</td>
@@ -233,15 +336,33 @@
           </td>
         </tr>
         <tr>
-          <td class="two wide  cell-workdate">参加工作时间<i style="color:red; font-size: 16px;">*</i></td>
-          <td class="four wide  cell-workdate" style="overflow:visible">
-            <div class="ui calendar date-picker">
-              <div class="ui input left icon  input transparent">
-                <i class="calendar icon"></i>
-                <input type="text" name="workdate" value=<%=workdate %>>
+            <td class="two wide">职务</td>
+            <td class="four wide">
+              <div>
+                <select style="padding: 0" id="job">
+                  <% if (job == '员工') { %>
+                    <option value="员工" selected>员工</option>
+                  <% } else { %>
+                    <option value="员工">员工</option>
+                  <% } %>
+                  <% if (job == '助理') { %>
+                    <option value="助理" selected>助理</option>
+                  <% } else { %>
+                    <option value="助理">助理</option>
+                  <% } %>
+                  <% if (job == '中层干部') { %>
+                    <option value="中层干部" selected>中层干部</option>
+                  <% } else { %>
+                    <option value="中层干部">中层干部</option>
+                  <% } %>
+                  <% if (job == '公司领导') { %>
+                    <option value="公司领导" selected>公司领导</option>
+                  <% } else { %>
+                    <option value="公司领导">公司领导</option>
+                  <% } %>
+                </select>
               </div>
-            </div>
-          </td>
+            </td>
           <td class="two wide">岗位工资</td>
           <td class="four wide">
             <div class="ui input transparent">

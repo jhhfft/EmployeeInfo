@@ -146,10 +146,14 @@
           </td>
         </tr>
         <tr>
-          <td class="two wide">职务</td>
-          <td class="four wide">
-            <div class="ui input transparent">
-              <input type="text" name="job" id="job">
+          <!--  -->
+          <td class="two wide  cell-workdate">参加工作时间<i style="color:red; font-size: 16px;">*</i></td>
+          <td class="four wide  cell-workdate" style="overflow:visible">
+            <div class="ui calendar date-picker">
+              <div class="ui input left icon  input transparent">
+                <i class="calendar icon"></i>
+                <input type="text" name="workdate">
+              </div>
             </div>
           </td>
           <td class="two wide" rowspan="3">薪资情况</td>
@@ -163,8 +167,31 @@
         <tr>
           <td class="two wide">部门</td>
           <td class="four wide">
-            <div class="ui input transparent">
+            <!-- <div class="ui input transparent">
               <input type="text" name="department" id="department">
+            </div> -->
+            <div>
+              <select style="padding: 0" id="department">
+                <option value="办公室">办公室</option>
+                <option value="财务管理部">财务管理部</option>
+                <option value="党群工作部">党群工作部</option>
+                <option value="人力资源部">人力资源部</option>
+                <option value="运行维护部">运行维护部</option>
+                <option value="网络发展部">网络发展部</option>
+                <option value="客户服务部">客户服务部</option>
+                <option value="市场营销部">市场营销部</option>
+                <option value="业务管理支撑中心">业务管理支撑中心</option>
+                <option value="渠道销售部">渠道销售部</option>
+                <option value="政企客户部">政企客户部</option>
+                <option value="东城分局">东城分局</option>
+                <option value="西城分局">西城分局</option>
+                <option value="商圈分局">商圈分局</option>
+                <option value="高平分公司">高平分公司</option>
+                <option value="陵川分公司">陵川分公司</option>
+                <option value="沁水分公司">沁水分公司</option>
+                <option value="阳城分公司">阳城分公司</option>
+                <option value="泽州分公司">泽州分公司</option>
+              </select>
             </div>
           </td>
           <td class="two wide">岗位系数</td>
@@ -175,13 +202,15 @@
           </td>
         </tr>
         <tr>
-          <td class="two wide  cell-workdate">参加工作时间<i style="color:red; font-size: 16px;">*</i></td>
-          <td class="four wide  cell-workdate" style="overflow:visible">
-            <div class="ui calendar date-picker">
-              <div class="ui input left icon  input transparent">
-                <i class="calendar icon"></i>
-                <input type="text" name="workdate">
-              </div>
+          <td class="two wide">职务</td>
+          <td class="four wide">
+            <div>
+              <select style="padding: 0" id="job">
+                <option value="员工">员工</option>
+                <option value="助理">助理</option>
+                <option value="中层干部">中层干部</option>
+                <option value="公司领导">公司领导</option>
+              </select>
             </div>
           </td>
           <td class="two wide">岗位工资</td>

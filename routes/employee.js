@@ -63,7 +63,8 @@ const basePostFunc = async (req, res, next) => {
   } else {
     // console.log("rrrrrrrrrrrrrrrrrrrr", req.body)
     const opts = {}
-    opts.where = req.body.where;
+    // opts.where = req.body.where;
+    opts.where = {...req.body.where}
     const current = req.body.current
     const pageSize = req.body.pageSize
     opts.offset = (current - 1) * pageSize
