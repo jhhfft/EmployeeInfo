@@ -69,6 +69,10 @@ const basePostFunc = async (req, res, next) => {
     opts.where = { ...req.body.where }
     delete opts.where['birthday']
     delete opts.where['workdate']
+    delete opts.where['postLevelA01']
+    delete opts.where['postLevelB01']
+    delete opts.where['postLevelA02']
+    delete opts.where['postLevelB02']
     if (req.body.where.birthday) {
       let startBirthday = new Date(req.body.where.birthday[0])
       let endBirthday = new Date(req.body.where.birthday[1])
@@ -88,6 +92,30 @@ const basePostFunc = async (req, res, next) => {
         [Sequelize.Op.gte]: startWorkDate,
         [Sequelize.Op.lte]: endWorkDate
       }
+    }
+    let leftLevelA = 1
+    let rightLevelA = 26
+    let leftLevelB = 1
+    let rightLevelB = 10
+    if(req.body.where.postLevelA01){
+      leftLevelA = parseInt(req.body.where.postLevelA01)
+    }
+    if(req.body.where.postLevelB01){
+      letLevelB = parseInt(req.body.where.postLevelB01)
+    }
+    if(req.body.where.postLevelA02){
+      rightLevelA = parseInt(req.body.where.postLevelA02)
+    }
+    if(req.body.where.postLevelB02){
+      rightLevelB = parseInt(req.body.where.postLevelB02)
+    }
+    opts.where.postLevelA = {
+      [Sequelize.Op.gte]: leftLevelA,
+      [Sequelize.Op.lte]: rightLevelA
+    }
+    opts.where.postLevelB = {
+      [Sequelize.Op.gte]: leftLevelB,
+      [Sequelize.Op.lte]: rightLevelB
     }
     const current = req.body.current
     const pageSize = req.body.pageSize
