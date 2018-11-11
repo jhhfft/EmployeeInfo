@@ -7,6 +7,8 @@ var multer = require('multer')
 const EmployeeBase = require('../models/employeeBase');
 const EmployeeOther = require('../models/employeeOther');
 
+const Sequelize = require('sequelize')
+
 let portrait_dir = ''
 // // 使用硬盘存储模式设置存放接收到的文件的路径以及文件名
 var storage = multer.diskStorage({
@@ -64,7 +66,29 @@ const basePostFunc = async (req, res, next) => {
     // console.log("rrrrrrrrrrrrrrrrrrrr", req.body)
     const opts = {}
     // opts.where = req.body.where;
-    opts.where = {...req.body.where}
+    opts.where = { ...req.body.where }
+    delete opts.where['birthday']
+    delete opts.where['workdate']
+    if (req.body.where.birthday) {
+      let startBirthday = new Date(req.body.where.birthday[0])
+      let endBirthday = new Date(req.body.where.birthday[1])
+      startBirthday.setHours(0, 0, 0, 0)
+      endBirthday.setHours(23, 59, 59, 999)
+      opts.where.birthday = {
+        [Sequelize.Op.gte]: startBirthday,
+        [Sequelize.Op.lte]: endBirthday
+      }
+    }
+    if (req.body.where.workdate) {
+      let startWorkDate = new Date(req.body.where.workdate[0])
+      let endWorkDate = new Date(req.body.where.workdate[1])
+      startWorkDate.setHours(0, 0, 0, 0)
+      endWorkDate.setHours(23, 59, 59, 999)
+      opts.where.workdate = {
+        [Sequelize.Op.gte]: startWorkDate,
+        [Sequelize.Op.lte]: endWorkDate
+      }
+    }
     const current = req.body.current
     const pageSize = req.body.pageSize
     opts.offset = (current - 1) * pageSize
