@@ -40,7 +40,12 @@
               <label>女</label>
             </div>
           </td>
-          <td class="two wide cell-protrait" rowspan="5" id="portrait">
+          <% if (contract == 0) { %>
+            <td class="two wide cell-protrait" rowspan="5" id="portrait" style="background: lightgoldenrodyellow">
+          <% } else { %>
+            <td class="two wide cell-protrait" rowspan="5" id="portrait">
+          <% } %>
+          
             <input type="file" name="headportrait" id="headportrait" name="portrait" />
             <label for="headportrait">上传图片</label>
             <p></p>
@@ -914,7 +919,7 @@
       </thead>
       <tbody>
         <tr>
-          <td colspan="3" class="cell-marriage">本人婚姻状况</td>
+          <td colspan="3" class="cell-marriage">本人婚姻状况<i style="color:red; font-size: 16px;">*</i></td>
           <td colspan="5" class="cell-marriage">
             <div class="ui input transparent">
               <input type="text" id="marriage" name="marriage" value= <%= marriage%>>

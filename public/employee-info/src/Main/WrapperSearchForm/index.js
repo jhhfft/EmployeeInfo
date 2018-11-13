@@ -222,12 +222,12 @@ class SearchForm extends React.Component {
                   <Option value="18">18</Option>
                   <Option value="19">19</Option>
                   <Option value="20">20</Option>
-                  <Option value="20">21</Option>
-                  <Option value="20">22</Option>
-                  <Option value="20">23</Option>
-                  <Option value="20">24</Option>
-                  <Option value="20">25</Option>
-                  <Option value="20">26</Option>
+                  <Option value="21">21</Option>
+                  <Option value="22">22</Option>
+                  <Option value="23">23</Option>
+                  <Option value="24">24</Option>
+                  <Option value="25">25</Option>
+                  <Option value="26">26</Option>
                 </Select>
               )}
               {getFieldDecorator('postLevelB02', { initialValue: undefined })(

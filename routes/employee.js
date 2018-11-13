@@ -101,7 +101,7 @@ const basePostFunc = async (req, res, next) => {
       leftLevelA = parseInt(req.body.where.postLevelA01)
     }
     if(req.body.where.postLevelB01){
-      letLevelB = parseInt(req.body.where.postLevelB01)
+      leftLevelB = parseInt(req.body.where.postLevelB01)
     }
     if(req.body.where.postLevelA02){
       rightLevelA = parseInt(req.body.where.postLevelA02)
@@ -117,6 +117,9 @@ const basePostFunc = async (req, res, next) => {
       [Sequelize.Op.gte]: leftLevelB,
       [Sequelize.Op.lte]: rightLevelB
     }
+    console.log('adsfasdfsadfasdf')
+    console.log(leftLevelA)
+    console.log(leftLevelB)
     const current = req.body.current
     const pageSize = req.body.pageSize
     opts.offset = (current - 1) * pageSize
