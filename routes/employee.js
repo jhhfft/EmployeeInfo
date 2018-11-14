@@ -55,25 +55,26 @@ const getBaseInfo = (queryResult) => {
 
 const basePostFunc = async (req, res, next) => {
   // const {name, sex, birthday, hometown, education, major, idNum, phone, politicalStatus, department, job} = req.body;
-  if (req.session.user) {
+  if (!req.session.user) {
     // 未登录
     res.send({
       code: 0,
       state: 'fail'
     })
     return
-  } else {
-    // console.log("rrrrrrrrrrrrrrrrrrrr", req.body)
+  }
+  else {
     const opts = {}
     // opts.where = req.body.where;
     opts.where = { ...req.body.where }
+    opts.where.state = 1 // 1 代表在职
     delete opts.where['birthday']
     delete opts.where['workdate']
     delete opts.where['postLevelA01']
     delete opts.where['postLevelB01']
     delete opts.where['postLevelA02']
     delete opts.where['postLevelB02']
-    if (req.body.where.birthday) {
+    if (req.body.where.birthday && req.body.where.birthday[0]) {
       let startBirthday = new Date(req.body.where.birthday[0])
       let endBirthday = new Date(req.body.where.birthday[1])
       startBirthday.setHours(0, 0, 0, 0)
@@ -83,7 +84,7 @@ const basePostFunc = async (req, res, next) => {
         [Sequelize.Op.lte]: endBirthday
       }
     }
-    if (req.body.where.workdate) {
+    if (req.body.where.workdate && req.body.where.workdate[0]) {
       let startWorkDate = new Date(req.body.where.workdate[0])
       let endWorkDate = new Date(req.body.where.workdate[1])
       startWorkDate.setHours(0, 0, 0, 0)
@@ -97,16 +98,16 @@ const basePostFunc = async (req, res, next) => {
     let rightLevelA = 26
     let leftLevelB = 1
     let rightLevelB = 10
-    if(req.body.where.postLevelA01){
+    if (req.body.where.postLevelA01) {
       leftLevelA = parseInt(req.body.where.postLevelA01)
     }
-    if(req.body.where.postLevelB01){
+    if (req.body.where.postLevelB01) {
       leftLevelB = parseInt(req.body.where.postLevelB01)
     }
-    if(req.body.where.postLevelA02){
+    if (req.body.where.postLevelA02) {
       rightLevelA = parseInt(req.body.where.postLevelA02)
     }
-    if(req.body.where.postLevelB02){
+    if (req.body.where.postLevelB02) {
       rightLevelB = parseInt(req.body.where.postLevelB02)
     }
     opts.where.postLevelA = {
@@ -117,9 +118,6 @@ const basePostFunc = async (req, res, next) => {
       [Sequelize.Op.gte]: leftLevelB,
       [Sequelize.Op.lte]: rightLevelB
     }
-    console.log('adsfasdfsadfasdf')
-    console.log(leftLevelA)
-    console.log(leftLevelB)
     const current = req.body.current
     const pageSize = req.body.pageSize
     opts.offset = (current - 1) * pageSize
@@ -140,7 +138,7 @@ const basePostFunc = async (req, res, next) => {
 
 const getDetailFunc = async (req, res, next) => {
   // console.log(req.query.id)
-  if (req.session.user) {
+  if (!req.session.user) {
     // 未登录
     res.send({
       code: 0,
@@ -189,13 +187,13 @@ const postEmployeeFunc = async (req, res, next) => {
   let workdate = new Date(req.body.workdate)
   let portrait = 'upload-img/' + portrait_dir
   // console.log(portrait)
-
+  let state = 1 // 1代表在职
   // console.log(req.body)
   try {
     const BaseResult = await EmployeeBase.create({
       name, sex, portrait, nation, birthday, hometown, education, birthplace, degree,
       health, school, politicalStatus, idNum, phone, address, job, jobLevel, department,
-      workdate, contract, postLevelA, postLevelB, postRatio, postSalary, marriage
+      workdate, contract, postLevelA, postLevelB, postRatio, postSalary, marriage, state
     })
     EmployeeOther.create({
       id: BaseResult.dataValues.id, startwork, startCPC, startCCYL,
@@ -216,9 +214,32 @@ const postEmployeeFunc = async (req, res, next) => {
 
 }
 
+const postUpdatePageFunc = async (req, res, next) => {
+  if (!req.session.user) {
+    // 未登录
+    res.send({
+      code: 0,
+      state: 'fail'
+    })
+    return
+  }else if (req.session.user.level != 1){
+    res.send({
+      code: 3,
+      state: 'level error'
+    })
+    return
+  }else {
+    res.send({
+      code: 1,
+      state: 'success'
+    })
+  }
+
+}
+
 const getUpdatePageFunc = async (req, res, next) => {
   // console.log(req.query.id)
-  if (req.session.user) {
+  if (!req.session.user) {
     // 未登录
     res.send({
       code: 0,
@@ -282,7 +303,7 @@ const postUpdateFunc = async (req, res, next) => {
 }
 
 const deleteEmployeeFunc = async (req, res, next) => {
-  if (req.session.user) {
+  if (!req.session.user) {
     // 未登录
     res.send({
       code: 0,
@@ -290,10 +311,20 @@ const deleteEmployeeFunc = async (req, res, next) => {
     })
     return
   }
+  if (req.session.user.level != 1){
+    res.send({
+      code: 3,
+      state: 'level error'
+    })
+    return
+  }
   const { id, current, pageSize, where } = req.body
   try {
-    await EmployeeBase.destroy({ where: { id } })
-    await EmployeeOther.destroy({ where: { id } })
+    await EmployeeBase.update({
+      state: 0 // 0代表离职
+    }, { where: { id } })
+    // await EmployeeBase.destroy({ where: { id } })
+    // await EmployeeOther.destroy({ where: { id } })
   } catch (err) {
     res.send({
       code: 2,
@@ -305,6 +336,7 @@ const deleteEmployeeFunc = async (req, res, next) => {
   try {
     const opts = {}
     opts.where = where
+    opts.where.state = 1
     opts.offset = (current - 1) * pageSize
     opts.limit = pageSize
     const queryResult = await EmployeeBase.findAndCountAll(opts)
@@ -329,6 +361,7 @@ router.post('/base', basePostFunc);
 router.get('/detail', getDetailFunc);
 router.get('/addpage', addEmployeeFunc);
 router.post('/save', upload.single('portrait'), postEmployeeFunc);
+router.post('/updatepage', postUpdatePageFunc);
 router.get('/updatepage', getUpdatePageFunc);
 router.post('/update', upload.single('portrait'), postUpdateFunc);
 router.post('/delete', deleteEmployeeFunc);

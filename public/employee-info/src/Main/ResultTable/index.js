@@ -192,6 +192,10 @@ class ResultTable extends React.Component {
       },
     });
   }
+  handleUpdate = (e, id)=> {
+    e.preventDefault()
+    this.props.updateInfo(id)
+  }
   handleAdd = () => {
     this.props.addEmployee()
   }
@@ -262,7 +266,8 @@ class ResultTable extends React.Component {
             key="action"
             render={(text, record) => (
               <span>
-                <a href={URL.updatepage + '?id=' + record.id} target='_blank'>修改</a>
+                {/* <a href={URL.updatepage + '?id=' + record.id} target='_blank'>修改</a> */}
+                <a onClick={(e) => self.handleUpdate(e, record.id)}>修改</a>
                 <span className="ant-divider" />
                 <a onClick={(e) => self.handleDelete(e, record.id)}>删除</a>
               </span>

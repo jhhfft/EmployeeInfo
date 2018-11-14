@@ -34,16 +34,17 @@ const User = sequelize.define('user', {
         freezeTableName: true // Model 对应的表名将与model名相同
     })
 
-User.sync()
-// User.sync({ force: true }).then(function () {
-//     // 已创建数据表
-//     User.create({
-//         username: 'yanxinxin',
-//         password: '358941877'
-//     });
-// }).catch(error => {
+// User.sync()
+User.sync({ force: true }).then(function () {
+    // 已创建数据表
+    User.create({
+        username: 'admin01',
+        password: '660001',
+        level: 1
+    });
+}).catch(error => {
 
-// })
+})
 
 
 
@@ -51,24 +52,17 @@ module.exports = User
 
 // const opts = {
 //     where: {
-//         username: "yanxinxin",
-//         password: "358941877"
+//         username: "admin01",
+//         password: "660001"
 //     }
 // }
 // User.findAll(opts).then(user=>{
 //     console.log('------')
 //     console.log('用户存在')
-//     console.log(user[0])
+//     console.log(user.length)
 //     console.log('------')
 // }).catch(error=>{
 //     console.log('用户不存在')
 // })
 
 
-// // 测试 
-// user = User.findOne()
-// user.get('username').then(result => {
-//     console.log('-------')
-//     console.log(result)
-//     console.log('-------')
-// }).catch(() => { console.log('error') })

@@ -134,6 +134,10 @@ const EmployeeBase = sequelize.define('employeeBase', {
     // 婚姻状况
     marriage: {
         type: Sequelize.STRING,
+    },
+    // 是否离职
+    state: { 
+        type: Sequelize.INTEGER
     }
 },
     {

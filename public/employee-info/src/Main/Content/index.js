@@ -33,6 +33,23 @@ class Content extends React.Component {
       // delete item.id
     })
   }
+  updateInfo = async (id) => {
+    try {
+      let result = await post(URL.updatepage)
+      if (result.code == 0) {
+        // 说明用户未登录
+        message.error('请先登录');
+        this.props.history.push('/login');
+      } else if(result.code == 3){
+        message.error('您无此操作权限');
+      }else {
+        window.open(URL.updatepage + '?id=' + id)
+      }
+    } catch (e) {
+      this.setState({ isShowSpin: false })
+      message.error('网络故障，请稍后再试')
+    }
+  }
   deleteInfo = async (id) => {
     const { opts, current, pageSize } = this.state
     this.setState({ isShowSpin: true })
@@ -45,7 +62,9 @@ class Content extends React.Component {
         this.props.history.push('/login');
       } else if (result.code == 2) {
         message.error('删除失败，请稍后再试');
-      } else {
+      } else if(result.code == 3){
+        message.error('您无此操作权限');
+      }else {
         let employeeList = result.employee
         let total = result.total
         this.formatData(employeeList)
@@ -101,7 +120,7 @@ class Content extends React.Component {
     return (
       <div className="content">
         <WrapperSearchForm queryInfor={this.queryInfor} />
-        <ResultTable data={employeeList} pagination={{ current, total, pageSize, onChange: this.onPageChange }} deleteInfo={this.deleteInfo} addEmployee={this.addEmployee} isShow={isShowSpin} />
+        <ResultTable data={employeeList} pagination={{ current, total, pageSize, onChange: this.onPageChange }} updateInfo={this.updateInfo} deleteInfo={this.deleteInfo} addEmployee={this.addEmployee} isShow={isShowSpin} />
       </div>
     )
   }
