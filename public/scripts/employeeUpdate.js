@@ -185,18 +185,18 @@ $(document).keyup(function (event) {
 });
 // 表单验证
 
-let name_flag = false,
-  nation_flag = false,
-  hometown_flag = false,
-  birthplace_flag = false,
-  health_flag = false,
-  phone_flag = false,
-  idNum_flag = false,
-  marriage_flag = false,
-  portrait_flag = false,
-  education_flag = false,
-  school_flag = false,
-  workdate_flag = false
+let name_flag = true,
+  nation_flag = true,
+  hometown_flag = true,
+  birthplace_flag = true,
+  health_flag = true,
+  phone_flag = true,
+  idNum_flag = true,
+  marriage_flag = true,
+  portrait_flag = true,
+  education_flag = true,
+  school_flag = true,
+  workdate_flag = true
 
 $('input[name=name]').change(function (e) {
   const name = $(this).val()
@@ -302,13 +302,6 @@ $('input[name=marriage]').change(function (e) {
   }
 })
 
-$('input[name=birthday]').change(function (e) {
-  birthday_flag = true
-})
-
-$('input[name=workdate]').change(function (e) {
-  workdate_flag = true
-})
 
 $('input[name=school]').change(function (e) {
   school_flag = true
@@ -371,15 +364,13 @@ function formValidate() {
     alert('请输入正确的毕业院校！')
     return false
   }
-  if (!birthday_flag) {
+  if (!$('input[name=birthday]').val()) {
     $('.cell-birthday').addClass('error')
-    birthday_flag = false
     alert('请输入正确的出生日期！')
     return false
   }
-  if (!workdate_flag) {
+  if (!$('input[name=workdate]').val()) {
     $('.cell-workdate').addClass('error')
-    workdate_flag = false
     alert('请输入正确的参加工作时间！')
     return false
   }
@@ -389,9 +380,9 @@ function formValidate() {
 const formContent = {}
 $('#btn-save').click(function (e) {
 
-  // if (!formValidate()) {
-  //   return 0
-  // }
+  if (!formValidate()) {
+    return 0
+  }
 
   const formData = new FormData()
   // 基本信息 21个

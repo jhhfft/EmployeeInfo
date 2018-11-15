@@ -167,6 +167,7 @@ const addEmployeeFunc = (req, res, next) => {
 }
 
 const postEmployeeFunc = async (req, res, next) => {
+  console.log('asdfadsfdsaffasd')
   // var name = req.body.name
   // console.log(req.body)
   // var file = req.file;

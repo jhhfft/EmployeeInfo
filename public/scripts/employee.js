@@ -193,6 +193,7 @@ let name_flag = false,
   portrait_flag = false,
   education_flag = false,
   school_flag = false,
+  birthday_flag = false,
   workdate_flag = false
 
 $('input[name=name]').change(function (e) {
@@ -274,6 +275,7 @@ $('input[name=phone]').change(function (e) {
 })
 
 $('input[name=idNum]').change(function (e) {
+  console.log('asdfsdfdsafasf')
   const idNum = $(this).val()
   const pattern = /^[0123456789X]{18}$/
   if (!pattern.test(idNum)) {
@@ -300,6 +302,7 @@ $('input[name=marriage]').change(function (e) {
 })
 
 $('input[name=birthday]').change(function (e) {
+  console.log('asdfsdfdsafasf')
   birthday_flag = true
 })
 
@@ -368,15 +371,13 @@ function formValidate() {
     alert('请输入正确的毕业院校！')
     return false
   }
-  if (!birthday_flag) {
+  if (!$('input[name=birthday]').val()) {
     $('.cell-birthday').addClass('error')
-    birthday_flag = false
     alert('请输入正确的出生日期！')
     return false
   }
-  if (!workdate_flag) {
+  if (!$('input[name=workdate]').val()) {
     $('.cell-workdate').addClass('error')
-    workdate_flag = false
     alert('请输入正确的参加工作时间！')
     return false
   }
@@ -386,9 +387,9 @@ function formValidate() {
 const formContent = {}
 $('#btn-save').click(function (e) {
 
-  // if (!formValidate()) {
-  //   return 0
-  // }
+  if (!formValidate()) {
+    return 0
+  }
 
   const formData = new FormData()
   // 基本信息 21个
